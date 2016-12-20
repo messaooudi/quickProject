@@ -10,15 +10,12 @@ import { Tracker } from 'meteor/tracker'
 
 
 //import html and css files of this component
-if (Meteor.isCordova) {
-    import template from './mobile.html';
-    import './mobile.css';
+import webTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 
-} else {
-    import template from './web.html';
-    import './web.css';
+import './mobile.css';
+import './web.css';
 
-}
 
 class Component {
     constructor($scope) {
@@ -34,6 +31,7 @@ class Component {
 }
 
 const name = 'component';
+const template = Meteor.isCordova ? mobileTemplate:webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
