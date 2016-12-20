@@ -3,14 +3,9 @@ import { Meteor } from 'meteor/meteor';
 
 
 import '/public/CDN/angular-notify/css/angular-notify.min.css'
-import '/public/CDN/bootstrap/css/bootstrap.min.css'
-import '/public/CDN/font-awesome/css/font-awesome.min.css'
-
 
 Meteor.startup(function () {
-    $.getScript('CDN/bootstrap/js/bootstrap.min.js', function () {
-        // script should be loaded and do something with it. 
-    });
+
 });
 
 
