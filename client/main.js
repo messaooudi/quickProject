@@ -3,14 +3,19 @@ import { Meteor } from 'meteor/meteor';
 
 
 import '/public/CDN/angular-notify/css/angular-notify.min.css'
+import './index.css';
+
+import { name as App } from '../imports/components/app/app';
+
 
 Meteor.startup(function () {
-
 });
 
 
 function onReady() {
-    angular.bootstrap(document,[/*dependencies*/], {
+    angular.bootstrap(document,[
+        App
+    ], {
             strictDi: true
         });
 }
