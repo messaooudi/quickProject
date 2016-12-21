@@ -14,7 +14,7 @@ import './mobile.css';
 import './web.css';
 
 //import modules
-import { name as EventCard } from '../eventList/eventList';
+import { name as BirthList } from '../birthList/birthList';
 
 class App {
     constructor($scope,$reactive) {
@@ -34,7 +34,7 @@ const template = Meteor.isCordova ? mobileTemplate:webTemplate;
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    EventCard
+    BirthList
 ]).component(name, {
     template,
     controllerAs: name,
@@ -43,5 +43,5 @@ export default angular.module(name, [
 function config($locationProvider, $urlRouterProvider) {
     'ngInject';
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/eventlist'); //to set a default route in general used in a global context not in a component
+    $urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
 }

@@ -17,25 +17,23 @@ import mobileTemplate from './web.html';
 import './web.css';
 
 
-class EventCard {
+class BirthCard {
     constructor($scope,$reactive,$stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
         
         var vm = this;
 
-        vm.print = function() {
-            alert(vm.data.name);
+        //print the birthCard
+        vm.print = function(){
+
         }
-        //vm.test = {};
-        /*
-            the logic of the component should be encapsuled here 
-         */
+
 
     }
 }
 
-const name = 'eventCard';
+const name = 'birthCard';
 const template = Meteor.isCordova ? mobileTemplate:webTemplate;
 //create a module
 export default angular.module(name, [
@@ -44,7 +42,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: EventCard,
+    controller: BirthCard,
     bindings : {
         data : "<"
     }
