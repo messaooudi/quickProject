@@ -10,7 +10,7 @@ import { Tracker } from 'meteor/tracker'
 import webTemplate from './web.html';
 import mobileTemplate from './web.html';
 
-import './mobile.css';
+//import './mobile.css';
 import './web.css';
 
 //import modules
@@ -26,7 +26,6 @@ class App {
         /*
             the logic of the component should be encapsuled here 
          */
-
     }
 }
 

@@ -11,9 +11,9 @@ import { Tracker } from 'meteor/tracker'
 
 //import html and css files of this component
 import webTemplate from './web.html';
-import mobileTemplate from './mobile.html';
+import mobileTemplate from './web.html';
 
-import './mobile.css';
+//import './mobile.css';
 import './web.css';
 
 
