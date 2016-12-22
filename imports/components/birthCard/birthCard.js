@@ -26,7 +26,7 @@ class BirthCard {
 
         //print the birthCard
         vm.print = function(){
-
+            
         }
 
 

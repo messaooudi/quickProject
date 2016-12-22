@@ -1,5 +1,6 @@
 header{
-    position: relative;
+    position: fixed;
+    z-index: 50;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -44,7 +45,7 @@ header #more_container{
     margin: 3px;
     padding: 0;
 
-    background: whitesmoke;
+    background-color: whitesmoke;
     box-sizing: border-box;
     border-radius: 2px;
     background-clip: padding-box;
