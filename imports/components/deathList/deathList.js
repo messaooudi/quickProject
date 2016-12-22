@@ -19,49 +19,49 @@ import './web.css';
 
 
 //import modules
-import { name as BirthCard } from '../birthCard/birthCard';
+import { name as DeathCard } from '../deathCard/deathCard';
 
 //import Schemas
-import { Naissance } from '../../database/naissance';
+import { Deces } from '../../database/deces';
 
 
-class BirthList {
+class DeathList {
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
         //subscribe to naissance schema
-        Meteor.subscribe('naissance', {});
+        Meteor.subscribe('deces', {});
         vm.helpers({
-            naissance() {
-                return Naissance.find({})
+            deces() {
+                return Deces.find({})
             }
         });
 
     }
 }
 
-const name = 'birthList';
+const name = 'deathList';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    BirthCard
+    DeathCard
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthList
+    controller: DeathList
 }).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('birthlist', {
-            url: '/birthlist',
-            template: '<birth-list></birth-list>',
+        .state('deathlist', {
+            url: '/deathlist',
+            template: '<death-list></death-list>',
             //to determine whene this component should be routed 
             /*resolve: {
                 currentUser($q) {

@@ -14,7 +14,9 @@ import './mobile.css';
 import './web.css';
 
 //import modules
+import { name as Header } from '../header/header';
 import { name as BirthList } from '../birthList/birthList';
+import { name as DeathList } from '../deathList/deathList';
 
 class App {
     constructor($scope,$reactive) {
@@ -34,7 +36,9 @@ const template = Meteor.isCordova ? mobileTemplate:webTemplate;
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    BirthList
+    Header,
+    BirthList,
+    DeathList
 ]).component(name, {
     template,
     controllerAs: name,

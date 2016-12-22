@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../imports/database/template';
 import { Naissance } from '../imports/database/naissance';
+import { Deces } from '../imports/database/deces';
 
 
 Meteor.startup(() => {
