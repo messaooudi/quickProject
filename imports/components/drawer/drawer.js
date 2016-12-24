@@ -23,10 +23,10 @@ class Drawer {
         var vm = this;
         vm.state = "";
         vm.toggle = function(){
-            if(vm.state === "hidden" || vm.state === ""){
-                vm.state = "shown";
+            if(vm.state === "slideout" || vm.state === ""){
+                vm.state = "slidein";
             }else {
-                vm.state = "hidden";
+                vm.state = "slideout";
             }
         }
 
