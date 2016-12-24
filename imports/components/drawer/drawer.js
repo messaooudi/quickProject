@@ -23,12 +23,17 @@ class Drawer {
         var vm = this;
         vm.state = "";
         vm.toggle = function(){
-             if(vm.state === "hidden"){
+            if(vm.state === "hidden" || vm.state === ""){
                 vm.state = "shown";
-            }else{
+            }else {
                 vm.state = "hidden";
             }
         }
+
+        $scope.$on("TOGGLE_DRAWER",function () {
+            //
+            vm.toggle();
+        });
     }
 }
 const name = 'drawer';
