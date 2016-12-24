@@ -9,10 +9,9 @@ import { Tracker } from 'meteor/tracker'
 //import { databaseExemple } from '../../database/template';
 
 
-
 //import html and css files of this component
 import webTemplate from './web.html';
-import mobileTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 
 //import './mobile.css';
 import './web.css';
@@ -21,22 +20,32 @@ import './web.css';
 import { Naissance } from '../../database/naissance';
 
 class BirthAdd {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $location) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-        this.naissance ={};
-        
+        vm.naissance = {};
 
-    }
-    submit(){
-        console.log('submit:', this.naissance);
-        Naissance.insert(this.naissance);
-        this.reset();
-    }
-    reset(){
-        this.naissance = {};
+        vm.submit = function () {
+            var WriteResult = Naissance.insert({
+                name: vm.naissance.name
+            });
+
+            if (!WriteResult)
+                alert("prob d'insertion")
+            $location.path('/birth/list');
+            vm.reset();
+        }
+         vm.cancel = function () {
+            $location.path('/birth/list');
+            vm.reset();
+        }
+        vm.reset = function () {
+            vm.naissance = {};
+            $location.path('/birth/list');
+
+        }
     }
 }
 
@@ -46,7 +55,7 @@ const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter
+    uiRouter,
 ]).component(name, {
     template,
     controllerAs: name,
@@ -57,8 +66,8 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('birthAdd', {
-            url: '/birthAdd',
+        .state('birthadd', {
+            url: '/birth/add',
             template: '<birth-add></birth-add>',
             //to determine whene this component should be routed
             /*resolve: {

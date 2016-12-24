@@ -13,14 +13,26 @@ header{
 }
 
 header #more_button{
-    position: absolute;
-    right: 10px;
     border: none;
     border-style: none;
     background: transparent;
 }
 
 header #more_button i{
+    color : #ffab40    
+}
+
+header #plus_button i:hover{
+    color : #ffd8a6
+}
+
+header #plus_button{
+    border: none;
+    border-style: none;
+    background: transparent;
+}
+
+header #plus_button i{
     color : #ffab40    
 }
 
@@ -50,15 +62,18 @@ header #more_container{
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+header #more_container a:hover {
+    cursor: pointer;
+    color : #ffab40
+}
+
 .show_more_container{
-    width: 100px!important;
+    min-width: 100px!important;
     height: 60px!important;
     visibility: visible!important
 }
 
 header #menu_button{
-    position: absolute;
-    left: 10px;
     border: none;
     border-style: none;
     background: transparent;

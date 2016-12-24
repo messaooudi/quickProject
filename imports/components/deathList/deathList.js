@@ -60,7 +60,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
         .state('deathlist', {
-            url: '/deathlist',
+            url: '/death/list',
             template: '<death-list></death-list>',
             //to determine whene this component should be routed 
             /*resolve: {

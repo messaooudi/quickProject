@@ -18,7 +18,7 @@ import './web.css';
 
 
 class Header {
-    constructor($scope, $reactive,$location) {
+    constructor($scope, $reactive, $location) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -27,7 +27,7 @@ class Header {
             toggle: function () {
                 $('#more_container').toggleClass("show_more_container");
             },
-            itemClick : function(path){
+            itemClick: function (path) {
                 this.toggle();
                 $location.path(path);
 
@@ -37,6 +37,15 @@ class Header {
         vm.moreButton = {
             click: function () {
                 vm.moreContainer.toggle();
+            }
+        }
+
+        vm.plusButton = {
+            click: function () {
+                if ($location.path().includes("birth"))
+                    $location.path("birth/add");
+                else if ($location.path().includes("death"))
+                    $location.path("death/add");
             }
         }
         /*
@@ -55,5 +64,5 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: Header
+    controller: Header,
 })
