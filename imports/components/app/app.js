@@ -18,6 +18,7 @@ import { name as Header } from '../header/header';
 import { name as BirthList } from '../birthList/birthList';
 import { name as DeathList } from '../deathList/deathList';
 import { name as GraduationList } from '../graduationList/graduationList';
+import { name as BirthAdd } from '../birthAdd/birthAdd';
 
 class App {
     constructor($scope,$reactive) {
@@ -39,7 +40,8 @@ export default angular.module(name, [
     Header,
     BirthList,
     DeathList,
-    GraduationList
+    GraduationList,
+    BirthAdd
 ]).component(name, {
     template,
     controllerAs: name,
