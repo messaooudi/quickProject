@@ -21,6 +21,7 @@ import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
 
+import { name as Drawer } from '../drawer/drawer';
 class App {
     constructor($scope,$reactive) {
         'ngInject';
@@ -39,6 +40,7 @@ export default angular.module(name, [
     angularMeteor,
     uiRouter,
     Header,
+    Drawer,
     BirthList,
     DeathList,
     GraduationList,

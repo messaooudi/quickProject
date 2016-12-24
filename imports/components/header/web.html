@@ -8,15 +8,18 @@
 </div>
 
 <div id="more_container">
-    <ul class="list-group">
-        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/birth/list')">Naissance</a>
-        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/death/list')">Décès</a>
-        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/graduation/list')">Graduation</li>
+  <ul class="list-group">
+    <a class="list-group-item" ng-click="header.moreContainer.itemClick('/birth/list')">Naissance</a>
+    <a class="list-group-item" ng-click="header.moreContainer.itemClick('/death/list')">Décès</a>
+    <a class="list-group-item" ng-click="header.moreContainer.itemClick('/graduation/list')">Graduation</li>
     </ul>
 </div>
 
 <div style="float: left">
 <button id="menu_button">
+
+
+<button id="menu_button" ng-click="header.drawer.toggle()">
 <i class="fa fa-bars" aria-hidden="true"></i>
 </button>
 </div>

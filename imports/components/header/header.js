@@ -4,10 +4,9 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
-
+import { name as Drawer } from '../drawer/drawer'; 
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../../database/template';
-
 
 //import html and css files of this component
 import webTemplate from './web.html';
@@ -18,7 +17,8 @@ import './web.css';
 
 
 class Header {
-    constructor($scope, $reactive, $location) {
+
+    constructor($scope, $reactive,$location,$rootScope) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -51,6 +51,12 @@ class Header {
         /*
             the logic of the component should be encapsuled here 
          */
+        
+        vm.drawer={
+            toggle:function () {
+                $rootScope.$broadcast("TOGGLE_DRAWER");
+            }
+        }
 
     }
 }
@@ -60,7 +66,7 @@ const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter,
+    uiRouter
 ]).component(name, {
     template,
     controllerAs: name,
