@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 //import { databaseExemple } from '../imports/database/template';
 import { Naissance } from '../imports/database/naissance';
 import { Deces } from '../imports/database/deces';
+import { Graduation } from '../imports/database/graduation';
 
 
 Meteor.startup(() => {
@@ -18,6 +19,7 @@ Meteor.startup(() => {
             Deces.insert({name : "nom "+i});
         }
     }
+
     /*
     code to run on server at startup
     */
