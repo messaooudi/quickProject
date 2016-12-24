@@ -1,0 +1,48 @@
+#drawer{
+    
+	width: 40%;
+	height: 100%;
+	position: absolute;
+	background-color: lime;
+    left: -40%;
+}
+#drawer.shown{
+    -webkit-animation-name: slideIn; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .5s; /* Safari 4.0 - 8.0 */
+    animation-name: slideIn;
+    animation-duration: .5s;
+}
+#drawer.hidden{
+    -webkit-animation-name: slideOut; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .5s; /* Safari 4.0 - 8.0 */
+    animation-name: slideOut;
+    animation-duration: .5s;
+    left: -40%;
+}
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes slideIn {
+    0%   {left:-40%;}
+    100% {left:0%; }
+}
+
+/* Standard syntax */
+@keyframes slideIn {
+    0%   {left:-40%;}
+    100% {left:0%; }
+}
+
+/* -----------------------*/
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes slideOut {
+    100% {left:-40%;display: none;}
+    0%   {left:0%; }
+}
+
+/* Standard syntax */
+@keyframes slideOut {
+    100% {left:-40%;display: none;}
+    0%   {left:0%; }
+}
