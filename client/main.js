@@ -2,6 +2,7 @@ import angular from 'angular';
 import { Meteor } from 'meteor/meteor';
 
 
+import '/public/CDN/font-awesome/css/font-awesome.min.css'
 import '/public/CDN/angular-notify/css/angular-notify.min.css'
 import './index.css';
 

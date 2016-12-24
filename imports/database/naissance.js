@@ -14,7 +14,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 
-export const Naissance = new Mongo.Collection('naissance', {
+export const Naissance = new Ground.Collection('naissance', {
     transform: function (naissance) {
         //any transformation to apply to a record of this schema (in this case schemaExempleDocument) can be done here 
         //since this is a shared code between client and server , be careful if some code 

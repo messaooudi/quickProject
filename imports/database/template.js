@@ -14,7 +14,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 
-export const SchemaExemple = new Mongo.Collection('schemaExemple', {
+export const SchemaExemple = new (Meteor.isServer?Mongo:Ground).Collection('schemaExemple', {
     transform: function (schemaExempleDocument) {
         //any transformation to apply to a record of this schema (in this case schemaExempleDocument) can be done here 
         //since this is a shared code between client and server , be careful if some code 

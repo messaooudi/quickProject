@@ -23,7 +23,7 @@ class App {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-        /*
+            /*
             the logic of the component should be encapsuled here 
          */
     }

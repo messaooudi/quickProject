@@ -39,6 +39,10 @@ class BirthList {
             }
         });
 
+        vm.text = "";
+        vm.submit = function(){
+            Naissance.insert({name : vm.text});
+        }
     }
 }
 

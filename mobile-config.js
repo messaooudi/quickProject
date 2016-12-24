@@ -5,4 +5,5 @@ App.info({
   author: 'CHIGEUR Assia & &MESSAOUDI Oussama & Ayachi Mohammed',
   email: 'messaoudi.oussama.in@gmail.com',
 });
-App.accessRule('*')
+App.accessRule('*');
+
