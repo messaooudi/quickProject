@@ -30,9 +30,11 @@
     position: absolute;
     z-index: 0;
     opacity: 0;
+    display: none; 
 }
 
 #frame_overlay.shown{
+  display: block;
     -webkit-animation: fadeIn .5s linear forwards;
     animation: fadeIn .5s linear forwards;
 }
@@ -71,7 +73,7 @@
 @-webkit-keyframes fadeOut {
   0%, { opacity: .7; }
   50% { opacity: .3; }
-  100% { opacity: 0; }
+  100% { opacity: 0;display: none;  }
 }
 @-webkit-keyframes fadeIn {
   0%, { opacity: 0; }
@@ -86,5 +88,5 @@
 @keyframes fadeOut {
   0%, { opacity: .7; }
   50% { opacity: .3; }
-  100% { opacity: 0; }
+  100% { opacity: 0;display: none;  }
 }
