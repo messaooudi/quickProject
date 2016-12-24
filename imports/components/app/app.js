@@ -17,6 +17,7 @@ import './web.css';
 import { name as Header } from '../header/header';
 import { name as BirthList } from '../birthList/birthList';
 import { name as DeathList } from '../deathList/deathList';
+import { name as GraduationList } from '../graduationList/graduationList';
 
 class App {
     constructor($scope,$reactive) {
@@ -37,7 +38,8 @@ export default angular.module(name, [
     uiRouter,
     Header,
     BirthList,
-    DeathList
+    DeathList,
+    GraduationList
 ]).component(name, {
     template,
     controllerAs: name,
