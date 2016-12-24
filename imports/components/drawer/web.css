@@ -1,5 +1,5 @@
 #drawer{
-  z-index: 2;
+  z-index: 100;
 	width: 40%;
 	height: 100%;
 	position: absolute;
@@ -37,7 +37,7 @@
     height: 100%;
     background: black;
     position: absolute;
-    z-index: 0;
+    z-index: 99;
     opacity: 0;
     display: none;
 }
@@ -74,22 +74,22 @@
 }
 
 @-webkit-keyframes fadeOut {
-  0%, { opacity: .7; }
+  0% {opacity: .7; }
   50% { opacity: .3; }
   100%{ opacity: 0;  display: none;}
 }
 @-webkit-keyframes fadeIn {
-  0%, { opacity: 0; }
+  0% { opacity: 0; }
   50% { opacity: .3; }
   100%{ opacity: .7; }
 }
 @keyframes fadeIn {
-  0%, { opacity: 0; }
+  0% { opacity: 0; }
   50% { opacity: .3; }
   100%{ opacity: .7; }
 }
 @keyframes fadeOut {
-  0%, { opacity: .7; }
+  0% { opacity: .7; }
   50% { opacity: .3; }
   100%{ opacity: 0;  display: none;}
 }
