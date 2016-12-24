@@ -1,5 +1,5 @@
 #drawer{
-    z-index: 2;
+    z-index: 100;
 	width: 40%;
 	height: 100%;
 	position: absolute;
@@ -28,7 +28,7 @@
     height: 100%;
     background: black;
     position: absolute;
-    z-index: 0;
+    z-index: 99;
     opacity: 0;
     display: none; 
 }

@@ -48,10 +48,7 @@ class Header {
                     $location.path("death/add");
             }
         }
-        /*
-            the logic of the component should be encapsuled here 
-         */
-        
+
         vm.drawer={
             toggle:function () {
                 $rootScope.$broadcast("TOGGLE_DRAWER");
