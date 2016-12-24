@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
 
-//in order to use any schema u should import its js file 
+//in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';
 
 
@@ -17,23 +17,21 @@ import mobileTemplate from './web.html';
 import './web.css';
 
 
-class BirthCard {
+class GraduationCard {
     constructor($scope,$reactive,$stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
-        
+
         var vm = this;
 
-        //print the birthCard
+        //print the graduationCard
         vm.print = function(){
-            
+
         }
-
-
     }
 }
 
-const name = 'birthCard';
+const name = 'graduationCard';
 const template = Meteor.isCordova ? mobileTemplate:webTemplate;
 //create a module
 export default angular.module(name, [
@@ -42,7 +40,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthCard,
+    controller: GraduationCard,
     bindings : {
         data : "<"
     }

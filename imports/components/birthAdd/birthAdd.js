@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
 
-//in order to use any schema u should import its js file 
+//in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';
 
 
@@ -17,64 +17,58 @@ import mobileTemplate from './web.html';
 //import './mobile.css';
 import './web.css';
 
-
-//import modules
-import { name as BirthCard } from '../birthCard/birthCard';
-
 //import Schemas
 import { Naissance } from '../../database/naissance';
 
-
-class BirthList {
+class BirthAdd {
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-        //subscribe to naissance schema
-        Meteor.subscribe('naissance', {});
-        vm.helpers({
-            naissance() {
-                return Naissance.find({})
-            }
-        });
+        this.naissance ={};
+        
 
-        vm.text = "";
-        vm.submit = function(){
-            Naissance.insert({name : vm.text});
-        }
+    }
+    submit(){
+        console.log('submit:', this.naissance);
+        Naissance.insert(this.naissance);
+        this.reset();
+    }
+    reset(){
+        this.naissance = {};
     }
 }
 
-const name = 'birthList';
+const name = 'birthAdd';
+
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter,
-    BirthCard
+    uiRouter
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthList
+    controller: BirthAdd
 }).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('birthlist', {
-            url: '/birthlist',
-            template: '<birth-list></birth-list>',
-            //to determine whene this component should be routed 
+        .state('birthAdd', {
+            url: '/birthAdd',
+            template: '<birth-add></birth-add>',
+            //to determine whene this component should be routed
             /*resolve: {
-                currentUser($q) {
-                    if (condition) {
-                        return $q.reject();
-                    } else {
-                        return $q.resolve();
-                    }
-                }
-            }*/
+             currentUser($q) {
+             if (condition) {
+             return $q.reject();
+             } else {
+             return $q.resolve();
+             }
+             }
+             }*/
         })
 }

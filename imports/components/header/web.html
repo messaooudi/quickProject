@@ -1,12 +1,14 @@
 <button id="more_button" ng-click="header.moreButton.click()">
-<i class="material-icons">more_vert</i>
+<i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
 </button>
 
 <div id="more_container">
     <a ng-click="header.moreContainer.itemClick('/birthlist')">Naissance</a>
-    <a ng-click="header.moreContainer.itemClick('/deathlist')">décès</a>
+    <a ng-click="header.moreContainer.itemClick('/deathlist')">Décès</a>
+    <a ng-click="header.moreContainer.itemClick('/graduationlist')">Graduation</a>
 </div>
 
+
 <button id="menu_button" ng-click="header.drawer.toggle()">
-	<i class="material-icons">menu</i>
+<i class="fa fa-bars" aria-hidden="true"></i>
 </button>

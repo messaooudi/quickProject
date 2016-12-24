@@ -3,4 +3,5 @@ death-list{
     margin: auto;
     padding-top: 10px;
     text-align: center;
+    overflow: auto;
 }

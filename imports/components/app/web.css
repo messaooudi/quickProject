@@ -1,7 +1,17 @@
 app{
+    position: fixed;
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow: auto;
+}
+
+.view-container{
+    position: fixed;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 1px;
+    overflow: auto
 }

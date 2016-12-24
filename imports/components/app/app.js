@@ -17,6 +17,8 @@ import './web.css';
 import { name as Header } from '../header/header';
 import { name as BirthList } from '../birthList/birthList';
 import { name as DeathList } from '../deathList/deathList';
+import { name as GraduationList } from '../graduationList/graduationList';
+import { name as BirthAdd } from '../birthAdd/birthAdd';
 
 import { name as Drawer } from '../drawer/drawer';
 class App {
@@ -24,7 +26,7 @@ class App {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-        /*
+            /*
             the logic of the component should be encapsuled here 
          */
     }
@@ -40,7 +42,12 @@ export default angular.module(name, [
     Drawer,
     BirthList,
     DeathList,
+<<<<<<< HEAD
 
+=======
+    GraduationList,
+    BirthAdd
+>>>>>>> ecdad2b0a5ed66ecfb084f167051fab8668855db
 ]).component(name, {
     template,
     controllerAs: name,

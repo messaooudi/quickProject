@@ -4,9 +4,22 @@ import { Meteor } from 'meteor/meteor';
 //import { databaseExemple } from '../imports/database/template';
 import { Naissance } from '../imports/database/naissance';
 import { Deces } from '../imports/database/deces';
+import { Graduation } from '../imports/database/graduation';
 
 
 Meteor.startup(() => {
+    
+    if(Naissance.find().count()==0){
+        for(var i=0;i<5;i++){
+            Naissance.insert({name : "nom "+i});
+        }
+    }
+     if(Deces.find().count()==0){
+        for(var i=0;i<3;i++){
+            Deces.insert({name : "nom "+i});
+        }
+    }
+
     /*
     code to run on server at startup
     */
