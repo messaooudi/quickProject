@@ -2,12 +2,13 @@
 <i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
 </button>
 
-<div id="more_container">
+<div class="dropdown" id="more_container">
+  <div class="dropdown-content">
     <a ng-click="header.moreContainer.itemClick('/birthlist')">Naissance</a>
     <a ng-click="header.moreContainer.itemClick('/deathlist')">Décès</a>
     <a ng-click="header.moreContainer.itemClick('/graduationlist')">Graduation</a>
+  </div>
 </div>
-
 
 <button id="menu_button" ng-click="header.drawer.toggle()">
 <i class="fa fa-bars" aria-hidden="true"></i>

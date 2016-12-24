@@ -17,7 +17,7 @@ import './web.css';
 
 
 class Header {
-    constructor($scope, $reactive,$location) {
+    constructor($scope, $reactive,$location,$rootScope) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -41,7 +41,7 @@ class Header {
         
         vm.drawer={
             toggle:function () {
-                console.log(Drawer);
+                $rootScope.$broadcast("TOGGLE_DRAWER");
             }
         }
 

@@ -42,12 +42,8 @@ export default angular.module(name, [
     Drawer,
     BirthList,
     DeathList,
-<<<<<<< HEAD
-
-=======
     GraduationList,
     BirthAdd
->>>>>>> ecdad2b0a5ed66ecfb084f167051fab8668855db
 ]).component(name, {
     template,
     controllerAs: name,
