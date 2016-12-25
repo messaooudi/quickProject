@@ -31,7 +31,6 @@ class Drawer {
         }
 
         $scope.$on("TOGGLE_DRAWER",function () {
-            //
             vm.toggle();
         });
     }
