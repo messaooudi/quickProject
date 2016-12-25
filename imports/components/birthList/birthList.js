@@ -35,13 +35,31 @@ class BirthList {
         Meteor.subscribe('naissance', {});
         vm.helpers({
             naissance() {
-                return Naissance.find({})
+                let query = Naissance.find({});
+                let count = 0;
+                let loadingCube = $('#loading-cube');
+                query.observeChanges({
+                    added: function (id, formation) {
+                        count++;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        } else {
+                            $(loadingCube).removeClass('hide-loading-cube');
+                        }
+                    },
+                    changed: function (id, formation) {
+                    },
+                    removed: function (id) {
+                        count--;
+                    }
+                })
+                return query
             }
         });
 
         vm.text = "";
-        vm.submit = function(){
-            Naissance.insert({name : vm.text});
+        vm.submit = function () {
+            Naissance.insert({ name: vm.text });
         }
     }
 }
@@ -67,14 +85,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/birth/list',
             template: '<birth-list></birth-list>',
             //to determine whene this component should be routed 
-            /*resolve: {
-                currentUser($q) {
-                    if (condition) {
-                        return $q.reject();
+            resolve: {
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
+                        $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }*/
+            }
         })
 }

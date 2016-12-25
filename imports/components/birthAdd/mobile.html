@@ -26,7 +26,7 @@
     </div>
     <div class="panel-footer">
         <div class="btn-group">
-            <button type="submit" class="btn" ng-click="birthAdd.submit()" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
+            <button type="submit" class="btn" ng-click="birthAdd.submit()" ng-disabled="addForm.$invalid" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
             <button class="btn btn-default" ng-click="birthAdd.cancel()">Annuler</button>
         </div>
     </div>

@@ -11,10 +11,7 @@ import { name as App } from '../imports/components/app/app';
 
 
 Meteor.startup(function () {
-    $.getScript('CDN/bootstrap/js/bootstrap.min.js', function () {
-        // script should be loaded and do something with it. 
 
-    });
 });
 
 

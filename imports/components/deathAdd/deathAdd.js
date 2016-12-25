@@ -68,14 +68,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/death/add',
             template: '<death-add></death-add>',
             //to determine whene this component should be routed
-            /*resolve: {
-             currentUser($q) {
-             if (condition) {
-             return $q.reject();
-             } else {
-             return $q.resolve();
-             }
-             }
-             }*/
+            resolve: {
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
+                        $window.location.href = '/login';
+                    } else {
+                        return $q.resolve();
+                    }
+                }
+            }
         })
 }

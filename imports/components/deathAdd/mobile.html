@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Nouveau decée</div>
+    <div class="panel-heading">Nouveau décès</div>
     <div class="panel-body">
         <form name="addForm" class="form-horizontal">
             <div class="form-group" ng-class="{ 'has-error': addForm.champ1.$touched && addForm.champ1.$invalid}">
@@ -26,7 +26,7 @@
     </div>
     <div class="panel-footer">
         <div class="btn-group">
-            <button type="submit" class="btn" ng-click="deathAdd.submit()" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
+            <button type="submit" class="btn" ng-click="deathAdd.submit()" ng-disabled="addForm.$invalid" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
             <button class="btn btn-default" ng-click="deathAdd.cancel()">Annuler</button>
         </div>
     </div>

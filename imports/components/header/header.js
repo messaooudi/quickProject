@@ -4,39 +4,42 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
-import { name as Drawer } from '../drawer/drawer'; 
+import { name as Drawer } from '../drawer/drawer';
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../../database/template';
 
 //import html and css files of this component
 import webTemplate from './web.html';
-import mobileTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 
-//import './mobile.css';
-import './web.css';
-
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class Header {
 
-    constructor($scope, $reactive,$location,$rootScope) {
+    constructor($scope, $reactive, $location, $rootScope) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
+        vm.label = "";
+
         vm.moreContainer = {
+            _show: false,
             toggle: function () {
+                this._show = !this._show;
                 $('#more_container').toggleClass("show_more_container");
             },
-            itemClick: function (path) {
+            itemClick: function (path, $event) {
                 this.toggle();
                 $location.path(path);
-
+                $event.stopPropagation();
             }
         }
 
         vm.moreButton = {
-            click: function () {
+            click: function ($event) {
                 vm.moreContainer.toggle();
+                $event.stopPropagation();
             }
         }
 
@@ -49,8 +52,13 @@ class Header {
             }
         }
 
-        vm.drawer={
-            toggle:function () {
+
+        $('body').bind('click', () => {
+            $('#more_container').removeClass("show_more_container");
+        })
+
+        vm.drawer = {
+            toggle: function () {
                 $rootScope.$broadcast("TOGGLE_DRAWER");
             }
         }

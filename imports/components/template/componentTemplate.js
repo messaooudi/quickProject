@@ -13,8 +13,7 @@ import { Tracker } from 'meteor/tracker'
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
 
-import './mobile.css';
-import './web.css';
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class Component {
@@ -51,9 +50,9 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<component></component>',
             //to determine whene this component should be routed 
             /*resolve: {
-                currentUser($q) {
-                    if (condition) {
-                        return $q.reject();
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
+                        $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }

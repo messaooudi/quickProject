@@ -35,7 +35,25 @@ class DeathList {
         Meteor.subscribe('deces', {});
         vm.helpers({
             deces() {
-                return Deces.find({})
+                let query = Deces.find({});
+                let count = 0;
+                let loadingCube = $('#loading-cube');
+                query.observeChanges({
+                    added: function (id, formation) {
+                        count++;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        } else {
+                            $(loadingCube).removeClass('hide-loading-cube');
+                        }
+                    },
+                    changed: function (id, formation) {
+                    },
+                    removed: function (id) {
+                        count--;
+                    }
+                })
+                return query
             }
         });
 
@@ -63,14 +81,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/death/list',
             template: '<death-list></death-list>',
             //to determine whene this component should be routed 
-            /*resolve: {
-                currentUser($q) {
-                    if (condition) {
-                        return $q.reject();
+            resolve: {
+                currentUser($q, $window) {
+                    if (Meteor.user() === null) {
+                        $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }*/
+            }
         })
 }

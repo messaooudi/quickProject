@@ -1,12 +1,26 @@
-<button id="more_button" ng-click="header.moreButton.click()">
-<i class="material-icons">more_vert</i>
+<div id="right_container">
+    <button id="plus_button" ng-click="header.plusButton.click()">
+<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
 </button>
-
-<div id="more_container">
-    <a ng-click="header.moreContainer.itemClick('/birthlist')">Naissance</a>
-    <a ng-click="header.moreContainer.itemClick('/deathlist')">décès</a>
+    <button id="more_button" ng-click="header.moreButton.click($event)">
+<i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+</button>
 </div>
 
+<div id="more_container">
+    <ul class="list-group">
+        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/birth/list',$event)">Naissance</a>
+        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/death/list',$event)">Décès</a>
+        <a class="list-group-item" ng-click="header.moreContainer.itemClick('/graduation/list',$event)">Graduation</li>
+    </ul>
+</div>
+
+<div style="float: left">
 <button id="menu_button">
-<i class="material-icons">menu</i>
+
+ <h4 id="header_label">{{header.label}}</h4>
+
+<button id="menu_button" ng-click="header.drawer.toggle()">
+<i class="fa fa-bars" aria-hidden="true"></i>
 </button>
+</div>

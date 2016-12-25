@@ -11,33 +11,43 @@ import { Tracker } from 'meteor/tracker'
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
 
-import './mobile.css';
-import './web.css';
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
+
 
 
 class Drawer {
-    constructor($scope,$reactive) {
+    constructor($scope, $reactive,$window) {
         'ngInject';
 
         $reactive(this).attach($scope);
         var vm = this;
         vm.state = "";
-        vm.toggle = function(){
-            if(vm.state === "hidden" || vm.state === ""){
+        vm.toggle = function () {
+            if (vm.state === "hidden" || vm.state === "") {
                 vm.state = "shown";
-            }else {
+            } else {
                 vm.state = "hidden";
             }
         }
 
-        $scope.$on("TOGGLE_DRAWER",function () {
+        vm.logout = function () {
+            /*again pour le test hh 
+            mais cette fonctin assure le logout donc use it as free of charge :D */
+            Meteor.logout(function (error) {
+                if (error)
+                    alert(error)
+               $window.location.href='/login';
+            })
+        }
+
+        $scope.$on("TOGGLE_DRAWER", function () {
             //
             vm.toggle();
         });
     }
 }
 const name = 'drawer';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,

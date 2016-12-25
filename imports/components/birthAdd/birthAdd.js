@@ -34,17 +34,16 @@ class BirthAdd {
 
             if (!WriteResult)
                 alert("prob d'insertion")
+
             $location.path('/birth/list');
             vm.reset();
         }
-         vm.cancel = function () {
+        vm.cancel = function () {
             $location.path('/birth/list');
             vm.reset();
         }
         vm.reset = function () {
             vm.naissance = {};
-            $location.path('/birth/list');
-
         }
     }
 }
@@ -70,14 +69,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/birth/add',
             template: '<birth-add></birth-add>',
             //to determine whene this component should be routed
-            /*resolve: {
-             currentUser($q) {
-             if (condition) {
-             return $q.reject();
-             } else {
-             return $q.resolve();
-             }
-             }
-             }*/
+            resolve: {
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
+                        $window.location.href = '/login';
+                    } else {
+                        return $q.resolve();
+                    }
+                }
+            }
         })
 }

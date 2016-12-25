@@ -8,10 +8,10 @@ import { Tracker } from 'meteor/tracker'
 
 //import html and css files of this component
 import webTemplate from './web.html';
-import mobileTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 
-//import './mobile.css';
-import './web.css';
+
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 //import modules
 import { name as Header } from '../header/header';
@@ -20,21 +20,24 @@ import { name as DeathList } from '../deathList/deathList';
 import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
+import { name as Login } from '../login/login';
+
 
 import { name as Drawer } from '../drawer/drawer';
 class App {
-    constructor($scope,$reactive) {
+    constructor($scope, $reactive, $window) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-            /*
-            the logic of the component should be encapsuled here 
-         */
+        
+        /*
+        the logic of the component should be encapsuled here 
+     */
     }
 }
 
 const name = 'app';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
@@ -45,7 +48,8 @@ export default angular.module(name, [
     DeathList,
     GraduationList,
     BirthAdd,
-    DeathAdd
+    DeathAdd,
+    Login
 ]).component(name, {
     template,
     controllerAs: name,
@@ -54,5 +58,5 @@ export default angular.module(name, [
 function config($locationProvider, $urlRouterProvider) {
     'ngInject';
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
+    $urlRouterProvider.otherwise('/birth/list'); //to set a default route in general used in a global context not in a component
 }
