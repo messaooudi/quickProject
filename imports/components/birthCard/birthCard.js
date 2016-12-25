@@ -29,9 +29,9 @@ class BirthCard {
             
         }
 
-        vm.remove = function(d){
+        vm.remove = function(){
             //hard deletion, might be updated to soft.
-            Naissance.remove( d._id );
+            Naissance.remove( this.data._id );
         }
 
     }
