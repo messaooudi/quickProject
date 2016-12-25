@@ -13,8 +13,7 @@ import { Tracker } from 'meteor/tracker'
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
 
-//import './mobile.css';
-import './web.css';
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 //import Schemas
 import { Graduation } from '../../database/graduation';

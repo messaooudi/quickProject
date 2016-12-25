@@ -13,9 +13,7 @@ import { Deces } from '../../database/deces';
 import webTemplate from './web.html';
 import mobileTemplate from './web.html';
 
-//import './mobile.css';
-import './web.css';
-
+Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class DeathCard {
     constructor($scope,$reactive,$stateParams) {
