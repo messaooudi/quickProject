@@ -43,7 +43,6 @@ class GraduationAdd {
         }
         vm.reset = function () {
             vm.naissance = {};
-            $location.path('/graduation/list');
 
         }
     }
@@ -65,7 +64,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
-    console.log("before graduation slash add called");
+
     $stateProvider
         .state('graduationadd', {
             url: '/graduation/add',
@@ -80,5 +79,5 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
              }
              }
              }*/
-        }); console.log("before graduation slash add called");
+        })
 }
