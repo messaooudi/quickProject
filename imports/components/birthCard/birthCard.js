@@ -6,7 +6,7 @@ import { Tracker } from 'meteor/tracker'
 
 
 //in order to use any schema u should import its js file 
-//import { databaseExemple } from '../../database/template';
+import { Naissance } from '../../database/naissance';
 
 
 //import html and css files of this component
@@ -29,6 +29,10 @@ class BirthCard {
             
         }
 
+        vm.remove = function(d){
+            //hard deletion, might be updated to soft.
+            Naissance.remove( d._id );
+        }
 
     }
 }
