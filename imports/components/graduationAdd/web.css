@@ -1,0 +1,9 @@
+graduation-add{
+    display: block;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+    overflow: auto;
+}

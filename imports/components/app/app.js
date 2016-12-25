@@ -20,6 +20,7 @@ import { name as DeathList } from '../deathList/deathList';
 import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
+import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 
 import { name as Drawer } from '../drawer/drawer';
 class App {
@@ -45,7 +46,9 @@ export default angular.module(name, [
     DeathList,
     GraduationList,
     BirthAdd,
-    DeathAdd
+    DeathAdd,
+    GraduationAdd
+
 ]).component(name, {
     template,
     controllerAs: name,
