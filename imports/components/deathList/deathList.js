@@ -12,7 +12,7 @@ import { Tracker } from 'meteor/tracker'
 
 //import html and css files of this component
 import webTemplate from './web.html';
-import mobileTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 
 
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
