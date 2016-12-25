@@ -19,6 +19,11 @@ Meteor.startup(() => {
             Deces.insert({name : "nom "+i});
         }
     }
+    if(Graduation.find().count()==0){
+        for(var i=0;i<3;i++){
+            Graduation.insert({name : "nom "+i});
+        }
+    }
 
     /*
     code to run on server at startup

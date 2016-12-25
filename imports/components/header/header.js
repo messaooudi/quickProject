@@ -43,12 +43,15 @@ class Header {
             }
         }
 
+
         vm.plusButton = {
             click: function () {
                 if ($location.path().includes("birth"))
                     $location.path("birth/add");
                 else if ($location.path().includes("death"))
                     $location.path("death/add");
+                else if ($location.path().includes("graduation"))
+                    $location.path("graduation/add");
             }
         }
 

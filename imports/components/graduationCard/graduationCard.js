@@ -6,6 +6,10 @@ import { Tracker } from 'meteor/tracker'
 
 
 //in order to use any schema u should import its js file
+import { Graduation } from '../../database/graduation';
+
+
+//in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';
 
 
@@ -27,6 +31,11 @@ class GraduationCard {
         //print the graduationCard
         vm.print = function(){
 
+        }
+
+        vm.remove = function(){
+            //hard deletion, might be updated to soft.
+            Graduation.remove( this.data._id );
         }
     }
 }

@@ -1,8 +1,14 @@
 <div id="drawer" class="{{drawer.state}}">
-    <ul>
-        <li ng-click="drawer.logout()">logOut</li><!--pour le test  a Ayachi :D -->
-    </ul>
-</div>
-<div id="frame_overlay" class="{{drawer.state}}" ng-click='drawer.toggle()'>
 
+	<img ng-src="http://placehold.it/350x250" class="img-responsive">
+	<div>
+		<ul class="list-group" ng-click="drawer.toggle()">
+			<a class="list-group-item" href="/birth/list">Naissance</a>
+			<a class="list-group-item" href="/death/list">Décès</a>
+			<a class="list-group-item" href="/graduation/list">Graduation</a>
+			<hr>
+			<a class="list-group-item" ng-click="drawer.logout()">logout</a>
+		</ul>
+	</div>
 </div>
+<div id="frame_overlay" class="{{drawer.state}}" ng-click='drawer.toggle()'></div>

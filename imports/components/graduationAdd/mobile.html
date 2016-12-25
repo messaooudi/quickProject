@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Nouvelle Graduation</div>
+    <div class="panel-body">
+        <form name="addForm" class="form-horizontal">
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ1.$touched && addForm.champ1.$invalid}">
+                <label class="control-label col-sm-3" for="nom">Nom  : </label>
+                <div class="col-sm-9">
+                    <input name="champ1" type="text" class="form-control" ng-model="graduationAdd.graduation.name" required>
+                </div>
+                <div class="help-block" ng-messages="addForm.champ1.$error" ng-if="addForm.champ1.$touched">
+                    <p ng-if="addForm.champ1.$error.required">nom obligatoire.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ2.$touched && addForm.champ2.$invalid}">
+                <label class="control-label col-sm-3" for="nom">Prénom  : </label>
+                <div class="col-sm-9">
+                    <input name="champ2" type="text" class="form-control" ng-model="graduationAdd.graduation.prenom" required>
+                </div>
+                <div class="help-block" ng-messages="addForm.champ2.$error" ng-if="addForm.champ2.$touched">
+                    <p ng-if="addForm.champ2.$error.required">Prenom obligatoire.</p>
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group">
+            <button type="submit" class="btn" ng-click="graduationAdd.submit()" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
+            <button class="btn btn-default" ng-click="graduationAdd.cancel()">Annuler</button>
+        </div>
+    </div>
+</div>

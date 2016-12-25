@@ -21,8 +21,7 @@ import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
 import { name as Login } from '../login/login';
-
-
+import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
 class App {
     constructor($scope, $reactive, $window) {
@@ -49,7 +48,8 @@ export default angular.module(name, [
     GraduationList,
     BirthAdd,
     DeathAdd,
-    Login
+    Login,
+    GraduationAdd
 ]).component(name, {
     template,
     controllerAs: name,
