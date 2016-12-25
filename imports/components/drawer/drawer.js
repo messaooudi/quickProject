@@ -21,13 +21,9 @@ class Drawer {
 
         $reactive(this).attach($scope);
         var vm = this;
-        vm.state = "";
+        vm.state = false;
         vm.toggle = function () {
-            if (vm.state === "hidden" || vm.state === "") {
-                vm.state = "shown";
-            } else {
-                vm.state = "hidden";
-            }
+            vm.state = !vm.state;
         }
 
         vm.logout = function () {

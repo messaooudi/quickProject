@@ -1,4 +1,4 @@
-<div id="drawer" class="{{drawer.state}}">
+<div id="drawer" ng-class="{slidein : drawer.state,slideout : !drawer.state}">
 
 	<img ng-src="http://placehold.it/350x250" class="img-responsive">
 	<div>
@@ -11,4 +11,4 @@
 		</ul>
 	</div>
 </div>
-<div id="frame_overlay" class="{{drawer.state}}" ng-click='drawer.toggle()'></div>
+<div id="frame_overlay" ng-class="{slidein : drawer.state,slideout : !drawer.state}" ng-click='drawer.toggle()'></div>
