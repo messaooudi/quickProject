@@ -35,7 +35,7 @@ class BirthList {
         Meteor.subscribe('naissance', {});
         vm.helpers({
             naissance() {
-                let query = Naissance.find({});
+                let query = Naissance.find({processed:false});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
