@@ -6,7 +6,7 @@
     <p>{{birthCard.data.name}}
 </div>
 
-<div class="card-action">
+<div ng-if="birthCard.user.mask == '010'" class="card-action">
 	<a ng-click="birthCard.print()">Imprimer</a>
 	<a ng-click="birthCard.remove(birthCard.data)">Supprimer</a>
 </div>

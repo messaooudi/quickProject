@@ -29,7 +29,8 @@ class DeathAdd {
 
         vm.submit = function () {
             var WriteResult = Deces.insert({
-                name: vm.decee.name
+                name: vm.decee.name,
+                createdBy : Meteor.userId()
             });
 
             if (!WriteResult)
@@ -69,7 +70,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<death-add></death-add>',
             //to determine whene this component should be routed
             resolve: {
-                currentUser($q,$window) {
+                currentUser($q, $window) {
                     if (Meteor.user() === null) {
                         $window.location.href = '/login';
                     } else {

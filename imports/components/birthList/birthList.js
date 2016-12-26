@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker'
+import { Tracker } from 'meteor/tracker';
 
 
 //in order to use any schema u should import its js file 
@@ -26,13 +26,27 @@ import { Naissance } from '../../database/naissance';
 
 
 class BirthList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
+        vm.query = {createdBy : null};
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if (vm.user) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+                vm.query = vm.user.mask == '010'?{}:{createdBy : Meteor.userId()};
+            }
+        })
+
         //subscribe to naissance schema
-        Meteor.subscribe('naissance', {});
+        Tracker.autorun(() => {
+            Meteor.subscribe('naissance', vm.getReactively('query'));
+        })
         vm.helpers({
             naissance() {
                 let query = Naissance.find({});
@@ -51,16 +65,14 @@ class BirthList {
                     },
                     removed: function (id) {
                         count--;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        }
                     }
                 })
                 return query
             }
         });
-
-        vm.text = "";
-        vm.submit = function () {
-            Naissance.insert({ name: vm.text });
-        }
     }
 }
 
@@ -86,8 +98,8 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<birth-list></birth-list>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q,$window) {
-                    if (Meteor.user() === null) {
+                currentUser($q, $window) {
+                    if (Meteor.userId() === null) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();

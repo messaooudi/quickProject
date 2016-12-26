@@ -16,15 +16,21 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class DeathCard {
-    constructor($scope,$reactive,$stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
-        
+
         var vm = this;
 
         //print the birthCard
-        vm.print = function(){
-             
+        vm.print = function () {
+            Meteor.call('generateDeathDOCX', vm.data, function (err, data) {
+                if (err) {
+                    alert(err);
+                } else {
+                    alert("document cree ")
+                }
+            });
         }
 
         vm.remove = function () {
@@ -35,7 +41,7 @@ class DeathCard {
 }
 
 const name = 'deathCard';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
@@ -44,7 +50,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: DeathCard,
-    bindings : {
-        data : "<"
+    bindings: {
+        data: "<",
+        user:"<"
     }
 })

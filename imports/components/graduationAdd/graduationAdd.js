@@ -28,7 +28,8 @@ class GraduationAdd {
 
         vm.submit = function () {
             var WriteResult = Graduation.insert({
-                name: vm.graduation.name
+                name: vm.graduation.name,
+                createdBy : Meteor.userId()
             });
 
             if (!WriteResult)

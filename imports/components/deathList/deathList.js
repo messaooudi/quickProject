@@ -25,13 +25,27 @@ import { Deces } from '../../database/deces';
 
 
 class DeathList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-        //subscribe to naissance schema
-        Meteor.subscribe('deces', {});
+        vm.query = { createdBy: null };
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if (vm.user) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+                vm.query = vm.user.mask == '010' ? {} : { createdBy: Meteor.userId() };
+            }
+        })
+
+        //subscribe to deces schema
+        Tracker.autorun(() => {
+            Meteor.subscribe('deces', vm.getReactively('query'));
+        })
         vm.helpers({
             deces() {
                 let query = Deces.find({});
@@ -50,6 +64,9 @@ class DeathList {
                     },
                     removed: function (id) {
                         count--;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        }
                     }
                 })
                 return query

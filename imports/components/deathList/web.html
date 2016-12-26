@@ -1,1 +1,1 @@
-<death-card ng-repeat="item in deathList.deces" data="item"></death-card>
+<death-card ng-if="deathList.user" ng-repeat="item in deathList.deces" data="item" user="deathList.user"></death-card>

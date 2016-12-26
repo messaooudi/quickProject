@@ -24,14 +24,15 @@ import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
 class App {
-    constructor($scope, $reactive, $window) {
+    constructor($scope, $reactive, $window,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
         vm.loggedIn = false;
 
+
         Tracker.autorun(() => {
-            if(Meteor.user()===null)
+            if (Meteor.user() === null)
                 vm.loggedIn = false;
             else
                 vm.loggedIn = true;

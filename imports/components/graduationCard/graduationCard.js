@@ -4,7 +4,6 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
-
 //in order to use any schema u should import its js file
 import { Graduation } from '../../database/graduation';
 
@@ -51,6 +50,7 @@ export default angular.module(name, [
     controllerAs: name,
     controller: GraduationCard,
     bindings : {
-        data : "<"
+        data : "<",
+        user:"<"
     }
 })

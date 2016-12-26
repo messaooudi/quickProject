@@ -1,1 +1,1 @@
-<birth-card ng-repeat="item in birthList.naissance" data="item"></birth-card>
+<birth-card ng-if="birthList.user" ng-repeat="item in birthList.naissance" data="item" user="birthList.user"></birth-card>

@@ -13,7 +13,9 @@
     "babel-runtime": "^6.20.0",
     "bcrypt": "^0.8.7",
     "bootstrap": "^4.0.0-alpha.5",
+    "docxtemplater": "^3.0.2",
     "jquery": "<3.0.0",
+    "jszip": "^2.6.1",
     "meteor-node-stubs": "~0.2.0",
     "nya-bootstrap-select": "^2.0.11"
   }

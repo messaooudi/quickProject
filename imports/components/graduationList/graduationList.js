@@ -25,16 +25,51 @@ import { Graduation } from '../../database/graduation';
 
 
 class GraduationList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-        //subscribe to naissance schema
-        Meteor.subscribe('graduation', {});
+        vm.query = { createdBy: null };
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if (vm.user) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+                vm.query = vm.user.mask == '010' ? {} : { createdBy: Meteor.userId() };
+            }
+        })
+
+        //subscribe to graduation schema
+        Tracker.autorun(() => {
+            Meteor.subscribe('graduation', vm.getReactively('query'));
+        })
         vm.helpers({
             graduation() {
-                return Graduation.find({})
+                let query = Graduation.find({});
+                let count = 0;
+                let loadingCube = $('#loading-cube');
+                query.observeChanges({
+                    added: function (id, formation) {
+                        count++;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        } else {
+                            $(loadingCube).removeClass('hide-loading-cube');
+                        }
+                    },
+                    changed: function (id, formation) {
+                    },
+                    removed: function (id) {
+                        count--;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        }
+                    }
+                })
+                return query
             }
         });
 

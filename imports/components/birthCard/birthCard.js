@@ -17,27 +17,36 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class BirthCard {
-    constructor($scope,$reactive,$stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
-        
-        var vm = this;
 
+        var vm = this;
         //print the birthCard
-        vm.print = function(){
-            
+        vm.print = function () {
+            /*var w = window.open();
+            w.document.write("<h1>tes</h1>");
+            w.print();
+            w.close();*/
+            Meteor.call('generateBirthDOCX', vm.data, function (err, data) {
+                if (err) {
+                    alert(err);
+                } else {
+                    alert("document cree ")
+                }
+            });
         }
 
-        vm.remove = function(){
+        vm.remove = function () {
             //hard deletion, might be updated to soft.
-            Naissance.remove( this.data._id );
+            Naissance.remove(this.data._id);
         }
 
     }
 }
 
 const name = 'birthCard';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
@@ -46,7 +55,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: BirthCard,
-    bindings : {
-        data : "<"
+    bindings: {
+        data: "<",
+        user : "<"
     }
 })
