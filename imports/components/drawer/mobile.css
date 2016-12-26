@@ -1,10 +1,11 @@
 #drawer{
-    z-index: 100;
+  z-index: 100;
 	width: 70%;
 	height: 100%;
 	position: absolute;
 	background-color: whitesmoke;
-    left: -70%;
+  left: -70%;
+  overflow: auto;
 }
 
 #drawer img{

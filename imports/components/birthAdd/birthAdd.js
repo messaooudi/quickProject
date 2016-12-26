@@ -30,7 +30,8 @@ class BirthAdd {
         vm.submit = function () {
             var WriteResult = Naissance.insert({
                 name: vm.naissance.name,
-                createdBy : Meteor.userId()
+                createdBy : Meteor.userId(),
+                processed:false
             });
 
             if (!WriteResult)

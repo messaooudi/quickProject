@@ -39,7 +39,7 @@ class BirthCard {
 
         vm.remove = function () {
             //hard deletion, might be updated to soft.
-            Naissance.remove(this.data._id);
+            Naissance.update({ _id: this.data._id }, { $set: { processed: true } });
         }
 
     }
@@ -57,6 +57,6 @@ export default angular.module(name, [
     controller: BirthCard,
     bindings: {
         data: "<",
-        user : "<"
+        user: "<"
     }
 })

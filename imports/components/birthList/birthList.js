@@ -49,7 +49,7 @@ class BirthList {
         })
         vm.helpers({
             naissance() {
-                let query = Naissance.find({});
+                let query = Naissance.find({processed:false});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -69,7 +69,7 @@ class BirthList {
                             $(loadingCube).addClass('hide-loading-cube');
                         }
                     }
-                })
+                });
                 return query
             }
         });
@@ -87,7 +87,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: BirthList
-}).config(config); //to set the route config of this Component
+}).config(config);
+//to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
