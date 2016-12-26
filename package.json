@@ -6,7 +6,7 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "angular": "^1.6.0",
+    "angular": "^1.6.1",
     "angular-meteor": "^1.3.11",
     "angular-notify": "git+https://github.com/cgross/angular-notify.git",
     "angular-ui-router": "^0.3.2",
