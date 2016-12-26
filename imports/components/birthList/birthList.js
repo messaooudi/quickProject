@@ -52,15 +52,10 @@ class BirthList {
                     removed: function (id) {
                         count--;
                     }
-                })
+                });
                 return query
             }
         });
-
-        vm.text = "";
-        vm.submit = function () {
-            Naissance.insert({ name: vm.text });
-        }
     }
 }
 
@@ -75,7 +70,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: BirthList
-}).config(config); //to set the route config of this Component
+}).config(config);
+//to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
