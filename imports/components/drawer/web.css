@@ -73,3 +73,19 @@
   50% { opacity: .3; }
   100%{ opacity: 0;  display: none;}
 }
+
+
+@media(max-width: 360px){
+  #drawer{
+    width: 70%;
+    left: -70%;
+  }
+
+  #drawer.slideout{
+    transition-timing-function: ease-out;
+    -webkit-transition-timing-function: ease-out;
+    transition:left .5s;
+    -webkit-transition: left .5s; /* For Safari 3.1 to 6.0 */
+    left: -70%;
+  }
+}
