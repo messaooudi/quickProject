@@ -29,7 +29,8 @@ class BirthAdd {
 
         vm.submit = function () {
             var WriteResult = Naissance.insert({
-                name: vm.naissance.name
+                name: vm.naissance.name,
+                processed:false
             });
 
             if (!WriteResult)
