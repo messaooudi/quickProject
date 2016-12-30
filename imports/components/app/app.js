@@ -23,6 +23,10 @@ import { name as DeathAdd } from '../deathAdd/deathAdd';
 import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
+import { name as UsersList } from '../usersList/usersList';
+
+import { name as SingUp } from '../singUp/singUp';
+
 class App {
     constructor($scope, $reactive, $window,$timeout) {
         'ngInject';
@@ -57,7 +61,9 @@ export default angular.module(name, [
     BirthAdd,
     DeathAdd,
     Login,
-    GraduationAdd
+    GraduationAdd,
+    UsersList,
+    SingUp,
 ]).component(name, {
     template,
     controllerAs: name,

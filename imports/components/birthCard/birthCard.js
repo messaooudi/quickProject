@@ -39,7 +39,7 @@ class BirthCard {
 
         vm.remove = function () {
             //hard deletion, might be updated to soft.
-            Naissance.update({ _id: this.data._id }, { $set: { processed: true } });
+            Naissance.update({ _id: vm.data._id }, { $set: { processed: true } });
         }
 
     }

@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Naissance } from '../imports/database/naissance';
 import { Deces } from '../imports/database/deces';
 import { Graduation } from '../imports/database/graduation';
+import '../imports/database/militants';
+
 import { Accounts } from 'meteor/accounts-base'
 
 
@@ -52,6 +54,18 @@ Meteor.startup(() => {
 
     Meteor.methods({
         // Declaring a method
+        _createUser: function (user) {
+            if (Meteor.users.findOne({
+                "profile.cin": user.profile.cin
+            })) {
+                throw new Meteor.Error(500, 'user exist', 'user exist');
+            } else {
+                Accounts.createUser(user);
+            }
+        },
+        _updateUser: function (id, data) {
+            Meteor.users.update({ _id: id }, { $set: { profile: data } });
+        },
         generateBirthDOCX: function (data) {
             try {
                 generateDocx("birth/template.docx", "birth/", "naissance_", data)

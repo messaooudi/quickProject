@@ -1,0 +1,7 @@
+<div class="user-search">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control" ng-model="usersList.searchQuery" placeholder="Rechercher ...">
+    </div>
+</div>
+<user-card ng-repeat="user in usersList.users | filter : usersList.searchQuery" data="user"></user-card>

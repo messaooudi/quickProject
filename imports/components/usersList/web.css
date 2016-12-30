@@ -1,0 +1,13 @@
+users-list{
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+    overflow: auto;
+}
+
+users-list .user-search{
+    min-width: 260px;
+    max-width: 300px;
+    margin: auto;
+}

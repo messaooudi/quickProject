@@ -3,10 +3,12 @@
 	<img ng-src="http://placehold.it/350x250" class="img-responsive">
 	<div>
 		<ul class="list-group" ng-click="drawer.toggle()">
-			<a class="list-group-item" href="/birth/list">Naissance</a>
-			<a class="list-group-item" href="/death/list">Décès</a>
-			<a class="list-group-item" href="/graduation/list">Graduation</a>
+			<a class="list-group-item" ui-sref="birthlist">Naissance</a>
+			<a class="list-group-item" ui-sref="deathlist">Décès</a>
+			<a class="list-group-item" ui-sref="graduationlist">Graduation</a>
 			<hr>
+			<a class="list-group-item" ui-sref="userslist">Utilisateurs</a>
+			</br> 
 			<a class="list-group-item" ng-click="drawer.logout()">
 				<i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Se déconnecter
 			</a>

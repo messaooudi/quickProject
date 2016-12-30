@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="panel-title"><a ui-sref="userslist" class="btn btn-warning btn-outline"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>&nbsp;Cree
+                un compte</p>
+        </div>
+
+        <div class="panel-body">
+            <form name="signupform" novalidate>
+                <div class="form-group" ng-class="{ 'has-error': signupform.firstname.$touched && signupform.firstname.$invalid}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control" name="firstname" placeholder="Nom" ng-model='singUp.singUp.firstName' required>
+                    </div>
+                    <div class="help-block" ng-messages="signupform.firstname.$error" ng-if="signupform.firstname.$touched">
+                        <p ng-if="signupform.firstname.$error.required">Nom obligatoire.</p>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': signupform.lastname.$touched && signupform.lastname.$invalid}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control" name="lastname" placeholder="Prenom" ng-model='singUp.singUp.lastName' required>
+                    </div>
+                    <div class="help-block" ng-messages="signupform.lastname.$error" ng-if="signupform.lastname.$touched">
+                        <p ng-if="signupform.lastname.$error.required">Prenom obligatoire.</p>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': signupform.cin.$touched && signupform.cin.$invalid}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                        <input type="text" class="form-control" name="phone" placeholder="CIN" ng-model='singUp.singUp.cin'>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': signupform.phone.$touched && signupform.phone.$invalid}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input type="number" class="form-control" name="phone" placeholder="Téléphone" ng-model='singUp.singUp.phone'>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': signupform.address.$touched && signupform.address.$invalid}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input type="text" class="form-control" name="address" placeholder="Adresse" ng-model='singUp.singUp.address'>
+                    </div>
+                </div>
+
+                <!--
+                <div class="form-group" ng-class="{ 'has-error': signupform.email.$touched && (signupform.email.$invalid||singUp.emailTaken) }">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" placeholder="email" ng-model='singUp.singUp.userName' required>
+                    </div>
+                    <div class="help-block" ng-messages="signupform.email.$error" ng-if="signupform.email.$touched">
+                        <p ng-if="signupform.email.$error.email">email invalid</p>
+                        <p ng-if="signupform.email.$error.required">email obligatoire.</p>
+                        <p ng-if="singUp.emailTaken">email deja utiliser.</p>
+                    </div>
+                </div>-->
+                <!--
+                <div class="form-group" ng-class="{ 'has-error': signupform.password.$touched && (signupform.password.$invalid||singUp.passwordNotFound) }">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" name="password" placeholder="Mot de passe" ng-model="singUp.singUp.password"
+                            minlength="4" required>
+                    </div>
+                    <div class="help-block" ng-messages="signupform.password.$error" ng-if="signupform.password.$touched">
+                        <p ng-if="signupform.password.$error.required">Mot de passe obligatoire.</p>
+                        <p ng-if="signupform.password.$error.minlength">mot de passe trop court.</p>
+                    </div>
+                </div>
+                -->
+                <div ng-if="singUp.userExist">
+                    <p class="text-danger">Utilisateur existe deja !</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer">
+            <!-- Button -->
+            <button id="btn-signup" type="button" class="btn" ng-class="{disabled : signupform.$invalid||singUp.submitInProgress,'btn-info' : signupform.$valid,'btn-danger' : signupform.$invalid}"
+                ng-click="singUp.createUser()">
+                <span ng-if="!singUp.submitInProgress">Cree un compte</span>
+                <span ng-if="singUp.submitInProgress" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+           </button>
+        </div>
+    </div>
+</div>
