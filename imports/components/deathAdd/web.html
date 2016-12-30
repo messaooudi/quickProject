@@ -1,31 +1,77 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Nouveau décès</div>
+    <div class="panel-heading">:معلومات المفقود</div>
     <div class="panel-body">
         <form name="addForm" class="form-horizontal">
             <div class="form-group" ng-class="{ 'has-error': addForm.champ1.$touched && addForm.champ1.$invalid}">
-                <label class="control-label col-sm-3" for="champ1">Nom  : </label>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <input name="champ1" type="text" class="form-control" ng-model="deathAdd.decee.name" required>
                 </div>
+                <label class="control-label col-sm-4" for="name">:الاسم العائلي</label>
+
                 <div class="help-block" ng-messages="addForm.champ1.$error" ng-if="addForm.champ1.$touched">
-                    <p ng-if="addForm.champ1.$error.required">nom obligatoire.</p>
+                    <p ng-if="addForm.champ1.$error.required">!الاسم ضروري</p>
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error': addForm.champ2.$touched && addForm.champ2.$invalid}">
-                <label class="control-label col-sm-3" for="champ2">Prenom  : </label>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <input name="champ2" type="text" class="form-control" ng-model="deathAdd.decee.prenom" required>
                 </div>
+                <label class="control-label col-sm-4" for="prenom">: الاسم الشخصي </label>
+
                 <div class="help-block" ng-messages="addForm.champ2.$error" ng-if="addForm.champ2.$touched">
-                    <p ng-if="addForm.champ2.$error.required">Prenom obligatoire.</p>
+                    <p ng-if="addForm.champ2.$error.required">!الاسم ضروري</p>
+                </div>
+
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ3.$touched && addForm.champ3.$invalid}">
+                <div class="  col-sm-8">
+                  <!--   <div class="btn-group" >
+                         <button type="button" class="btn btn-default" >Femme</button>
+                         <button type="button" class="btn btn-default" >Homme</button>
+                     </div> -->
+                    <label class="radio-inline">
+                        <input type="radio" name="option" ng-model="deathAdd.decee.gender"
+                               ng-value="false" ng-checked="!deathAdd.decee.gender"> Femme
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="option" ng-value="true"
+                               ng-model="deathAdd.decee.gender" > Homme
+                    </label>
+                    
+                <div class="help-block" ng-messages="addForm.champ3.$error" ng-if="addForm.champ3.$touched">
+                    <p ng-if="addForm.champ3.$error.required">  !الاختيار ضروري</p>
+                </div>
                 </div>
             </div>
+
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ4.$touched && addForm.champ4.$invalid}">
+                <div class="col-sm-8">
+                    <input name="champ4" type="NUMBER" class="form-control" ng-model="deathAdd.decee.childrenNbr" required>
+                </div>
+                <label class="control-label col-sm-4" for="prenomPere">:عدد الأبناء</label>
+
+                <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ4.$touched">
+                    <p ng-if="addForm.champ4.$error.required">!ملئ الخانة ضروري</p>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ5.$touched && addForm.champ5.$invalid}">
+                <div class="col-sm-8">
+                    <input name="champ5" type="text" class="form-control" ng-model="deathAdd.decee.address" required>
+                </div>
+                <label class="control-label col-sm-4" for="address">:العنوان</label>
+                <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ5.$touched">
+                    <p ng-if="addForm.champ5.$error.required"> !ملئ الخانة ضروري</p>
+                </div>
+            </div>
+
         </form>
     </div>
     <div class="panel-footer">
         <div class="btn-group">
-            <button type="submit" class="btn" ng-click="deathAdd.submit()" ng-disabled="addForm.$invalid" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
-            <button class="btn btn-default" ng-click="deathAdd.cancel()">Annuler</button>
+            <button type="submit" class="btn" ng-click="deathAdd.submit()" ng-disabled="addForm.$invalid" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">إرسال</button>
+            <button class="btn btn-default" ng-click="deathAdd.cancel()">إلغاء</button>
         </div>
     </div>
 </div>
