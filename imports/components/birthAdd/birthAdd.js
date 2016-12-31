@@ -29,16 +29,26 @@ class BirthAdd {
 
         vm.submit = function () {
             var WriteResult = Naissance.insert({
-                name: vm.naissance.name,
+                firstName: vm.naissance.name,
+                lastName: vm.naissance.prenom,
+                fatherFName:vm.naissance.nomPere,
+                fatherLName:vm.naissance.prenomPere,
+                motherFName:vm.naissance.nomMere,
+                motherLName:vm.naissance.prenomMere,
+                phone:vm.naissance.phoneNumber,
+                date:vm.naissance.date,
+                address:vm.naissance.adresse,
                 createdBy : Meteor.userId(),
                 processed:false
             });
 
             if (!WriteResult)
                 alert("prob d'insertion")
-
+            
             $location.path('/birth/list');
             vm.reset();
+            $('#thanks').modal('show');
+            
         }
         vm.cancel = function () {
             $location.path('/birth/list');
