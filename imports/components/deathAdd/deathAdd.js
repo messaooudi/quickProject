@@ -24,7 +24,7 @@ class DeathAdd {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-
+        
         vm.decee = {};
 
         vm.submit = function () {

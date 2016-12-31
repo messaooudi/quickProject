@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 import '/public/CDN/font-awesome/css/font-awesome.min.css'
 import '/public/CDN/bootstrap/css/bootstrap.min.css'
+import   '/public/CDN/jquery/jquery-3.1.1.min.js'
 
 import './index.css';
 
