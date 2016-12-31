@@ -26,12 +26,11 @@ class DeathAdd {
         var vm = this;
 
         vm.decee = {};
-
+        vm.decee.date = new Date();
         vm.submit = function () {
-            var WriteResult = Deces.insert({
-                name: vm.decee.name,
-                createdBy : Meteor.userId()
-            });
+            vm.decee.createdBy = Meteor.userId();
+            vm.decee.status = 'new';
+            var WriteResult = Deces.insert(vm.decee);
 
             if (!WriteResult)
                 alert("prob d'insertion")
@@ -39,7 +38,6 @@ class DeathAdd {
             vm.reset();
         }
         vm.cancel = function () {
-            $location.path('/death/list');
             vm.reset();
         }
         vm.reset = function () {

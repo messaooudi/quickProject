@@ -33,18 +33,17 @@ death-card .card-image span.card-title {
   padding: 16px;
 }
 death-card .card-content {
+  text-align: right;
   padding: 16px;
   border-radius: 0 0 2px 2px;
   background-clip: padding-box;
   box-sizing: border-box;
 }
-death-card .card-content p {
-  margin: 0;
-  color: inherit;
+
+death-card .card-content table tbody tr:first-child td {
+  border: none!important;
 }
-death-card .card-content span.card-title {
-  line-height: 48px;
-}
+
 
 death-card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);

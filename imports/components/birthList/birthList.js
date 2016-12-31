@@ -49,7 +49,7 @@ class BirthList {
         })
         vm.helpers({
             naissance() {
-                let query = Naissance.find({processed:false});
+                let query = Naissance.find({});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({

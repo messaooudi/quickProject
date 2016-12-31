@@ -4,8 +4,9 @@
 
 <div class="card-content">
     <div ng-if="userCard.updateButton.mask=='001'">
-        <p>{{userCard.data.profile.firstName}} {{userCard.data.profile.lastName}}</p>
-        <p>{{userCard.data.profile.phone}}</p>
+        <p><i class="glyphicon glyphicon-user"></i> {{userCard.data.profile.firstName}} {{userCard.data.profile.lastName}}</p>
+        <p ng-if="userCard.data.profile.phone"><i class="glyphicon glyphicon-phone"></i> 0{{userCard.data.profile.phone}}</p>
+        <p ng-if="userCard.data.profile.address"><i class="glyphicon glyphicon-home"></i> {{userCard.data.profile.address}}</p>
     </div>
     <div ng-if="userCard.updateButton.mask=='010'">
         <form name="signupform" novalidate>
