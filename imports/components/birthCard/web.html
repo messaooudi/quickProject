@@ -3,10 +3,17 @@
 </div>
 
 <div class="card-content">
-    <p>{{birthCard.data.name}}
+    <p>{{birthCard.data.firstName }} {{birthCard.data.lastName }}
 </div>
 
-<div ng-if="birthCard.user.mask == '010'" class="card-action">
-	<a ng-click="birthCard.print()">Imprimer</a>
-	<a ng-click="birthCard.remove()">Supprimer</a>
+<div  class="card-action">
+	<a class="btn btn-success btn-outline" ng-click="birthCard.print()">
+		<span  title="Imprimer" class="glyphicon glyphicon-print"></span>
+	</a>
+	<a class="btn btn-warning btn-outline" href="/birth/edit/{{birthCard.data._id}}" >
+		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+	</a>
+	<a class="btn btn-danger btn-outline" ng-click="birthCard.remove()">
+		<span title="Supprimer" class="glyphicon glyphicon-trash"></span>
+	</a>
 </div>
