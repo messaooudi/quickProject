@@ -19,7 +19,7 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class Login {
-    constructor($scope, $reactive, $timeout,$window) {
+    constructor($scope, $reactive, $timeout, $window) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -28,18 +28,8 @@ class Login {
         vm.emailNotFound = false;
         vm.passwordNotFound = false;
 
-        vm.emailTaken = false;
-
         vm.singIn = {
             userName: '',
-            password: ''
-        }
-
-        vm.singUp = {
-            userName: '',
-            firstName: '',
-            lastName: '',
-            phone: '',
             password: ''
         }
 
@@ -63,31 +53,6 @@ class Login {
                 }
             })
         }
-
-        vm.createUser = function () {
-            Accounts.createUser({
-                email: vm.singUp.userName,
-                password: vm.singUp.password,
-                profile: {
-                    firstName: vm.singUp.firstName,
-                    lastName: vm.singUp.lastName,
-                    phone: vm.singUp.phone,
-                    mask: '001'
-                }
-            }, function (err) {
-                if (err) {
-                    if (err.reason == "Email already exists.") {
-                        vm.emailTaken = true;
-                        $timeout(function () {
-                            vm.emailTaken = false;
-                        }, 4000)
-                    }
-                }else{
-                    $window.location.href = "/birth/list"
-                }
-            });
-        }
-
     }
 }
 

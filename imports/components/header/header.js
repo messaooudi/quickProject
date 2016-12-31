@@ -28,11 +28,6 @@ class Header {
             toggle: function () {
                 this._show = !this._show;
                 $('#more_container').toggleClass("show_more_container");
-            },
-            itemClick: function (path, $event) {
-                this.toggle();
-                $location.path(path);
-                $event.stopPropagation();
             }
         }
 
@@ -52,6 +47,8 @@ class Header {
                     $location.path("death/add");
                 else if ($location.path().includes("graduation"))
                     $location.path("graduation/add");
+                else if ($location.path().includes("userslist"))
+                    $location.path("singup");
             }
         }
 

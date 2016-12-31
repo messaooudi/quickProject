@@ -1,116 +1,44 @@
 <div class="container">
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <div class="panel-title">Se connecter </div>
-                <div style="float:right; font-size: 85%; position: relative; top:-10px">
-                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">Créer un compte </a>
-                </div>
-            </div>
-
-            <div style="padding-top:30px" class="panel-body">
-
-                <form name="userForm" novalidate>
-
-                    <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && (userForm.email.$invalid||login.emailNotFound) }">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="email" class="form-control" name="email" value="" placeholder="email" ng-model='login.singIn.userName' required>
-                        </div>
-                        <div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
-                            <p ng-if="userForm.email.$error.email">email invalid</p>
-                            <p ng-if="userForm.email.$error.required">email obligatoire.</p>
-                            <p ng-if="login.emailNotFound">email introuvable.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group" ng-class="{ 'has-error': userForm.password.$touched && (userForm.password.$invalid||login.passwordNotFound) }">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" name="password" placeholder="Mot de passe" ng-model="login.singIn.password" required>
-                        </div>
-                        <div class="help-block" ng-messages="userForm.password.$error" ng-if="userForm.password.$touched">
-                            <p ng-if="userForm.password.$error.required">Mot de passe obligatoire.</p>
-                            <p ng-if="login.passwordNotFound">mot de passe incorrecte.</p>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn" ng-class="{disabled : userForm.$invalid,'btn-success' : userForm.$valid,'btn-danger' : userForm.$invalid}"
-                            ng-click="login.login()">Se connecter  </a>
-                        </div>
-                    </div>
-            </div>
-
-            </form>
-        </div>
-    </div>
-</div>
-<div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-warning">
+
         <div class="panel-heading">
-            <div class="panel-title">Cree un compte</div>
-            <div style="float:right; font-size: 88%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Se connecter</a></div>
+            <div class="panel-title">Se connecter </div>
         </div>
-        <div style="padding-top:30px" class="panel-body">
-            <form name="signupform" novalidate>
 
-                <div class="form-group" ng-class="{ 'has-error': signupform.firstname.$touched && signupform.firstname.$invalid}">
+        <div class="panel-body">
+
+            <form name="userForm" novalidate>
+
+                <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && (userForm.email.$invalid||login.emailNotFound) }">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name="firstname" placeholder="Nom" ng-model='login.singUp.firstName' required>
+                        <input type="email" class="form-control" name="email" value="" placeholder="email" ng-model='login.singIn.userName' required>
                     </div>
-                    <div class="help-block" ng-messages="signupform.firstname.$error" ng-if="signupform.firstname.$touched">
-                        <p ng-if="signupform.firstname.$error.required">Nom obligatoire.</p>
-                    </div>
-                </div>
-
-                <div class="form-group" ng-class="{ 'has-error': signupform.lastname.$touched && signupform.lastname.$invalid}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name="lastname" placeholder="Prenom" ng-model='login.singUp.lastName' required>
-                    </div>
-                    <div class="help-block" ng-messages="signupform.lastname.$error" ng-if="signupform.lastname.$touched">
-                        <p ng-if="signupform.lastname.$error.required">Prenom obligatoire.</p>
+                    <div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+                        <p ng-if="userForm.email.$error.email">email invalid</p>
+                        <p ng-if="userForm.email.$error.required">email obligatoire.</p>
+                        <p ng-if="login.emailNotFound">email introuvable.</p>
                     </div>
                 </div>
-
-                <div class="form-group" ng-class="{ 'has-error': signupform.email.$touched && (signupform.email.$invalid||login.emailTaken) }">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input type="email" class="form-control" name="email" placeholder="email" ng-model='login.singUp.userName' required>
-                    </div>
-                    <div class="help-block" ng-messages="signupform.email.$error" ng-if="signupform.email.$touched">
-                        <p ng-if="signupform.email.$error.email">email invalid</p>
-                        <p ng-if="signupform.email.$error.required">email obligatoire.</p>
-                        <p ng-if="login.emailTaken">email deja utiliser.</p>
-                    </div>
-                </div>
-
-                <div class="form-group" ng-class="{ 'has-error': signupform.password.$touched && (signupform.password.$invalid||login.passwordNotFound) }">
+                <div class="form-group" ng-class="{ 'has-error': userForm.password.$touched && (userForm.password.$invalid||login.passwordNotFound) }">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" name="password" placeholder="Mot de passe" ng-model="login.singUp.password" minlength="4"
-                        required>
+                        <input type="password" class="form-control" name="password" placeholder="Mot de passe" ng-model="login.singIn.password" required>
                     </div>
-                    <div class="help-block" ng-messages="signupform.password.$error" ng-if="signupform.password.$touched">
-                        <p ng-if="signupform.password.$error.required">Mot de passe obligatoire.</p>
-                        <p ng-if="signupform.password.$error.minlength">mot de passe trop court.</p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <!-- Button -->
-                    <div class="col-md-offset-3 col-md-9">
-                        <button id="btn-signup" type="button" class="btn" ng-class="{disabled : signupform.$invalid,'btn-info' : signupform.$valid,'btn-danger' : signupform.$invalid}"
-                        ng-click="login.createUser()">Cree un compte</button>
+                    <div class="help-block" ng-messages="userForm.password.$error" ng-if="userForm.password.$touched">
+                        <p ng-if="userForm.password.$error.required">Mot de passe obligatoire.</p>
+                        <p ng-if="login.passwordNotFound">mot de passe incorrecte.</p>
                     </div>
                 </div>
 
             </form>
+
         </div>
+
+        <div class="panel-footer">
+            <a id="btn-login" href="#" class="btn" ng-class="{disabled : userForm.$invalid,'btn-success' : userForm.$valid,'btn-danger' : userForm.$invalid}"
+                ng-click="login.login()">Se connecter  </a>
+        </div>
+
     </div>
-</div>
 </div>

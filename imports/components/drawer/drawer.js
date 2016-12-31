@@ -16,11 +16,27 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class Drawer {
-    constructor($scope, $reactive,$window) {
+    constructor($scope, $reactive,$window,$timeout) {
         'ngInject';
 
         $reactive(this).attach($scope);
+        
         var vm = this;
+        vm.user = {
+            profile:{
+                mask : '001'
+            }
+        }
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if (vm.user) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+            }
+        })
+
         vm.state = false;
         vm.toggle = function () {
             vm.state = !vm.state;
