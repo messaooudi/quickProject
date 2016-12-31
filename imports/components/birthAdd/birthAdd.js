@@ -19,6 +19,7 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 //import Schemas
 import { Naissance } from '../../database/naissance';
 
+
 class BirthAdd {
     constructor($scope, $reactive, $location) {
         'ngInject';
@@ -26,10 +27,12 @@ class BirthAdd {
         var vm = this;
 
         vm.naissance = {};
-
+        vm.naissance.date=new Date();
         vm.submit = function () {
+
             var WriteResult = Naissance.insert({
                 name: vm.naissance.name,
+                date : vm.naissance.date,
                 createdBy : Meteor.userId(),
                 processed:false
             });
@@ -48,6 +51,7 @@ class BirthAdd {
             vm.naissance = {};
         }
     }
+
 }
 
 const name = 'birthAdd';
