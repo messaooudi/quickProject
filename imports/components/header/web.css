@@ -25,7 +25,7 @@ header #header_label{
 header #right_container{
     position: absolute;
     display: inline-flex;
-    right: 12px;
+    right: 5px;
     top : 0;
     bottom: 0;
     padding: auto;
@@ -37,26 +37,28 @@ header #more_button{
     background: transparent;
 }
 
-header #more_button i{
+header #more_button span{
+    font-size:30px;
     color : #ffab40    
 }
 
-header #plus_button i:hover{
+header #plus_button span:hover{
     color : #ffd8a6
 }
 
 header #plus_button{
-    margin-right: 12px;
+    margin-right: 5px;
     border: none;
     border-style: none;
     background: transparent;
 }
 
-header #plus_button i{
+header #plus_button span{
+    font-size:30px;
     color : #ffab40    
 }
 
-header #more_button i:hover{
+header #more_button span:hover{
     color : #ffd8a6
 }
 
@@ -99,12 +101,12 @@ header #menu_button{
     background: transparent;
 }
 
-header #menu_button i{
+header #menu_button span{
     font-size:30px;
     color : #ffab40    
 }
 
-header #menu_button i:hover{
+header #menu_button span:hover{
     color : #ffd8a6
 }
 

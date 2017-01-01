@@ -33,7 +33,6 @@ class BirthList {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-
         vm.pdfPrint = function (data) {
             var w = window.open();
             w.document.write(Mustache.to_html(pdfTemplate, data));

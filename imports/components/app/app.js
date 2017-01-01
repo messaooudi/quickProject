@@ -39,15 +39,15 @@ class App {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
+
         vm.loggedIn = false;
-
-
         Tracker.autorun(() => {
             if (Meteor.user() === null)
                 vm.loggedIn = false;
             else
                 vm.loggedIn = true;
         })
+
         /*
         the logic of the component should be encapsuled here 
      */
