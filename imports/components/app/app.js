@@ -21,6 +21,7 @@ import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
 import { name as BirthEdit } from '../birthEdit/birthEdit';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
+import { name as DeathEdit } from '../deathEdit/deathEdit';
 import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
@@ -62,6 +63,7 @@ export default angular.module(name, [
     GraduationList,
     BirthAdd,
     DeathAdd,
+    DeathEdit,
     Login,
     GraduationAdd,
     UsersList,
