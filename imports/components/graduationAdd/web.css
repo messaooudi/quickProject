@@ -7,3 +7,7 @@ graduation-add{
     text-align: center;
     overflow: auto;
 }
+
+graduation-add textarea{
+	resize: none;
+}

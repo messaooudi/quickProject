@@ -7,3 +7,6 @@ birth-add{
     text-align: center;
     overflow: auto;
 }
+birth-add textarea{
+	resize: none;
+}

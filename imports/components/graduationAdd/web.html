@@ -62,7 +62,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ7.$touched && addForm.champ7.$invalid}">
                 <label class="control-label col-sm-4" for="adresse" style="float:right">:العنوان</label>
                 <div class="col-sm-8"class="form-group">
-                    <textarea name="champ7" type="text" class="form-control" ng-model="graduationAdd.graduation.adresse" required></textarea>
+                    <textarea rows="5" name="champ7" type="text" class="form-control" ng-model="graduationAdd.graduation.adresse" required></textarea>
                     <div class="help-block" ng-messages="addForm.champ7.$error" ng-if="addForm.champ7.$touched">
                         <p ng-if="addForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
                     </div>
@@ -72,7 +72,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ8.$touched && addForm.champ8.$invalid}">
                 <label class="control-label col-sm-4" for="date" style="float:right">:المشروع المهني</label>
                 <div class="col-sm-8"class="form-group">
-                    <textarea name="champ8" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>
+                    <textarea rows="5" name="champ8" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>
                     <div class="help-block" ng-messages="addForm.champ8.$error" ng-if="addForm.champ8.$touched">
                         <p ng-if="addForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
                     </div>
