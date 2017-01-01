@@ -38,7 +38,7 @@ class DeathList {
                     $scope.$apply(function () {
                     });
                 }, 100)
-                vm.query = vm.user.mask == '010' ? {} : { createdBy: Meteor.userId() };
+                vm.query = vm.user.mask == '010' ? {status : {$ne : 'done'}} : { createdBy: Meteor.userId() };
             }
         })
 

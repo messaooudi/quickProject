@@ -27,21 +27,19 @@ class BirthAdd {
         var vm = this;
 
         vm.naissance = {};
-        vm.naissance.date=new Date();
+        vm.naissance.date = new Date();
         vm.submit = function () {
-
-            var WriteResult = Naissance.insert({
-                name: vm.naissance.name,
-                date : vm.naissance.date,
-                createdBy : Meteor.userId(),
-                processed:false
-            });
+            vm.naissance.createdBy = Meteor.userId();
+            vm.naissance.status = 'new';
+            var WriteResult = Naissance.insert(vm.naissance);
 
             if (!WriteResult)
                 alert("prob d'insertion")
-
+            
             $location.path('/birth/list');
             vm.reset();
+            $('#thanks').modal('show');
+            
         }
         vm.cancel = function () {
             $location.path('/birth/list');

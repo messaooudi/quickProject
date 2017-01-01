@@ -84,6 +84,14 @@
             </div>
 
             <div class="form-group" ng-class="{ 'has-error': addForm.champ9.$touched && addForm.champ9.$invalid}">
+
+                <div class="col-sm-8">
+                    <textarea name="champ9" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required>
+                    </textarea>
+                </div>
+                <label class="control-label col-sm-4" for="date">:العنوان</label>
+                <div class="help-block" ng-messages="addForm.champ8.$error" ng-if="addForm.champ9.$touched">
+                    <p ng-if="addForm.champ9.$error.required"> !الاسم ضروري</p>
                 <label class="control-label col-sm-4" for="date" style="float:right">:العنوان</label>
                 <div class="col-sm-8"class="form-group">
                     <textarea name="champ9" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>

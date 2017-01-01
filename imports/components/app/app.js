@@ -19,6 +19,7 @@ import { name as BirthList } from '../birthList/birthList';
 import { name as DeathList } from '../deathList/deathList';
 import { name as GraduationList } from '../graduationList/graduationList';
 import { name as BirthAdd } from '../birthAdd/birthAdd';
+import { name as BirthEdit } from '../birthEdit/birthEdit';
 import { name as DeathAdd } from '../deathAdd/deathAdd';
 import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
@@ -56,6 +57,7 @@ export default angular.module(name, [
     Header,
     Drawer,
     BirthList,
+    BirthEdit,
     DeathList,
     GraduationList,
     BirthAdd,
