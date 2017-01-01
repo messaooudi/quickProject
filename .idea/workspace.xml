@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c79837fb-2b93-49b2-90bf-43bebe269464" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js" afterPath="$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthAdd/web.html" afterPath="$PROJECT_DIR$/imports/components/birthAdd/web.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/deathAdd/deathAdd.js" afterPath="$PROJECT_DIR$/imports/components/deathAdd/deathAdd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js" afterPath="$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/graduationAdd/web.html" afterPath="$PROJECT_DIR$/imports/components/graduationAdd/web.html" />
     </list>
     <ignored path="quickProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,48 +29,38 @@
       <file leaf-file-name="web.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/components/deathAdd/web.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="62" column="215" selection-start-line="62" selection-start-column="215" selection-end-line="62" selection-end-column="210" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deathAdd.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/components/deathAdd/deathAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-350">
-              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="birthAdd.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="552">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="web.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="92" column="22" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/web.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+            <state relative-caret-position="211">
+              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graduationAdd.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -111,10 +101,8 @@
         <option value="$PROJECT_DIR$/imports/components/graduationAdd/mobile.html" />
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/imports/components/graduationAdd/web.css" />
-        <option value="$PROJECT_DIR$/imports/components/graduationAdd/web.html" />
         <option value="$PROJECT_DIR$/imports/components/app/app.js" />
         <option value="$PROJECT_DIR$/imports/components/header/header.js" />
-        <option value="$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js" />
         <option value="$PROJECT_DIR$/imports/components/graduationCard/web.html" />
         <option value="$PROJECT_DIR$/imports/components/graduationCard/graduationCard.js" />
         <option value="$PROJECT_DIR$/imports/components/login/web.html" />
@@ -123,7 +111,9 @@
         <option value="$PROJECT_DIR$/imports/components/deathAdd/web.html" />
         <option value="$PROJECT_DIR$/imports/components/deathAdd/deathAdd.js" />
         <option value="$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js" />
+        <option value="$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js" />
         <option value="$PROJECT_DIR$/imports/components/birthAdd/web.html" />
+        <option value="$PROJECT_DIR$/imports/components/graduationAdd/web.html" />
       </list>
     </option>
   </component>
@@ -365,6 +355,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="deathAdd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quickProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quickProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="birthAdd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -490,12 +502,12 @@
       <workItem from="1483121145164" duration="2910000" />
       <workItem from="1483177164804" duration="8140000" />
       <workItem from="1483203130734" duration="2220000" />
-      <workItem from="1483212573878" duration="7747000" />
+      <workItem from="1483212573878" duration="14148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100034000" />
+    <option name="totallyTimeSpent" value="106435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1618" height="870" extended-state="1" />
@@ -692,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/components/deathCard/deathCard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -858,14 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/web.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
@@ -876,24 +873,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/components/deathAdd/deathAdd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-350">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/components/deathAdd/web.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="62" column="215" selection-start-line="62" selection-start-column="215" selection-end-line="62" selection-end-column="210" />
+        <state relative-caret-position="103">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
+        <state relative-caret-position="548">
+          <caret line="92" column="22" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/components/deathAdd/web.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/graduationAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/components/graduationAdd/web.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding />
         </state>
       </provider>

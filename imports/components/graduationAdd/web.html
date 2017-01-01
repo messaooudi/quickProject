@@ -1,24 +1,83 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Nouvelle Graduation</div>
+    <div class="panel-heading"> :إضافة خريج جديد</div>
     <div class="panel-body">
         <form name="addForm" class="form-horizontal">
             <div class="form-group" ng-class="{ 'has-error': addForm.champ1.$touched && addForm.champ1.$invalid}">
-                <label class="control-label col-sm-3" for="nom">Nom  : </label>
-                <div class="col-sm-9">
-                    <input name="champ1" type="text" class="form-control" ng-model="graduationAdd.graduation.name" required>
-                </div>
-                <div class="help-block" ng-messages="addForm.champ1.$error" ng-if="addForm.champ1.$touched">
-                    <p ng-if="addForm.champ1.$error.required">nom obligatoire.</p>
+                <label class="control-label col-sm-4" for="name" style="float:right">:الاسم العائلي</label>
+                <div class="col-sm-8">
+                    <input name="champ1" type="text" class="form-control" ng-model="birthAdd.graduation.name" required autofocus>
+                    <div class="help-block" ng-messages="addForm.champ1.$error" ng-if="addForm.champ1.$touched">
+                        <p ng-if="addForm.champ1.$error.required">!الاسم ضروري</p>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group" ng-class="{ 'has-error': addForm.champ2.$touched && addForm.champ2.$invalid}">
-                <label class="control-label col-sm-3" for="nom">Prenom  : </label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
+                <div class="col-sm-8">
                     <input name="champ2" type="text" class="form-control" ng-model="graduationAdd.graduation.prenom" required>
+                    <div class="help-block" ng-messages="addForm.champ2.$error" ng-if="addForm.champ2.$touched">
+                        <p ng-if="addForm.champ2.$error.required">!الاسم ضروري</p>
+                    </div>
                 </div>
-                <div class="help-block" ng-messages="addForm.champ2.$error" ng-if="addForm.champ2.$touched">
-                    <p ng-if="addForm.champ2.$error.required">Prenom obligatoire.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ3.$touched && addForm.champ3.$invalid}">
+                <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ الازدياد</label>
+                <div class="col-sm-8">
+                    <input name="champ3" type="date" class="form-control" ng-model="graduationAdd.graduation.date" required>
+                    <div class="help-block" ng-messages="addForm.champ3.$error" ng-if="addForm.champ3.$touched">
+                        <p ng-if="addForm.champ3.$error.required"> !ملئ الخانة ضروري</p>
+                    </div>
                 </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ4.$touched && addForm.champ4.$invalid}">
+                <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
+                <div class="col-sm-8">
+                    <input name="champ4" type="text" class="form-control" ng-model="birthAdd.naissance.phoneNumber" required>
+                    <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ4.$touched">
+                        <p ng-if="addForm.champ4.$error.required"> !ملئ الخانة ضروري</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ5.$touched && addForm.champ5.$invalid}">
+                <label class="control-label col-sm-4" for="nomEtabliss" style="float:right"> :اسم المؤسسة</label>
+                <div class="col-sm-8">
+                    <input name="champ5" type="text" class="form-control" ng-model="graduationAdd.graduation.nomEtabliss" required>
+                    <div class="help-block" ng-messages="addForm.champ3.$error" ng-if="addForm.champ5.$touched">
+                        <p ng-if="addForm.champ5.$error.required">!اسم المؤسسة ضروري</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ6.$touched && addForm.champ6.$invalid}">
+                <label class="control-label col-sm-4" for="specialite" style="float:right">:الشعبة</label>
+                <div class="col-sm-8">
+                    <input name="champ6" type="text" class="form-control" ng-model="graduationAdd.graduation.specialite" required>
+                    <div class="help-block" ng-messages="addForm.champ6.$error" ng-if="addForm.champ6.$touched">
+                        <p ng-if="addForm.champ6.$error.required">!الاختيار ضروري</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ7.$touched && addForm.champ7.$invalid}">
+                <label class="control-label col-sm-4" for="adresse" style="float:right">:العنوان</label>
+                <div class="col-sm-8"class="form-group">
+                    <textarea name="champ7" type="text" class="form-control" ng-model="graduationAdd.graduation.adresse" required></textarea>
+                    <div class="help-block" ng-messages="addForm.champ7.$error" ng-if="addForm.champ7.$touched">
+                        <p ng-if="addForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': addForm.champ8.$touched && addForm.champ8.$invalid}">
+                <label class="control-label col-sm-4" for="date" style="float:right">:المشروع المهني</label>
+                <div class="col-sm-8"class="form-group">
+                    <textarea name="champ8" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>
+                    <div class="help-block" ng-messages="addForm.champ8.$error" ng-if="addForm.champ8.$touched">
+                        <p ng-if="addForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
+                    </div>
+                </div>
+
             </div>
 
         </form>
@@ -26,8 +85,8 @@
     </div>
     <div class="panel-footer">
         <div class="btn-group">
-            <button type="submit" class="btn" ng-click="graduationAdd.submit()" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">Submit</button>
-            <button class="btn btn-default" ng-click="graduationAdd.cancel()">Annuler</button>
+            <button type="submit" class="btn" ng-click="graduationAdd.submit()" ng-class="{disabled : addForm.$invalid,'btn-success' : addForm.$valid,'btn-danger' : addForm.$invalid}">إرسال</button>
+            <button class="btn btn-default" ng-click="graduationAdd.cancel()">إلغاء</button>
         </div>
     </div>
 </div>

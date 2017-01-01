@@ -25,10 +25,11 @@ class GraduationAdd {
         var vm = this;
 
         vm.graduation = {};
-
+        vm.graduation.date = new Date();
         vm.submit = function () {
             var WriteResult = Graduation.insert({
                 name: vm.graduation.name,
+                date: vm.graduation.date,
                 createdBy : Meteor.userId()
             });
 
