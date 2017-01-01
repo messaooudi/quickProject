@@ -31,15 +31,16 @@ class BirthEdit {
         vm.submit = function () {
             var x = Naissance.update({_id:vm.birth._id},{ 
                 $set: {
-                    firstName:vm.birth.firstName,
-                    lastName:vm.birth.lastName,
-                    fatherFName:vm.birth.fatherFName,
-                    fatherLName:vm.birth.fatherLName,
-                    motherFName:vm.birth.motherFName,
-                    motherLName:vm.birth.motherLName,
+                    name:vm.birth.name,
+                    prenom:vm.birth.prenom,
+                    nomPere:vm.birth.nomPere,
+                    prenomPere:vm.birth.prenomPere,
+                    nomMere:vm.birth.nomMere,
+                    prenomMere:vm.birth.prenomMere,
                     date:vm.birth.date,
-                    address:vm.birth.address,
-                    phone:vm.birth.phone,
+                    adresse:vm.birth.adresse,
+                    phoneNumber:vm.birth.phoneNumber,
+                    status:'progress'
                 }
             });
             $location.path("/birth/list");

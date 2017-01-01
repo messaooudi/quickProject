@@ -1,1 +1,25 @@
-<death-card ng-if="deathList.user" ng-repeat="item in deathList.deces" data="item" user="deathList.user"></death-card>
+<div ng-if="deathList.user.mask == '010'">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">En cours de traitements <span class="label label-warning">{{(deathList.deces | filter : {status : 'progress'}).length}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <death-card ng-if="deathList.user" ng-repeat="item in deathList.deces | filter : {status : 'progress'} | orderBy : 'date'"
+                data="item" user="deathList.user"></death-card>
+        </div>
+    </div>
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Nouveau <span class="label label-info">{{(deathList.deces | filter : {status : 'new'}).length}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <death-card ng-if="deathList.user" ng-repeat="item in deathList.deces | filter : {status : 'new'} | orderBy : 'date'" data="item"
+                user="deathList.user"></death-card>
+        </div>
+    </div>
+</div>
+<div ng-if="deathList.user.mask == '001'">
+    <death-card ng-if="deathList.user" ng-repeat="item in deathList.deces" data="item" user="deathList.user"></death-card>
+</div>

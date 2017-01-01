@@ -27,24 +27,11 @@ class BirthAdd {
         var vm = this;
 
         vm.naissance = {};
-        vm.naissance.date=new Date();
+        vm.naissance.date = new Date();
         vm.submit = function () {
-
-            var WriteResult = Naissance.insert({
-                firstName: vm.naissance.name,
-                lastName: vm.naissance.prenom,
-                fatherFName:vm.naissance.nomPere,
-                fatherLName:vm.naissance.prenomPere,
-                motherFName:vm.naissance.nomMere,
-                motherLName:vm.naissance.prenomMere,
-                phone:vm.naissance.phoneNumber,
-                date:vm.naissance.date,
-                address:vm.naissance.adresse,
-                name: vm.naissance.name,
-                date : vm.naissance.date,
-                createdBy : Meteor.userId(),
-                processed:false
-            });
+            vm.naissance.createdBy = Meteor.userId();
+            vm.naissance.status = 'new';
+            var WriteResult = Naissance.insert(vm.naissance);
 
             if (!WriteResult)
                 alert("prob d'insertion")

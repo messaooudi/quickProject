@@ -7,7 +7,7 @@
 			<a class="list-group-item" ui-sref="deathlist">Décès</a>
 			<a class="list-group-item" ui-sref="graduationlist">Graduation</a>
 			<hr>
-			<a class="list-group-item" ui-sref="userslist">Utilisateurs</a>
+			<a ng-if="drawer.user.mask == '010'" class="list-group-item" ui-sref="userslist">Utilisateurs</a>
 			</br> 
 			<a class="list-group-item" ng-click="drawer.logout()">
 				<i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Se déconnecter
