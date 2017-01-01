@@ -1,0 +1,72 @@
+<div class="panel panel-default">
+   <div class="panel-heading">:تعديل معلومات الفقيد</div>
+   <div class="panel-body">
+      <form name="editForm" class="form-horizontal">
+         <div class="form-group" ng-class="{ 'has-error': editForm.champ1.$touched && editForm.champ1.$invalid}">
+            <label class="control-label col-sm-4" for="name" style="float: right">:الاسم العائلي</label>
+            <div class="col-sm-8">
+               <input name="champ1" type="text" class="form-control" ng-model="deathEdit.decee.nom" required/>
+               <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
+                  <p ng-if="editForm.champ1.$error.required">!النسب ضروري</p>
+               </div>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': editForm.champ2.$touched && editForm.champ2.$invalid}">
+            <label class="control-label col-sm-4" style="float: right" for="prenom">: الاسم الشخصي </label>
+            <div class="col-sm-8">
+               <input name="champ2" type="text" class="form-control" ng-model="deathEdit.decee.prenom" required>
+               <div class="help-block" ng-messages="editForm.champ2.$error" ng-if="editForm.champ2.$touched">
+                  <p ng-if="editForm.champ2.$error.required">!الاسم ضروري</p>
+               </div>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': (editForm.champ3.$touched ) && (editForm.champ3.$invalid)}">
+            <label class="control-label col-sm-4" style="float: right" for="prenom">: الجنس</label>
+            <div class="col-sm-8">
+               <label class="radio-inline">
+               <input type="radio" name="champ3"  ng-model="deathEdit.decee.gender" value="f" ng-checked="deathEdit.decee.gender == 'f'" required > أنثى
+               </label>
+               <label class="radio-inline">
+               <input type="radio" name="champ3"  ng-model="deathEdit.decee.gender" value="m" ng-checked="deathEdit.decee.gender == 'm'" required> ذكر
+               </label>
+               <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="(editForm.champ3.$touched && editForm.champ3.$invalid)">
+                  <p ng-if="(editForm.champ3.$error.required )"> !الاختيار ضروري</p>
+               </div>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
+            <label class="control-label col-sm-4" for="prenomPere" style="float: right">:عدد الأبناء</label>
+            <div class="col-sm-8">
+               <input name="champ4" type="NUMBER" class="form-control" ng-model="deathEdit.decee.childrenNbr" required>
+               <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
+                  <p ng-if="editForm.champ4.$error.required">!ملئ الخانة ضروري</p>
+               </div>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': editForm.champ8.$touched && editForm.champ8.$invalid}">
+            <label class="control-label col-sm-4" for="date" style="float: right">: تاريخ الوفاة</label>
+            <div class="col-sm-8">
+               <input name="champ8" type="date" class="form-control" ng-model="deathEdit.decee.date" required>
+               <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ8.$touched">
+                  <p ng-if="editForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
+               </div>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': editForm.champ5.$touched && editForm.champ5.$invalid}">
+            <label class="control-label col-sm-4" for="address" style="float: right">:العنوان</label>
+            <div class="col-sm-8">
+               <input name="champ5" type="text" class="form-control" ng-model="deathEdit.decee.address" required>
+               <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ5.$touched">
+                  <p ng-if="editForm.champ5.$error.required"> !ملئ الخانة ضروري</p>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+   <div class="panel-footer">
+      <div class="btn-group">
+         <button type="submit" class="btn" ng-click="deathEdit.submit()" ng-disabled="editForm.$invalid" ng-class="{disabled : editForm.$invalid,'btn-success' : editForm.$valid,'btn-danger' : editForm.$invalid}">إرسال</button>
+         <button class="btn btn-default" ui-sref="deathlist" ng-click="deathEdit.cancel()">إلغاء</button>
+      </div>
+   </div>
+</div>
