@@ -1,0 +1,7 @@
+<div class="user-search">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control" ng-model="birthArchive.searchQuery" placeholder="Rechercher ...">
+    </div>
+</div>
+<birth-archive-card ng-if="birthArchive.user.mask=='010'" ng-repeat="item in birthArchive.naissance | filter : birthArchive.searchQuery" data="item" user="birthArchive.user"></birth-archive-card>

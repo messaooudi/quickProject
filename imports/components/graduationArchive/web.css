@@ -1,8 +1,14 @@
-birth-list{
+graduation-archive{
     display: block;
     margin: auto;
     padding-top: 10px;
     padding: 10px;
     text-align: center;
     overflow: auto;
+}
+
+graduation-archive .user-search{
+    min-width: 260px;
+    max-width: 300px;
+    margin: auto;
 }

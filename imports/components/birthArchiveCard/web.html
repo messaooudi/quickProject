@@ -1,0 +1,55 @@
+<div class="card-image">
+    <img class="img-responsive" src="">
+</div>
+<div class="card-content">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>{{birthArchiveCard.data.nom}}</td>
+                <td>الاسم العائلي</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.prenom}}</td>
+                <td>الاسم الشخصي</td>
+            </tr>
+            <tr ng-if="birthArchiveCard.data.gender">
+                <td>{{birthArchiveCard.data.gender=='m'?'ذكر':'أنثى'}}</td>
+                <td>الجنس</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.nomPere}}</td>
+                <td>الاسم العائلي للأب</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.prenomPere}}</td>
+                <td>الاسم الشخصي للأب</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.nomMere}}</td>
+                <td>االاسم العائلي للأم</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.prenomMere}}</td>
+                <td>الاسم الشخصي للأم</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.phoneNumber}}</td>
+                <td>رقم الهاتف</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.date | date}}</td>
+                <td>تاريخ الولادة</td>
+            </tr>
+            <tr>
+                <td>{{birthArchiveCard.data.adresse}}</td>
+                <td>العنوان</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div ng-if="birthArchiveCard.user.mask == '010'" class="card-action">
+    <a class="btn btn-success btn-outline" ng-click="birthArchiveCard.print()">
+        <span title="Imprimer" class="glyphicon glyphicon-print"></span>
+    </a>
+    <span class="label pull-right" ng-class="{'label-info' : birthArchiveCard.data.status=='new','label-warning' : birthArchiveCard.data.status=='progress','label-default' : birthArchiveCard.data.status=='done'}">{{birthArchiveCard.data.status=='new'?'nouveau':birthArchiveCard.data.status=='progress'?'En cours':'Traiter'}} <span class="glyphicon glyphicon-{{birthArchiveCard.data.status=='new'?'asterisk':birthArchiveCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
+</div>

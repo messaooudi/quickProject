@@ -8,7 +8,6 @@ import Mustache from 'mustache';
 import pdfTemplate from './pdfTemplate.html'
 
 //in order to use any schema u should import its js file 
-import { Naissance } from '../../database/naissance';
 
 
 //import html and css files of this component
@@ -17,42 +16,28 @@ import mobileTemplate from './mobile.html';
 
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
-
-class BirthCard {
-    constructor($scope, $reactive, $stateParams, $location, $rootScope) {
+class BirthArchiveCard {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
 
         var vm = this;
-        //print the birthCard
 
         vm.pdfPrint = function () {
             var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
+            w.document.write(Mustache.to_html(pdfTemplate, vm.data));
             w.print();
             w.close();
         }
 
+        //print the birthCard
         vm.print = function () {
             vm.pdfPrint();
-            Meteor.call('generateBirthDOCX', vm.data, function (err, data) {
-                if (err) {
-                    alert(err);
-                } else {
-                    alert("document cree ")
-                }
-            });
-
-            Naissance.update({ _id: vm.data._id }, {
-                $set: {
-                    status: 'done'
-                }
-            });
         }
     }
 }
 
-const name = 'birthCard';
+const name = 'birthArchiveCard';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
@@ -61,7 +46,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthCard,
+    controller: BirthArchiveCard,
     bindings: {
         data: "<",
         user: "<"

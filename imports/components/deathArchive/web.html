@@ -1,7 +1,7 @@
 <div class="user-search">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-        <input type="text" class="form-control" ng-model="usersList.searchQuery" placeholder="Rechercher ...">
+        <input type="text" class="form-control" ng-model="deathArchive.searchQuery" placeholder="Rechercher ...">
     </div>
 </div>
-<death-archive-card ng-if="deathArchive.user.mask=='010'" ng-repeat="item in deathArchive.deces | filter : usersList.searchQuery" data="item" user="deathArchive.user"></death-archive-card>
+<death-archive-card ng-if="deathArchive.user.mask=='010'" ng-repeat="item in deathArchive.deces | filter : deathArchive.searchQuery" data="item" user="deathArchive.user"></death-archive-card>

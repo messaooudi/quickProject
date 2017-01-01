@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-birth-card {
+birth-archive-card {
   display: inline-block;
   margin: 6px;
   min-width: 260px;
@@ -9,30 +9,30 @@ birth-card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-align: left
 }
-birth-card span.card-title {
+birth-archive-card span.card-title {
     color: #fff;
     font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
 }
 
-birth-card .card-image {
+birth-archive-card .card-image {
   position: relative;
   overflow: hidden;
 }
-birth-card .card-image img {
+birth-archive-card .card-image img {
   border-radius: 2px 2px 0 0;
   background-clip: padding-box;
   position: relative;
   z-index: -1;
 }
-birth-card .card-image span.card-title {
+birth-archive-card .card-image span.card-title {
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 16px;
 }
-birth-card .card-content {
+birth-archive-card .card-content {
   text-align: right;
   padding: 16px;
   border-radius: 0 0 2px 2px;
@@ -40,21 +40,22 @@ birth-card .card-content {
   box-sizing: border-box;
 }
 
-birth-card .card-content table tbody tr:first-child td {
+birth-archive-card .card-content table tbody tr:first-child td {
   border: none!important;
 }
 
-birth-card .card-action {
+
+birth-archive-card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 10px;
 }
-birth-card .card-action a {
+birth-archive-card .card-action a {
   color: #ffab40;
   margin-right: 10px;
   transition: color 0.3s ease;
   text-transform: capitalize;
 }
-birth-card .card-action a:hover {
+birth-archive-card .card-action a:hover {
   color: #ffd8a6;
   text-decoration: none;
   cursor: pointer;

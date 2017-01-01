@@ -1,0 +1,7 @@
+<div class="user-search">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control" ng-model="graduationArchive.searchQuery" placeholder="Rechercher ...">
+    </div>
+</div>
+<graduation-archive-card ng-if="graduationArchive.user.mask=='010'" ng-repeat="item in graduationArchive.graduation | filter : graduationArchive.searchQuery" data="item" user="graduationArchive.user"></graduation-archive-card>

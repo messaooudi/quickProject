@@ -2,15 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
-
-import Mustache from 'mustache';
-import pdfTemplate from './pdfTemplate.html'
+import { Tracker } from 'meteor/tracker'
 
 
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../../database/template';
+import { Naissance } from '../../database/naissance';
 
+import { name as BirthArchiveCard } from '../birthArchiveCard/birthArchiveCard';
 
 
 //import html and css files of this component
@@ -20,30 +19,15 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
-
-//import modules
-import { name as BirthCard } from '../birthCard/birthCard';
-
-//import Schemas
-import { Naissance } from '../../database/naissance';
-
-
-class BirthList {
-    constructor($scope, $reactive, $timeout) {
+class BirthArchive {
+    constructor($scope, $reactive,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-        vm.pdfPrint = function (data) {
-            var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, data));
-            w.print();
-            w.close();
-        }
-
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
-            if ((vm.user || {}).mask) {
+            if (vm.user) {
                 $timeout(() => {
                     $scope.$apply(function () {
                     });
@@ -51,12 +35,11 @@ class BirthList {
             }
         })
 
-        //subscribe to naissance schema
         Meteor.subscribe('naissance', {});
-
+            
         vm.helpers({
             naissance() {
-                let query = Naissance.find({ status: { $ne: 'done' } });
+                let query = Naissance.find({status : 'done'});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -76,43 +59,47 @@ class BirthList {
                             $(loadingCube).addClass('hide-loading-cube');
                         }
                     }
-                });
+                })
                 return query
             }
         });
+
+        /*
+            the logic of the component should be encapsuled here 
+         */
+
     }
 }
 
-const name = 'birthList';
+const name = 'birthArchive';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    BirthCard
+    BirthArchiveCard
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthList
-}).config(config);
-//to set the route config of this Component
+    controller: BirthArchive
+}).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('birthlist', {
-            url: '/birth/list',
-            template: '<birth-list></birth-list>',
+        .state('birtharchive', {
+            url: '/birth/archive',
+            template: '<birth-archive></birth-archive>',
             //to determine whene this component should be routed 
-            resolve: {
-                currentUser($q, $window) {
-                    if (Meteor.userId() === null) {
+            /*resolve: {
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }
+            }*/
         })
 }

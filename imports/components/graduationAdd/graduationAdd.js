@@ -26,13 +26,10 @@ class GraduationAdd {
 
         vm.graduation = {};
         vm.graduation.date = new Date();
+        vm.graduation.createdBy = Meteor.userId();
+        vm.graduation.status = "new"
         vm.submit = function () {
-            var WriteResult = Graduation.insert({
-                name: vm.graduation.name,
-                date: vm.graduation.date,
-                createdBy : Meteor.userId()
-            });
-
+            var WriteResult = Graduation.insert(vm.graduation);
             if (!WriteResult)
                 alert("prob d'insertion")
             $location.path('/graduation/list');

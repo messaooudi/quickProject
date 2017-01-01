@@ -27,6 +27,9 @@ import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
 import { name as UsersList } from '../usersList/usersList';
 import { name as DeathArchive } from '../deathArchive/deathArchive';
+import { name as BirthArchive } from '../birthArchive/birthArchive';
+import { name as GraduationArchive } from '../graduationArchive/graduationArchive';
+
 
 
 import { name as SingUp } from '../singUp/singUp';
@@ -70,7 +73,9 @@ export default angular.module(name, [
     GraduationAdd,
     UsersList,
     SingUp,
-    DeathArchive
+    DeathArchive,
+    BirthArchive,
+    GraduationArchive
 ]).component(name, {
     template,
     controllerAs: name,

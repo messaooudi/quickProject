@@ -1,8 +1,14 @@
-birth-list{
+birth-archive{
     display: block;
     margin: auto;
     padding-top: 10px;
     padding: 10px;
     text-align: center;
     overflow: auto;
+}
+
+birth-archive .user-search{
+    min-width: 260px;
+    max-width: 300px;
+    margin: auto;
 }
