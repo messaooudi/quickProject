@@ -11,7 +11,7 @@ const fs = require('fs')
 const JSZip = require('jszip');
 const Docxtemplater = require('docxtemplater');
 
-const projectPath = "/home/oussama/Projects/quickProject/";
+const projectPath = "/home/laptop/work/QA/quickProject/";
 Meteor.startup(() => {
 
     if (Naissance.find().count() == 0) {
