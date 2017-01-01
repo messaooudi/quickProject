@@ -15,5 +15,3 @@
 	</a>
 	<span class="label pull-right" ng-class="{'label-info' : birthCard.data.status=='new','label-warning' : birthCard.data.status=='progress','label-default' : birthCard.data.status=='done'}">{{birthCard.data.status=='new'?'nouveau':birthCard.data.status=='progress'?'En cours':'Traiter'}} <span class="glyphicon glyphicon-{{birthCard.data.status=='new'?'asterisk':birthCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
 </div>
-    <p>{{birthCard.data.nom}}
-</div>

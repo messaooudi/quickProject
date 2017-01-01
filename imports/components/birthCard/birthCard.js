@@ -4,6 +4,8 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
+import Mustache from 'mustache';
+import pdfTemplate from './pdfTemplate.html'
 
 //in order to use any schema u should import its js file 
 import { Naissance } from '../../database/naissance';
@@ -17,17 +19,22 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class BirthCard {
-    constructor($scope, $reactive, $stateParams,$location,$rootScope) {
+    constructor($scope, $reactive, $stateParams, $location, $rootScope) {
         'ngInject';
         $reactive(this).attach($scope);
 
         var vm = this;
         //print the birthCard
-        vm.print = function () {
-            /*var w = window.open();
-            w.document.write("<h1>tes</h1>");
+        
+        vm.pdfPrint =function() {
+            var w = window.open();
+            w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
             w.print();
-            w.close();*/
+            w.close();
+        }
+
+        vm.print = function () {
+            vm.pdfPrint();
             Meteor.call('generateBirthDOCX', vm.data, function (err, data) {
                 if (err) {
                     alert(err);

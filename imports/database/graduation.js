@@ -25,8 +25,11 @@ export const Graduation = new Mongo.Collection('graduation', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('graduation', function (selector) {
-        return Graduation.find(selector);
+    Meteor.publish('graduation', function () {
+        if (Meteor.users.findOne({_id : this.userId}).profile.mask == "010")
+            return Graduation.find({});
+        else 
+            return Graduation.find({createdBy : this.userId})
     });
 
 }
@@ -37,9 +40,9 @@ Graduation.allow({
     },
 
     update(userId, graduation, fields, modifier) {
-        return true;//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     },
     remove(userId, graduation) {
-        return true;//if true the remove is allowed otherwise its denied
+        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     }
 });

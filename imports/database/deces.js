@@ -25,10 +25,12 @@ export const Deces = new Ground.Collection('deces', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('deces', function (selector) {
-        return Deces.find(selector);
+    Meteor.publish('deces', function () {
+        if (Meteor.users.findOne({_id : this.userId}).profile.mask == "010")
+            return Deces.find({});
+        else 
+            return Deces.find({createdBy : this.userId})
     });
-    
 }
 
 Deces.allow({
@@ -37,9 +39,9 @@ Deces.allow({
     },
 
     update(userId, deces, fields, modifier) {
-        return true;//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     },
     remove(userId, deces) {
-        return true;//if true the remove is allowed otherwise its denied
+        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the remove is allowed otherwise its denied
     }
 });

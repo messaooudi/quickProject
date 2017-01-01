@@ -41,11 +41,11 @@ class Header {
 
         vm.plusButton = {
             click: function () {
-                if ($location.path().includes("birth"))
+                if ($location.path().includes("birth/list"))
                     $location.path("birth/add");
-                else if ($location.path().includes("death"))
+                else if ($location.path().includes("death/list"))
                     $location.path("death/add");
-                else if ($location.path().includes("graduation"))
+                else if ($location.path().includes("graduation/list"))
                     $location.path("graduation/add");
                 else if ($location.path().includes("userslist"))
                     $location.path("singup");

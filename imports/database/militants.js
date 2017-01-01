@@ -18,21 +18,22 @@ import { Meteor } from 'meteor/meteor';
 
 if (Meteor.isServer) {
     Meteor.publish('militants', function () {
-        return Meteor.users.find({'profile.mask' : {$ne : "010"}},{fields : {profile : 1}});
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Meteor.users.find({ 'profile.mask': { $ne: "010" } }, { fields: { profile: 1 } });
     });
-    
+
 }
 
 Meteor.users.allow({
     insert(userId, naissance) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";
     },
 
     update(userId, naissance, fields, modifier) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";
     },
     remove(userId, naissance) {
-        console.log(Meteor.users.findOne({_id : userId}).profile.mask)
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the remove is allowed otherwise its denied
+        console.log(Meteor.users.findOne({ _id: userId }).profile.mask)
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the remove is allowed otherwise its denied
     }
 });

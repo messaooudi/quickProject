@@ -2,12 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
+import { Tracker } from 'meteor/tracker'
 
 
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../../database/template';
+import { Deces } from '../../database/deces';
 
+import { name as DeathArchiveCard } from '../deathArchiveCard/deathArchiveCard';
 
 
 //import html and css files of this component
@@ -17,23 +19,15 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
-
-//import modules
-import { name as BirthCard } from '../birthCard/birthCard';
-
-//import Schemas
-import { Naissance } from '../../database/naissance';
-
-
-class BirthList {
-    constructor($scope, $reactive, $timeout) {
+class DeathArchive {
+    constructor($scope, $reactive,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
-            if ((vm.user || {}).mask) {
+            if (vm.user) {
                 $timeout(() => {
                     $scope.$apply(function () {
                     });
@@ -41,12 +35,11 @@ class BirthList {
             }
         })
 
-        //subscribe to naissance schema
-        Meteor.subscribe('naissance', {});
-
+        Meteor.subscribe('deces', {});
+            
         vm.helpers({
-            naissance() {
-                let query = Naissance.find({status : {$ne : 'done'}});
+            deces() {
+                let query = Deces.find({status : 'done'});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -66,43 +59,47 @@ class BirthList {
                             $(loadingCube).addClass('hide-loading-cube');
                         }
                     }
-                });
+                })
                 return query
             }
         });
+
+        /*
+            the logic of the component should be encapsuled here 
+         */
+
     }
 }
 
-const name = 'birthList';
+const name = 'deathArchive';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    BirthCard
+    DeathArchiveCard
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: BirthList
-}).config(config);
-//to set the route config of this Component
+    controller: DeathArchive
+}).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('birthlist', {
-            url: '/birth/list',
-            template: '<birth-list></birth-list>',
+        .state('deatharchive', {
+            url: '/death/archive',
+            template: '<death-archive></death-archive>',
             //to determine whene this component should be routed 
-            resolve: {
-                currentUser($q, $window) {
-                    if (Meteor.userId() === null) {
+            /*resolve: {
+                currentUser($q,$window) {
+                    if (Meteor.user() === null) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }
+            }*/
         })
 }

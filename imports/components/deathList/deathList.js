@@ -4,6 +4,9 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
+import Mustache from 'mustache';
+import pdfTemplate from './pdfTemplate.html'
+
 
 //in order to use any schema u should import its js file 
 //import { databaseExemple } from '../../database/template';
@@ -30,7 +33,13 @@ class DeathList {
         $reactive(this).attach($scope);
         var vm = this;
 
-        vm.query = { createdBy: null };
+        vm.pdfPrint = function (data) {
+            var w = window.open();
+            w.document.write(Mustache.to_html(pdfTemplate, data));
+            w.print();
+            w.close();
+        }
+
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
             if (vm.user) {
@@ -38,17 +47,15 @@ class DeathList {
                     $scope.$apply(function () {
                     });
                 }, 100)
-                vm.query = vm.user.mask == '010' ? {status : {$ne : 'done'}} : { createdBy: Meteor.userId() };
             }
         })
 
         //subscribe to deces schema
-        Tracker.autorun(() => {
-            Meteor.subscribe('deces', vm.getReactively('query'));
-        })
+        Meteor.subscribe('deces', {});
+
         vm.helpers({
             deces() {
-                let query = Deces.find({});
+                let query = Deces.find({status : {$ne : 'done'}});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({

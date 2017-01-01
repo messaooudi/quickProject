@@ -8,7 +8,6 @@ import Mustache from 'mustache';
 import pdfTemplate from './pdfTemplate.html'
 
 //in order to use any schema u should import its js file 
-import { Deces } from '../../database/deces';
 
 
 //import html and css files of this component
@@ -17,7 +16,7 @@ import mobileTemplate from './mobile.html';
 
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
-class DeathCard {
+class DeathArchiveCard {
     constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -34,25 +33,11 @@ class DeathCard {
         //print the birthCard
         vm.print = function () {
             vm.pdfPrint();
-           
-            Meteor.call('generateDeathDOCX', vm.data, function (err, data) {
-                if (err) {
-                    alert(err);
-                } else {
-                    alert("document cree ")
-                }
-            });
-
-             Deces.update({_id:vm.data._id},{
-                $set:{
-                    status:'done'
-                }
-            });
         }
     }
 }
 
-const name = 'deathCard';
+const name = 'deathArchiveCard';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
@@ -61,7 +46,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: DeathCard,
+    controller: DeathArchiveCard,
     bindings: {
         data: "<",
         user: "<"

@@ -17,6 +17,7 @@
     "jquery": "<3.0.0",
     "jszip": "^2.6.1",
     "meteor-node-stubs": "~0.2.0",
+    "mustache": "^2.3.0",
     "nya-bootstrap-select": "^2.0.11"
   }
 }

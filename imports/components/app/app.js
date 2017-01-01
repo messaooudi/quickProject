@@ -26,6 +26,8 @@ import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
 import { name as Drawer } from '../drawer/drawer';
 import { name as UsersList } from '../usersList/usersList';
+import { name as DeathArchive } from '../deathArchive/deathArchive';
+
 
 import { name as SingUp } from '../singUp/singUp';
 
@@ -68,6 +70,7 @@ export default angular.module(name, [
     GraduationAdd,
     UsersList,
     SingUp,
+    DeathArchive
 ]).component(name, {
     template,
     controllerAs: name,

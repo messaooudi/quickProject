@@ -30,7 +30,6 @@ class GraduationList {
         $reactive(this).attach($scope);
         var vm = this;
 
-        vm.query = { createdBy: null };
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
             if (vm.user) {
@@ -38,17 +37,15 @@ class GraduationList {
                     $scope.$apply(function () {
                     });
                 }, 100)
-                vm.query = vm.user.mask == '010' ? {} : { createdBy: Meteor.userId() };
             }
         })
 
         //subscribe to graduation schema
-        Tracker.autorun(() => {
-            Meteor.subscribe('graduation', vm.getReactively('query'));
-        })
+        Meteor.subscribe('graduation',{});
+
         vm.helpers({
             graduation() {
-                let query = Graduation.find({});
+                let query = Graduation.find({status : {$ne : 'done'}});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
