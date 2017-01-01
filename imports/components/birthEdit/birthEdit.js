@@ -26,7 +26,6 @@ class BirthEdit {
             Meteor.subscribe('naissance', vm.getReactively('query'));
         })
         vm.birth = Naissance.find({}).collection._docs._map[$stateParams.id];    
-        console.log(vm.birth)  // FIXME
 
         vm.submit = function () {
             var x = Naissance.update({_id:vm.birth._id},{ 
@@ -44,6 +43,7 @@ class BirthEdit {
                 }
             });
             $location.path("/birth/list");
+            vm.birth = {};
         }
 
         vm.cancel = function () {
