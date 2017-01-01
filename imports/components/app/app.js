@@ -24,6 +24,7 @@ import { name as DeathAdd } from '../deathAdd/deathAdd';
 import { name as DeathEdit } from '../deathEdit/deathEdit';
 import { name as Login } from '../login/login';
 import { name as GraduationAdd } from '../graduationAdd/graduationAdd';
+import { name as GraduationEdit } from '../graduationEdit/graduationEdit';
 import { name as Drawer } from '../drawer/drawer';
 import { name as UsersList } from '../usersList/usersList';
 import { name as DeathArchive } from '../deathArchive/deathArchive';

@@ -5,6 +5,9 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
 
+import Mustache from 'mustache';
+import pdfTemplate from './pdfTemplate.html'
+
 //in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';
 
@@ -30,9 +33,16 @@ class GraduationList {
         $reactive(this).attach($scope);
         var vm = this;
 
+        vm.pdfPrint = function (data) {
+            var w = window.open();
+            w.document.write(Mustache.to_html(pdfTemplate, data));
+            w.print();
+            w.close();
+        }
+
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
-            if (vm.user) {
+            if ((vm.user || {}).mask) {
                 $timeout(() => {
                     $scope.$apply(function () {
                     });

@@ -32,8 +32,12 @@ class GraduationAdd {
             var WriteResult = Graduation.insert(vm.graduation);
             if (!WriteResult)
                 alert("prob d'insertion")
+
             $location.path('/graduation/list');
+            
             vm.reset();
+            $('#thanks').modal('show');
+
         }
         vm.cancel = function () {
             $location.path('/graduation/list');

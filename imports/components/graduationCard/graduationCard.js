@@ -28,13 +28,28 @@ class GraduationCard {
         var vm = this;
 
         //print the graduationCard
-        vm.print = function(){
-
+        vm.pdfPrint = function () {
+            var w = window.open();
+            w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
+            w.print();
+            w.close();
         }
 
-        vm.remove = function(){
-            //hard deletion, might be updated to soft.
-            Graduation.remove( this.data._id );
+        vm.print = function () {
+            vm.pdfPrint();
+            Meteor.call('generateGraduationDOCX', vm.data, function (err, data) {
+                if (err) {
+                    alert(err);
+                } else {
+                    alert("document créé ")
+                }
+            });
+
+            Graduation.update({ _id: vm.data._id }, {
+                $set: {
+                    status: 'done'
+                }
+            });
         }
     }
 }

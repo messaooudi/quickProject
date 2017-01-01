@@ -1,1 +1,28 @@
-<graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation" data="item" user="graduationList.user"></graduation-card>
+<div ng-if="graduationList.user.mask == '010'">
+    <div class="panel panel-warning">
+        <div class="panel-heading clearfix">
+            <div class="panel-title">
+                En cours de traitements <span class="label label-warning">{{(graduationList.graduation | filter : {status : 'progress'}).length}}</span>
+                <button class=" btn btn-success btn-outline pull-right" ng-click="graduationList.pdfPrint(graduationList.graduation | filter : {status : 'progress'})"><span  title="Imprimer" class="glyphicon glyphicon-print"></span></button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'progress'} | orderBy : 'date'"
+                        data="item" user="graduationList.user"></graduation-card>
+        </div>
+    </div>
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Nouveau <span class="label label-info">{{(graduationList.graduation | filter : {status : 'new'}).length}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'new'} | orderBy : 'date'" data="item"
+                        user="birthList.user"></graduation-card>
+        </div>
+    </div>
+</div>
+<div ng-if="graduationList.user.mask == '001'">
+    <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation" data="item" user="graduationList.user"></graduation-card>
+</div>
