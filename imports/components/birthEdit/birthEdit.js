@@ -38,6 +38,8 @@ class BirthEdit {
                     date:vm.birth.date,
                     adresse:vm.birth.adresse,
                     phoneNumber:vm.birth.phoneNumber,
+                    pediatrician:vm.birth.pediatrician,
+                    hospital:vm.birth.hospital,
                     status:'progress'
                 }
             });
