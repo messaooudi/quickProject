@@ -4,6 +4,9 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
+import Mustache from 'mustache';
+import pdfTemplate from './pdfTemplate.html'
+
 //in order to use any schema u should import its js file
 import { Graduation } from '../../database/graduation';
 
