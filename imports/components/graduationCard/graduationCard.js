@@ -7,8 +7,6 @@ import { Tracker } from 'meteor/tracker'
 //in order to use any schema u should import its js file
 import { Graduation } from '../../database/graduation';
 
-import { Mustache } from 'mustache'
-import pdfTemplate from './pdfTemplate.html'
 
 //in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';
@@ -32,7 +30,7 @@ class GraduationCard {
         //print the graduationCard
         vm.pdfPrint = function () {
             var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
+            //w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
             w.print();
             w.close();
         }
@@ -68,6 +66,6 @@ export default angular.module(name, [
     controller: GraduationCard,
     bindings : {
         data : "<",
-        user:"<"
+        user : "<"
     }
 })
