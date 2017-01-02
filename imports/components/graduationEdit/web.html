@@ -34,10 +34,7 @@
             <div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
                 <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
                 <div class="col-sm-8">
-                    <input name="champ4" type="text" class="form-control" ng-model="graduationEdit.grad.phoneNumber" required>
-                    <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
-                        <p ng-if="editForm.champ4.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
+                    <input name="champ4" type="text" class="form-control" ng-model="graduationEdit.grad.phoneNumber">
                 </div>
             </div>
 
