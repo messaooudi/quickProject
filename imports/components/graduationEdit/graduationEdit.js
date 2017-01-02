@@ -44,7 +44,7 @@ class GraduationEdit {
                 }
             });
             $location.path("/graduation/list");
-            vm.decee = {};
+            vm.grad = {};
         }
 
         vm.cancel = function () {
