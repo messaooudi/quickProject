@@ -1,13 +1,52 @@
 <div class="card-image">
     <img class="img-responsive" src="">
 </div>
-
 <div class="card-content">
-    <p>{{graduationCard.data.name}}
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>{{graduationCard.data.name}}</td>
+            <td>الاسم العائلي</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.prenom}}</td>
+            <td>الاسم الشخصي</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.date | date}}</td>
+            <td> تاريخ الازدياد</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.phoneNumber}}</td>
+            <td>رقم الهاتف</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.nomEtabliss}}</td>
+            <td> اسم المؤسسة</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.specialite}}</td>
+            <td> الشعبة</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.adresse}}</td>
+            <td>العنوان</td>
+        </tr>
+        <tr>
+            <td>{{graduationCard.data.projetPro }}</td>
+            <td>المشروع المهني</td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 
 <div ng-if="graduationCard.user.mask == '010'" class="card-action">
-    <a ng-click="graduationCard.print()">Imprimer</a>
-    <a ng-click="graduationCard.remove(birthCard.data)">Supprimer</a>
-
+    <a class="btn btn-success btn-outline" ng-click="graduationCard.print()">
+        <span title="Imprimer" class="glyphicon glyphicon-print"></span>
+    </a>
+    <a class="btn btn-warning btn-outline" href="/graduation/edit/{{graduationCard.data._id}}">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    </a>
+    <span class="label pull-right" ng-class="{'label-info' : graduationCard.data.status=='new','label-warning' : graduationCard.data.status=='progress','label-default' : graduationCard.data.status=='done'}">{{graduationCard.data.status=='new'?'nouveau':graduationCard.data.status=='progress'?'En cours':'Traiter'}} <span class="glyphicon glyphicon-{{graduationCard.data.status=='new'?'asterisk':graduationCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
 </div>
