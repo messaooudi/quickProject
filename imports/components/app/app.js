@@ -72,6 +72,7 @@ export default angular.module(name, [
     DeathEdit,
     Login,
     GraduationAdd,
+    GraduationEdit,
     UsersList,
     SingUp,
     DeathArchive,
