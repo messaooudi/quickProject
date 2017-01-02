@@ -1,12 +1,12 @@
 <div class="panel panel-default">
-    <div class="panel-heading">: ولادة جديدة</div>
+    <div class="panel-heading">:تعديل الولادة</div>
     <div class="panel-body">
         <form name="editForm" class="form-horizontal">
 
             <div class="form-group" ng-class="{ 'has-error': editForm.champ1.$touched && editForm.champ1.$invalid}">
                 <label class="control-label col-sm-4" for="name" style="float:right">:الاسم العائلي</label>
                 <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.name" required autofocus>
+                    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.nom" required autofocus>
                     <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
                         <p ng-if="editForm.champ1.$error.required">!الاسم ضروري</p>
                     </div>
@@ -63,13 +63,10 @@
                 </div>
             </div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid}">
+            <div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid }">
                 <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
                 <div class="col-sm-8">
-                    <input name="champ7" type="text" class="form-control" ng-model="birthEdit.birth.phoneNumber" required>
-                    <div class="help-block" ng-messages="editForm.champ7.$error" ng-if="editForm.champ7.$touched">
-                        <p ng-if="editForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
+                    <input name="champ7" type="text" class="form-control" ng-model="birthEdit.birth.phoneNumber">
                 </div>
             </div>
 

@@ -26,11 +26,10 @@ class BirthEdit {
             Meteor.subscribe('naissance', vm.getReactively('query'));
         })
         vm.birth = Naissance.find({}).collection._docs._map[$stateParams.id];    
-
         vm.submit = function () {
             var x = Naissance.update({_id:vm.birth._id},{ 
                 $set: {
-                    name:vm.birth.name,
+                    nom:vm.birth.nom,
                     prenom:vm.birth.prenom,
                     nomPere:vm.birth.nomPere,
                     prenomPere:vm.birth.prenomPere,
