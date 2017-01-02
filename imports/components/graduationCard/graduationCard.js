@@ -7,6 +7,8 @@ import { Tracker } from 'meteor/tracker'
 //in order to use any schema u should import its js file
 import { Graduation } from '../../database/graduation';
 
+import { Mustache } from 'mustache'
+import pdfTemplate from './pdfTemplate.html'
 
 //in order to use any schema u should import its js file
 //import { databaseExemple } from '../../database/template';

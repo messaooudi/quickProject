@@ -19,7 +19,7 @@
         </div>
         <div class="panel-body">
             <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'new'} | orderBy : 'date'" data="item"
-                        user="birthList.user"></graduation-card>
+                        user="graduationList.user"></graduation-card>
         </div>
     </div>
 </div>

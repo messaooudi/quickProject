@@ -23,7 +23,7 @@ class GraduationEdit {
         var vm = this;
         vm.query = {_id:$stateParams.id};
 
-        //subscribe to deces schema
+        //subscribe to graduation schema
         Tracker.autorun(() => {
             Meteor.subscribe('graduation', vm.getReactively('query'));
         })
@@ -71,7 +71,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('graduationedit', {
             url: '/graduation/edit/:id',
-            template: '<death-edit></death-edit>',
+            template: '<graduation-edit></graduation-edit>',
             //to determine whene this component should be routed 
             resolve: {
                 currentUser($q,$window) {
