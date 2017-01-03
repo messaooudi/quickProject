@@ -11,3 +11,10 @@ birth-add{
 birth-add textarea{
 	resize: none;
 }
+
+birth-add input, textarea{
+    direction:rtl;
+}
+birth-add .form-group label{
+    float:right;
+}

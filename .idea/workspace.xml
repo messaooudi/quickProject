@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c79837fb-2b93-49b2-90bf-43bebe269464" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/generatedDocuments/birth/2017_0_0/naissance_ibQQBZn2saCM9aaya.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/generatedDocuments/birth/2017_0_0/naissance_ruBryRpETQ3vXNnbc.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/generatedDocuments/death/2017_0_0/deces_eLzs8pY8dj7EfWpWZ.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/generatedDocuments/graduation/2017_0_1/graduation_Xo3aDxLG5bvQj7yhC.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/npm-debug.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthAdd/web.css" afterPath="$PROJECT_DIR$/imports/components/birthAdd/web.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthAdd/web.html" afterPath="$PROJECT_DIR$/imports/components/birthAdd/web.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthCard/web.css" afterPath="$PROJECT_DIR$/imports/components/birthCard/web.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthCard/web.html" afterPath="$PROJECT_DIR$/imports/components/birthCard/web.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthEdit/birthEdit.js" afterPath="$PROJECT_DIR$/imports/components/birthEdit/birthEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/birthEdit/web.html" afterPath="$PROJECT_DIR$/imports/components/birthEdit/web.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/components/graduationEdit/web.html" afterPath="$PROJECT_DIR$/imports/components/graduationEdit/web.html" />
     </list>
     <ignored path="quickProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,12 +24,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="web.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="66">
+              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="birthAdd.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+              <folding>
+                <element signature="e#366#403#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,7 +104,6 @@
         <option value="$PROJECT_DIR$/imports/components/birthAdd/birthAdd.html" />
         <option value="$PROJECT_DIR$/imports/components/birthAdd/mobile.css" />
         <option value="$PROJECT_DIR$/imports/components/birthList/web.html" />
-        <option value="$PROJECT_DIR$/imports/components/birthAdd/web.css" />
         <option value="$PROJECT_DIR$/imports/components/graduationAdd/birthAdd.js" />
         <option value="$PROJECT_DIR$/imports/components/graduationAdd/mobile.html" />
         <option value="$PROJECT_DIR$/server/main.js" />
@@ -119,6 +131,7 @@
         <option value="$PROJECT_DIR$/imports/components/graduationAdd/web.html" />
         <option value="$PROJECT_DIR$/imports/components/deathAdd/web.html" />
         <option value="$PROJECT_DIR$/imports/components/birthAdd/web.html" />
+        <option value="$PROJECT_DIR$/imports/components/birthAdd/web.css" />
       </list>
     </option>
   </component>
@@ -518,12 +531,12 @@
       <workItem from="1483299287032" duration="20754000" />
       <workItem from="1483396951639" duration="4237000" />
       <workItem from="1483445672815" duration="1556000" />
-      <workItem from="1483462439779" duration="45000" />
+      <workItem from="1483462439779" duration="1134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133027000" />
+    <option name="totallyTimeSpent" value="134116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1598" height="870" extended-state="0" />
@@ -653,20 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -917,10 +916,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/birthAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="e#366#403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="66">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/components/birthAdd/web.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
