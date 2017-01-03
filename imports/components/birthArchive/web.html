@@ -4,4 +4,4 @@
         <input type="text" class="form-control" ng-model="birthArchive.searchQuery" placeholder="Rechercher ...">
     </div>
 </div>
-<birth-archive-card ng-if="birthArchive.user.mask=='010'" ng-repeat="item in birthArchive.naissance | filter : birthArchive.searchQuery" data="item" user="birthArchive.user"></birth-archive-card>
+<birth-archive-card ng-repeat="item in birthArchive.naissance | filter : birthArchive.searchQuery" data="item" user="birthArchive.user"></birth-archive-card>
