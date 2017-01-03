@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 birth-card {
-  display: inline-block;
+  display: inline-table;;
   margin: 6px;
   min-width: 260px;
   box-sizing: border-box;

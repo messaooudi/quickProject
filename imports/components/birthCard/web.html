@@ -1,7 +1,7 @@
 <div class="card-image">
 	<img class="img-responsive" src="">
 </div>
-<div class="card-content">
+<div class="card-content" ng-init="show_more=false">
 	<table class="table">
 		<tbody>
 			<tr>
@@ -46,6 +46,21 @@
 			</tr>
 		</tbody>
 	</table>
+	<a href="#" ng-show="!show_more" ng-click="show_more=true" title="المزيد من المعلومات" ><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="#" ng-show="show_more" ng-click="show_more=false" title="إخفاء المعلومات"><span class="glyphicon glyphicon-minus"></span></a>
+		<table class="table" ng-if="show_more">
+		<tbody>
+			<tr>
+				<td>{{birthCard.data.pediatrician}}</td>
+				<td>الممرض</td>
+			</tr>
+			<tr>
+				<td>{{birthCard.data.hospital}}</td>
+				<td>المستشفى</td>
+			</tr>
+			
+		</tbody>
+	</table>
 </div>
 
 <div ng-if="birthCard.user.mask == '010'" class="card-action">
@@ -56,4 +71,5 @@
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	</a>
 	<span class="label pull-right" ng-class="{'label-info' : birthCard.data.status=='new','label-warning' : birthCard.data.status=='progress','label-default' : birthCard.data.status=='done'}">{{birthCard.data.status=='new'?'nouveau':birthCard.data.status=='progress'?'En cours':'Traiter'}} <span class="glyphicon glyphicon-{{birthCard.data.status=='new'?'asterisk':birthCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
+	
 </div>

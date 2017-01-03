@@ -11,3 +11,9 @@ graduation-add{
 graduation-add textarea{
 	resize: none;
 }
+graduation-add input, textarea{
+    direction:rtl;
+}
+graduation-add .form-group label{
+    float:right;
+}
