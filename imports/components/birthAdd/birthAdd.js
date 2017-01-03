@@ -38,7 +38,7 @@ class BirthAdd {
             
             $location.path('/birth/list');
             vm.reset();
-            $('#thanks').modal('show');
+            alert("شكرا على إدخال المعلومات.");
             
         }
         vm.cancel = function () {
