@@ -4,4 +4,4 @@
         <input type="text" class="form-control" ng-model="graduationArchive.searchQuery" placeholder="Rechercher ...">
     </div>
 </div>
-<graduation-archive-card ng-if="graduationArchive.user.mask=='010'" ng-repeat="item in graduationArchive.graduation | filter : graduationArchive.searchQuery" data="item" user="graduationArchive.user"></graduation-archive-card>
+<graduation-archive-card  ng-repeat="item in graduationArchive.graduation | filter : graduationArchive.searchQuery" data="item" user="graduationArchive.user"></graduation-archive-card>

@@ -36,14 +36,14 @@ import { name as GraduationArchive } from '../graduationArchive/graduationArchiv
 import { name as SingUp } from '../singUp/singUp';
 
 class App {
-    constructor($scope, $reactive, $window,$timeout) {
+    constructor($scope, $reactive, $window, $timeout, $rootScope) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
         vm.loggedIn = false;
         Tracker.autorun(() => {
-            if (Meteor.user() === null)
+            if (!Meteor.userId())
                 vm.loggedIn = false;
             else
                 vm.loggedIn = true;

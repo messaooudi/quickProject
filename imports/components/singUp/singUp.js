@@ -65,32 +65,6 @@ class SingUp {
                     vm.submitInProgress = false;
                 });
             });
-
-            /* Accounts.createUser({
-                 email: vm.singUp.firstName + "_" + vm.singUp.lastName + "@gmail.com",
-                 password: vm.singUp.firstName + "_" + vm.singUp.lastName,
-                 profile: {
-                     firstName: vm.singUp.firstName,
-                     lastName: vm.singUp.lastName,
-                     cin: vm.singUp.cin,
-                     phone: vm.singUp.phone,
-                     address: vm.singUp.address,
-                     mask: '001'
-                 }
-             }, function (err) {
-                 if (err) {
-                     if (err.reason == "Email already exists.") {
-                         vm.userExist = true;
-                         $timeout(function () {
-                             vm.userExist = false;
-                         }, 4000)
-                     }
-                 } else {
-                     vm.singUp = {};
-                     //$window.location.href = "/userslist"
-                     $location.path('/userslist')
-                 }
-             });*/
         }
 
     }
@@ -109,19 +83,22 @@ export default angular.module(name, [
 }).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
-    //$locationProvider.html5Mode(true);
-    //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
         .state('singup', {
             url: '/singup',
             template: '<sing-up></sing-up>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q, $window) {
-                    if (Meteor.user().profile.mask != "010") {
-                        $window.location.href = '/login';
-                    } else {
-                        return $q.resolve();
+                function() {
+                    if (Meteor.userId()) {
+                        var user = Meteor.users.find({ _id: Meteor.userId() });
+                        var stop = false;
+                        while(!stop){
+                            setTimeout(()=>{
+                                stop = true;
+                            },500)
+                        }
+                        alert(user.profile)
                     }
                 }
             }
