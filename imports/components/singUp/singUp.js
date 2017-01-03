@@ -18,11 +18,20 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class SingUp {
-    constructor($scope, $reactive, $timeout, $window, $location) {
+    constructor($scope, $reactive, $timeout, $location) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if ((vm.user || {}).mask) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+            }
+        })
 
         vm.userExist = false;
         vm.submitInProgress = false;
@@ -59,7 +68,6 @@ class SingUp {
                         }
                     } else {
                         vm.singUp = {};
-                        //$window.location.href = "/userslist"
                         $location.path('/userslist')
                     }
                     vm.submitInProgress = false;
@@ -89,10 +97,17 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<sing-up></sing-up>',
             //to determine whene this component should be routed 
             resolve: {
-                function() {
+                function($window) {
                     if (Meteor.userId()) {
-                        var user = Meteor.users.find({ _id: Meteor.userId() });
-                        
+                        Tracker.autorun(()=>{
+                            if(Meteor.user()&&Meteor.user().profile.mask !="010"){
+                                $window.location.href = "/home"
+                            }else{
+                                
+                            }
+                        })
+                    }else{
+                        $window.location.href = "/login"
                     }
                 }
             }

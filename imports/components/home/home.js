@@ -6,7 +6,11 @@ import { Tracker } from 'meteor/tracker'
 
 
 //in order to use any schema u should import its js file 
+//import { databaseExemple } from '../../database/template';
+
+import { Naissance } from '../../database/naissance';
 import { Deces } from '../../database/deces';
+import { Graduation } from '../../database/graduation';
 
 
 //import html and css files of this component
@@ -16,13 +20,34 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
-class DeathEdit {
-    constructor($scope, $reactive, $location, $stateParams,$timeout) {
+class Home {
+    constructor($scope, $reactive,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
-         Tracker.autorun(() => {
+        Meteor.subscribe('naissance', {});
+        Meteor.subscribe('deces', {});
+        Meteor.subscribe('graduation', {});
+        
+        vm.helpers({
+            birthCount(){
+                return Naissance.find({status : {$ne : "done"}}).count()
+            }
+        })
+        vm.helpers({
+           deathCount(){
+                return Deces.find({status : {$ne : "done"}}).count()
+            }
+        })
+        vm.helpers({
+           graduationCount(){
+                return Graduation.find({status : {$ne : "done"}}).count()
+            }
+        })
+        
+
+        Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
             if ((vm.user || {}).mask) {
                 $timeout(() => {
@@ -32,33 +57,14 @@ class DeathEdit {
             }
         })
 
-        //subscribe to deces schema
-        Meteor.subscribe('deces',{});
+        /*
+            the logic of the component should be encapsuled here 
+         */
 
-        vm.decee = Deces.findOne({ _id: $stateParams.id });
-        vm.submit = function () {
-            Deces.update({ _id: $stateParams.id }, {
-                $set: {
-                    address: vm.decee.address,
-                    childrenNbr: vm.decee.childrenNbr,
-                    date: vm.decee.date,
-                    gender: vm.decee.gender,
-                    nom: vm.decee.nom,
-                    prenom: vm.decee.prenom,
-                    status: 'progress'
-                }
-            });
-            $location.path("/death/list");
-            vm.decee = {};
-        }
-
-        vm.cancel = function () {
-            $location.path("/death/list");
-        }
     }
 }
 
-const name = 'deathEdit';
+const name = 'home';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
@@ -67,29 +73,23 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: DeathEdit
+    controller: Home
 }).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
     //$urlRouterProvider.otherwise('/'); //to set a default route in general used in a global context not in a component
     $stateProvider
-        .state('deathedit', {
-            url: '/death/edit/:id',
-            template: '<death-edit></death-edit>',
+        .state('home', {
+            url: '/home',
+            template: '<home></home>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q, $window) {
-                    if (Meteor.userId()) {
-                        Tracker.autorun(()=>{
-                            if(Meteor.user()&&Meteor.user().profile.mask !="010"){
-                                $window.location.href = "/home"
-                            }else{
-                                
-                            }
-                        })
-                    }else{
-                        $window.location.href = "/login"
+                currentUser($q,$window) {
+                    if (!Meteor.userId()) {
+                        $window.location.href = '/login';
+                    } else {
+                        return $q.resolve();
                     }
                 }
             }

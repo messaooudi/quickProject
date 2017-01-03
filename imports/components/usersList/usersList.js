@@ -19,15 +19,25 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class UsersList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
+        Tracker.autorun(() => {
+            vm.user = (Meteor.user() || {}).profile;
+            if ((vm.user || {}).mask) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+            }
+        })
+
         Meteor.subscribe('militants', {});
         vm.helpers({
             users() {
-                let query = Meteor.users.find({_id : {$ne : Meteor.userId()}});
+                let query = Meteor.users.find({ _id: { $ne: Meteor.userId() } });
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -81,11 +91,17 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<users-list></users-list>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q,$window){
-                    if (Meteor.user() === null) {
-                        $window.location.href = '/login';
+                currentUser($q, $window) {
+                    if (Meteor.userId()) {
+                        Tracker.autorun(() => {
+                            if (Meteor.user() && Meteor.user().profile.mask != "010") {
+                                $window.location.href = "/home"
+                            } else {
+
+                            }
+                        })
                     } else {
-                        return $q.resolve();
+                        $window.location.href = "/login"
                     }
                 }
             }

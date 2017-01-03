@@ -14,22 +14,6 @@ const Docxtemplater = require('docxtemplater');
 const projectPath = "/home/laptop/work/QA/quickProject/";
 Meteor.startup(() => {
 
-    if (Naissance.find().count() == 0) {
-        for (var i = 0; i < 5; i++) {
-            Naissance.insert({ name: "nom " + i });
-        }
-    }
-    if (Deces.find().count() == 0) {
-        for (var i = 0; i < 3; i++) {
-            Deces.insert({ name: "nom " + i });
-        }
-    }
-    if (Graduation.find().count() == 0) {
-        for (var i = 0; i < 3; i++) {
-            Graduation.insert({ name: "nom " + i });
-        }
-    }
-
     if (Meteor.users.find({ "profile.mask": '010' }).count() == 0) {
         Accounts.createUser({
             email: "admin_admin@gmail.com",
@@ -53,6 +37,16 @@ Meteor.startup(() => {
     */
 
     Meteor.methods({
+
+        _doneGradudationCard: function () {
+            Graduation.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        },
+        _doneBirthCard: function () {
+            Naissance.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        },
+        _doneDeathCard: function () {
+            Deces.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        },
         // Declaring a method
         _createUser: function (user) {
             if (Meteor.users.findOne({

@@ -36,7 +36,7 @@
          <div class="form-group" ng-class="{ 'has-error': addForm.champ4.$touched && addForm.champ4.$invalid}">
             <label class="control-label col-sm-4" for="prenomPere" >:عدد الأبناء</label>
             <div class="col-sm-8">
-               <input name="champ4" type="NUMBER" class="form-control"  ng-model="deathAdd.decee.childrenNbr" required>
+               <input name="champ4" type="NUMBER" class="form-control"  ng-model="deathAdd.decee.childrenNbr" ng-min="0" required>
                <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ4.$touched">
                   <p ng-if="addForm.champ4.$error.required">!ملئ الخانة ضروري</p>
                </div>

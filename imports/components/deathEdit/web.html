@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-if="deathEdit.user.mask == '010'">
    <div class="panel-heading">:تعديل معلومات الفقيد</div>
    <div class="panel-body">
       <form name="editForm" class="form-horizontal">
@@ -37,7 +37,7 @@
          <div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
             <label class="control-label col-sm-4" for="prenomPere" style="float: right">:عدد الأبناء</label>
             <div class="col-sm-8">
-               <input name="champ4" type="NUMBER" class="form-control" ng-model="deathEdit.decee.childrenNbr" required>
+               <input name="champ4" type="NUMBER" class="form-control" ng-min="0" ng-model="deathEdit.decee.childrenNbr" required>
                <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
                   <p ng-if="editForm.champ4.$error.required">!ملئ الخانة ضروري</p>
                </div>

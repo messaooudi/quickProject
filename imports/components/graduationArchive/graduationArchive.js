@@ -92,14 +92,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/graduation/archive',
             template: '<graduation-archive></graduation-archive>',
             //to determine whene this component should be routed 
-            /*resolve: {
+            resolve: {
                 currentUser($q,$window) {
-                    if (Meteor.user() === null) {
+                    if (!Meteor.user()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }*/
+            }
         })
 }

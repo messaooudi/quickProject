@@ -92,14 +92,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/birth/archive',
             template: '<birth-archive></birth-archive>',
             //to determine whene this component should be routed 
-            /*resolve: {
+            resolve: {
                 currentUser($q,$window) {
-                    if (Meteor.user() === null) {
+                    if (!Meteor.userId()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();
                     }
                 }
-            }*/
+            }
         })
 }

@@ -18,11 +18,21 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class DeathCard {
-    constructor($scope, $reactive, $stateParams) {
+    constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
 
         var vm = this;
+
+        Meteor.subscribe('militants', {});
+        vm.helpers({
+            createdBy() {
+                if (vm.getReactively('data', true)) {
+                    return (Meteor.users.findOne({ _id: vm.data.createdBy })||{}).profile
+                }
+                    return {};
+            }
+        })
 
         vm.pdfPrint = function () {
             var w = window.open();
@@ -34,18 +44,10 @@ class DeathCard {
         //print the birthCard
         vm.print = function () {
             vm.pdfPrint();
-           
-            Meteor.call('generateDeathDOCX', vm.data, function (err, data) {
-                if (err) {
-                    alert(err);
-                } else {
-                    alert("document cree ")
-                }
-            });
 
-             Deces.update({_id:vm.data._id},{
-                $set:{
-                    status:'done'
+            Deces.update({ _id: vm.data._id }, {
+                $set: {
+                    status: 'done'
                 }
             });
         }

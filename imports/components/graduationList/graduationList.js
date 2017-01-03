@@ -28,73 +28,97 @@ import { Graduation } from '../../database/graduation';
 
 
 class GraduationList {
-    constructor($scope, $reactive, $timeout) {
+    constructor($scope, $reactive, $timeout,$interval) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
 
+        vm.intervalTimer;
+        vm.printTimer = 5;
+
         vm.pdfPrint = function (data) {
-            var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, data));
-            w.print();
-            w.close();
-        }
-
-        Tracker.autorun(() => {
-            vm.user = (Meteor.user() || {}).profile;
-            if ((vm.user || {}).mask) {
-                $timeout(() => {
-                    $scope.$apply(function () {
-                    });
-                }, 100)
-            }
-        })
-
-        //subscribe to graduation schema
-        Meteor.subscribe('graduation',{});
-
-        vm.helpers({
-            graduation() {
-                let query = Graduation.find({status : {$ne : 'done'}});
-                let count = 0;
-                let loadingCube = $('#loading-cube');
-                query.observeChanges({
-                    added: function (id, formation) {
-                        count++;
-                        if (query.count() == count) {
-                            $(loadingCube).addClass('hide-loading-cube');
-                        } else {
-                            $(loadingCube).removeClass('hide-loading-cube');
-                        }
-                    },
-                    changed: function (id, formation) {
-                    },
-                    removed: function (id) {
-                        count--;
-                        if (query.count() == count) {
-                            $(loadingCube).addClass('hide-loading-cube');
-                        }
+            if (vm.printTimer < 5) {
+                var w = window.open();
+                w.document.write(Mustache.to_html(pdfTemplate, data));
+                w.print();
+                w.close();
+                Meteor.call('_doneGradudationCard', function (error, success) {
+                    if (error) {
+                        console.log('error', error);
                     }
-                })
-                return query
+                    if (success) {
+
+                    }
+                });
+                vm.printTimer = 5;
+                $interval.cancel(vm.intervalTimer);
+            }else {
+                vm.printTimer = 4;
+                vm.intervalTimer = $interval(() => {
+                    vm.printTimer--;
+                    if (vm.printTimer == 0) {
+                        $interval.cancel(vm.intervalTimer);
+                        vm.printTimer = 5;
+                    }
+                }, 1000)
             }
-        });
+            }
 
+            Tracker.autorun(() => {
+                vm.user = (Meteor.user() || {}).profile;
+                if ((vm.user || {}).mask) {
+                    $timeout(() => {
+                        $scope.$apply(function () {
+                        });
+                    }, 100)
+                }
+            })
+
+            //subscribe to graduation schema
+            Meteor.subscribe('graduation', {});
+
+            vm.helpers({
+                graduation() {
+                    let query = Graduation.find({ status: { $ne: 'done' } });
+                    let count = 0;
+                    let loadingCube = $('#loading-cube');
+                    query.observeChanges({
+                        added: function (id, formation) {
+                            count++;
+                            if (query.count() == count) {
+                                $(loadingCube).addClass('hide-loading-cube');
+                            } else {
+                                $(loadingCube).removeClass('hide-loading-cube');
+                            }
+                        },
+                        changed: function (id, formation) {
+                        },
+                        removed: function (id) {
+                            count--;
+                            if (query.count() == count) {
+                                $(loadingCube).addClass('hide-loading-cube');
+                            }
+                        }
+                    })
+                    return query
+                }
+            });
+
+        }
     }
-}
 
-const name = 'graduationList';
-const template = Meteor.isCordova ? mobileTemplate : webTemplate;
-//create a module
-export default angular.module(name, [
-    angularMeteor,
-    uiRouter,
-    GraduationCard
-]).component(name, {
-    template,
-    controllerAs: name,
-    controller: GraduationList
-}).config(config); //to set the route config of this Component
+    const name = 'graduationList';
+    const template = Meteor.isCordova ? mobileTemplate : webTemplate;
+    //create a module
+    export default angular.module(name, [
+        angularMeteor,
+        uiRouter,
+        GraduationCard
+    ]).component(name, {
+        template,
+        controllerAs: name,
+        controller: GraduationList
+    }).config(config); //to set the route config of this Component
 function config($locationProvider, $stateProvider, $urlRouterProvider) {
     'ngInject';
     //$locationProvider.html5Mode(true);
@@ -106,7 +130,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             //to determine whene this component should be routed
             resolve: {
                 currentUser($q, $window) {
-                    if (Meteor.user() === null) {
+                    if (!Meteor.userId()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();

@@ -34,10 +34,9 @@ class GraduationAdd {
                 alert("prob d'insertion")
 
             $location.path('/graduation/list');
-            
-            vm.reset();
-            $('#thanks').modal('show');
 
+            vm.reset();
+            alert("شكرا على إدخال المعلومات.");
         }
         vm.cancel = function () {
             $location.path('/graduation/list');
@@ -72,14 +71,14 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             url: '/graduation/add',
             template: '<graduation-add></graduation-add>',
             //to determine whene this component should be routed
-            /*resolve: {
-             currentUser($q) {
-             if (condition) {
-             return $q.reject();
-             } else {
-             return $q.resolve();
-             }
-             }
-             }*/
+            resolve: {
+                currentUser($q, $window) {
+                    if (!Meteor.userId()) {
+                        $window.location.href = '/login';
+                    } else {
+                        return $q.resolve();
+                    }
+                }
+            }
         })
 }

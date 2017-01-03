@@ -27,6 +27,7 @@ class DeathAdd {
         
         vm.decee = {};
         vm.decee.date = new Date();
+        vm.decee.childrenNbr = 0;
         vm.submit = function () {
             vm.decee.createdBy = Meteor.userId();
             vm.decee.status = 'new';
@@ -36,6 +37,7 @@ class DeathAdd {
                 alert("prob d'insertion")
             $location.path('/death/list');
             vm.reset();
+            alert("شكرا على إدخال المعلومات.");
         }
         vm.cancel = function () {
             vm.reset();
@@ -69,7 +71,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             //to determine whene this component should be routed
             resolve: {
                 currentUser($q, $window) {
-                    if (Meteor.user() === null) {
+                    if (!Meteor.userId()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();

@@ -2,11 +2,19 @@
     <div class="panel panel-warning">
         <div class="panel-heading clearfix">
             <div class="panel-title">
-                En cours de traitements <span class="label label-warning">{{(deathList.deces | filter : {status : 'progress'}).length}}</span>
-                <button class=" btn btn-success btn-outline pull-right" ng-click="deathList.pdfPrint(deathList.deces | filter : {status : 'progress'})"><span  title="Imprimer" class="glyphicon glyphicon-print"></span></button>
+                في طور الإنجاز <span class="label label-warning">{{(deathList.deces | filter : {status : 'progress'}).length}}</span>
+                <button ng-disabled="(deathList.deces | filter : {status : 'progress'}).length == 0" class=" btn btn-success btn-outline pull-right" ng-click="deathList.pdfPrint(deathList.deces | filter : {status : 'progress'})">
+                    <span ng-if="deathList.printTimer == 5" title="Imprimer" class="glyphicon glyphicon-print"></span>
+                    <span ng-if="deathList.printTimer < 5">Confirmer ! {{deathList.printTimer}}</span>
+                </button>
             </div>
         </div>
         <div class="panel-body">
+            <center ng-if="(deathList.deces | filter : {status : 'progress'}).length == 0">
+                <p>
+                    لا يوجد أي حالات جديدة
+                </p>
+            </center>
             <death-card ng-if="deathList.user" ng-repeat="item in deathList.deces | filter : {status : 'progress'} | orderBy : 'date'"
                 data="item" user="deathList.user"></death-card>
         </div>
@@ -15,9 +23,14 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Nouveau <span class="label label-info">{{(deathList.deces | filter : {status : 'new'}).length}}</span></h3>
+            <h3 class="panel-title">حالات جديدة <span class="label label-info">{{(deathList.deces | filter : {status : 'new'}).length}}</span></h3>
         </div>
         <div class="panel-body">
+            <center ng-if="(deathList.deces | filter : {status : 'new'}).length == 0">
+                <p>
+                    لا يوجد أي حالات جديدة
+                </p>
+            </center>
             <death-card ng-if="deathList.user" ng-repeat="item in deathList.deces | filter : {status : 'new'} | orderBy : 'date'" data="item"
                 user="deathList.user"></death-card>
         </div>

@@ -17,30 +17,37 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class GraduationEdit {
-    constructor($scope,$reactive,$location,$stateParams) {
+    constructor($scope, $reactive, $location, $stateParams,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-        vm.query = {_id:$stateParams.id};
 
-        //subscribe to graduation schema
         Tracker.autorun(() => {
-            Meteor.subscribe('graduation', vm.getReactively('query'));
+            vm.user = (Meteor.user() || {}).profile;
+            if ((vm.user || {}).mask) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+            }
         })
 
-        vm.grad = Graduation.find({}).collection._docs._map[$stateParams.id];
+        //subscribe to graduation schema
+        Meteor.subscribe('graduation', {});
+
+        vm.grad = Graduation.findOne({ _id: $stateParams.id });
         vm.submit = function () {
-            Graduation.update({_id:$stateParams.id},{
-                $set:{
-                    name:vm.grad.name,
-                    prenom:vm.grad.prenom,
-                    date:vm.grad.date,
-                    phoneNumber:vm.grad.phoneNumber,
-                    nomEtabliss:vm.grad.nomEtabliss,
-                    specialite:vm.grad.specialite,
-                    adresse:vm.grad.adresse,
-                    projetPro:vm.grad.projetPro,
-                    status:'progress'
+            Graduation.update({ _id: $stateParams.id }, {
+                $set: {
+                    nom: vm.grad.nom,
+                    prenom: vm.grad.prenom,
+                    date: vm.grad.date,
+                    phoneNumber: vm.grad.phoneNumber,
+                    nomEtabliss: vm.grad.nomEtabliss,
+                    specialite: vm.grad.specialite,
+                    adresse: vm.grad.adresse,
+                    projetPro: vm.grad.projetPro,
+                    status: 'progress'
                 }
             });
             $location.path("/graduation/list");
@@ -54,7 +61,7 @@ class GraduationEdit {
 }
 
 const name = 'graduationEdit';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
@@ -74,11 +81,17 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<graduation-edit></graduation-edit>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q,$window) {
-                    if (Meteor.user() === null) {
-                        $window.location.href = '/login';
+                currentUser($q, $window) {
+                    if (Meteor.userId()) {
+                        Tracker.autorun(() => {
+                            if (Meteor.user() && Meteor.user().profile.mask != "010") {
+                                $window.location.href = "/home"
+                            } else {
+
+                            }
+                        })
                     } else {
-                        return $q.resolve();
+                        $window.location.href = "/login"
                     }
                 }
             }

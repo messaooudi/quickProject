@@ -17,11 +17,21 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class GraduationArchiveCard {
-    constructor($scope, $reactive, $stateParams) {
+    constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
 
         var vm = this;
+
+        Meteor.subscribe('militants', {});
+        vm.helpers({
+            createdBy() {
+                if (vm.getReactively('data', true)) {
+                    return (Meteor.users.findOne({ _id: vm.data.createdBy })||{}).profile
+                }
+                return {};
+            }
+        })
 
         vm.pdfPrint = function () {
             var w = window.open();

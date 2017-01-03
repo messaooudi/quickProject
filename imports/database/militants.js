@@ -14,7 +14,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 
-
+Ground.Collection(Meteor.users);
 
 if (Meteor.isServer) {
     Meteor.publish('militants', function () {

@@ -24,30 +24,32 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class GraduationCard {
-    constructor($scope,$reactive,$stateParams) {
+    constructor($scope,$reactive) {
         'ngInject';
         $reactive(this).attach($scope);
 
         var vm = this;
 
+        Meteor.subscribe('militants', {});
+        vm.helpers({
+            createdBy() {
+                if (vm.getReactively('data', true)) {
+                    return (Meteor.users.findOne({ _id: vm.data.createdBy })||{}).profile
+                }
+                    return {};
+            }
+        })
+
         //print the graduationCard
         vm.pdfPrint = function () {
             var w = window.open();
-            //w.document.write(Mustache.to_html(pdfTemplate, { title: "test" }));
+            w.document.write(Mustache.to_html(pdfTemplate,vm.data));
             w.print();
             w.close();
         }
 
         vm.print = function () {
             vm.pdfPrint();
-            Meteor.call('generateGraduationDOCX', vm.data, function (err, data) {
-                if (err) {
-                    alert(err);
-                } else {
-                    alert("document créé ")
-                }
-            });
-
             Graduation.update({ _id: vm.data._id }, {
                 $set: {
                     status: 'done'

@@ -49,7 +49,7 @@ class Login {
                         }, 4000)
                     }
                 } else {
-                    $window.location.href = "/birth/list"
+                    $window.location.href = "/home"
                 }
             })
         }

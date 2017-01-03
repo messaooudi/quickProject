@@ -30,13 +30,14 @@ import { name as UsersList } from '../usersList/usersList';
 import { name as DeathArchive } from '../deathArchive/deathArchive';
 import { name as BirthArchive } from '../birthArchive/birthArchive';
 import { name as GraduationArchive } from '../graduationArchive/graduationArchive';
+import { name as Home } from '../home/home';
 
 
 
 import { name as SingUp } from '../singUp/singUp';
 
 class App {
-    constructor($scope, $reactive, $window, $timeout, $rootScope) {
+    constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -77,7 +78,8 @@ export default angular.module(name, [
     SingUp,
     DeathArchive,
     BirthArchive,
-    GraduationArchive
+    GraduationArchive,
+    Home
 ]).component(name, {
     template,
     controllerAs: name,
@@ -86,5 +88,5 @@ export default angular.module(name, [
 function config($locationProvider, $urlRouterProvider) {
     'ngInject';
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/birth/list'); //to set a default route in general used in a global context not in a component
+    $urlRouterProvider.otherwise('/home'); //to set a default route in general used in a global context not in a component
 }

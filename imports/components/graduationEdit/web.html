@@ -1,89 +1,92 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-if="graduationEdit.user.mask=='010'">
     <div class="panel-heading"> :تعديل معلومات الخريج</div>
     <div class="panel-body">
         <form name="editForm" class="form-horizontal">
             <div class="form-group" ng-class="{ 'has-error': editForm.champ1.$touched && editForm.champ1.$invalid}">
                 <label class="control-label col-sm-4" for="name" style="float:right">:الاسم العائلي</label>
-                <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="graduationEdit.grad.name" required autofocus>
-                    <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
-                        <p ng-if="editForm.champ1.$error.required">!الاسم ضروري</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ2.$touched && editForm.champ2.$invalid}">
-                <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
-                <div class="col-sm-8">
-                    <input name="champ2" type="text" class="form-control" ng-model="graduationEdit.grad.prenom" required>
-                    <div class="help-block" ng-messages="editForm.champ2.$error" ng-if="editForm.champ2.$touched">
-                        <p ng-if="editForm.champ2.$error.required">!الاسم ضروري</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ3.$touched && editForm.champ3.$invalid}">
-                <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ الازدياد</label>
-                <div class="col-sm-8">
-                    <input name="champ3" type="date" class="form-control" ng-model="graduationEdit.grad.date" required>
-                    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ3.$touched">
-                        <p ng-if="editForm.champ3.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
-                <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
-                <div class="col-sm-8">
-                    <input name="champ4" type="text" class="form-control" ng-model="graduationEdit.grad.phoneNumber">
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ5.$touched && editForm.champ5.$invalid}">
-                <label class="control-label col-sm-4" for="nomEtabliss" style="float:right"> :اسم المؤسسة</label>
-                <div class="col-sm-8">
-                    <input name="champ5" type="text" class="form-control" ng-model="graduationEdit.grad.nomEtabliss" required>
-                    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ5.$touched">
-                        <p ng-if="editForm.champ5.$error.required">!اسم المؤسسة ضروري</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ6.$touched && editForm.champ6.$invalid}">
-                <label class="control-label col-sm-4" for="specialite" style="float:right">:الشعبة</label>
-                <div class="col-sm-8">
-                    <input name="champ6" type="text" class="form-control" ng-model="graduationEdit.grad.specialite" required>
-                    <div class="help-block" ng-messages="editForm.champ6.$error" ng-if="editForm.champ6.$touched">
-                        <p ng-if="editForm.champ6.$error.required">!الاختيار ضروري</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid}">
-                <label class="control-label col-sm-4" for="adresse" style="float:right">:العنوان</label>
-                <div class="col-sm-8"class="form-group">
-                    <textarea rows="5" name="champ7" type="text" class="form-control" ng-model="graduationEdit.grad.adresse" required></textarea>
-                    <div class="help-block" ng-messages="editForm.champ7.$error" ng-if="editForm.champ7.$touched">
-                        <p ng-if="editForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ8.$touched && editForm.champ8.$invalid}">
-                <label class="control-label col-sm-4" for="projetPro" style="float:right">:المشروع المهني</label>
-                <div class="col-sm-8"class="form-group">
-                    <textarea rows="5" name="champ8" type="text" class="form-control" ng-model="graduationEdit.grad.projetPro" required></textarea>
-                    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ8.$touched">
-                        <p ng-if="editForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </form>
-
+<div class="col-sm-8">
+    <input name="champ1" type="text" class="form-control" ng-model="graduationEdit.grad.nom" required autofocus>
+    <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
+        <p ng-if="editForm.champ1.$error.required">!الاسم العائلي ضروري</p>
     </div>
-    <div class="panel-footer">
-        <div class="btn-group">
-            <button type="submit" class="btn" ng-click="graduationEdit.submit()" ng-class="{disabled : editForm.$invalid,'btn-success' : editForm.$valid,'btn-danger' : editForm.$invalid}">إرسال</button>
-            <button class="btn btn-default" ng-click="graduationEdit.cancel()">إلغاء</button>
-        </div>
+</div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': editForm.champ2.$touched && editForm.champ2.$invalid}">
+    <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
+<div class="col-sm-8">
+    <input name="champ2" type="text" class="form-control" ng-model="graduationEdit.grad.prenom" required>
+    <div class="help-block" ng-messages="editForm.champ2.$error" ng-if="editForm.champ2.$touched">
+        <p ng-if="editForm.champ2.$error.required">!الاسم الشخصي ضروري</p>
     </div>
+</div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': editForm.champ3.$touched && editForm.champ3.$invalid}">
+    <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ التخرج</label>
+<div class="col-sm-8">
+    <input name="champ3" type="date" class="form-control" ng-model="graduationEdit.grad.date">
+    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ3.$touched">
+        <p ng-if="editForm.champ3.$error.required"> !ملئ الخانة ضروري</p>
+    </div>
+</div>
+</div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
+    <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
+<div class="col-sm-8">
+    <input name="champ4" type="text" class="form-control" ng-pattern="/^\d{10}$/" ng-model="graduationEdit.grad.phoneNumber">
+</div>
+<div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
+    <p ng-if="editForm.champ4.$error.pattern">رقم الهاتف غير صحيح</p>
+</div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': editForm.champ5.$touched && editForm.champ5.$invalid}">
+    <label class="control-label col-sm-4" for="nomEtabliss" style="float:right"> :اسم المؤسسة</label>
+<div class="col-sm-8">
+    <input name="champ5" type="text" class="form-control" ng-model="graduationEdit.grad.nomEtabliss">
+    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ5.$touched">
+        <p ng-if="editForm.champ5.$error.required">!اسم المؤسسة ضروري</p>
+    </div>
+</div>
+</div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ6.$touched && editForm.champ6.$invalid}">
+    <label class="control-label col-sm-4" for="specialite" style="float:right">:الشعبة</label>
+<div class="col-sm-8">
+    <input name="champ6" type="text" class="form-control" ng-model="graduationEdit.grad.specialite">
+    <div class="help-block" ng-messages="editForm.champ6.$error" ng-if="editForm.champ6.$touched">
+        <p ng-if="editForm.champ6.$error.required">!الاختيار ضروري</p>
+    </div>
+</div>
+</div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid}">
+    <label class="control-label col-sm-4" for="adresse" style="float:right">:العنوان</label>
+<div class="col-sm-8" class="form-group">
+    <textarea rows="5" name="champ7" type="text" class="form-control" ng-model="graduationEdit.grad.adresse" required></textarea>
+    <div class="help-block" ng-messages="editForm.champ7.$error" ng-if="editForm.champ7.$touched">
+        <p ng-if="editForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
+    </div>
+</div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': editForm.champ8.$touched && editForm.champ8.$invalid}">
+    <label class="control-label col-sm-4" for="projetPro" style="float:right">:المشروع المهني</label>
+<div class="col-sm-8" class="form-group">
+    <textarea rows="5" name="champ8" type="text" class="form-control" ng-model="graduationEdit.grad.projetPro"></textarea>
+    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ8.$touched">
+        <p ng-if="editForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
+    </div>
+</div>
+
+</div>
+
+</form>
+
+</div>
+<div class="panel-footer">
+    <div class="btn-group">
+        <button type="submit" class="btn" ng-click="graduationEdit.submit()" ng-class="{disabled : editForm.$invalid,'btn-success' : editForm.$valid,'btn-danger' : editForm.$invalid}">إرسال</button>
+        <button class="btn btn-default" ng-click="graduationEdit.cancel()">إلغاء</button>
+    </div>
+</div>
 </div>

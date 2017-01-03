@@ -16,31 +16,40 @@ import mobileTemplate from './mobile.html';
 Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 class BirthEdit {
-    constructor($scope,$reactive,$rootScope,$stateParams,$location) {
+    constructor($scope, $reactive, $stateParams, $location,$timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
-        vm.query = {_id : $stateParams.id};
-        //subscribe to naissance schema
+
         Tracker.autorun(() => {
-            Meteor.subscribe('naissance', vm.getReactively('query'));
+            vm.user = (Meteor.user() || {}).profile;
+            if ((vm.user || {}).mask) {
+                $timeout(() => {
+                    $scope.$apply(function () {
+                    });
+                }, 100)
+            }
         })
-        vm.birth = Naissance.find({}).collection._docs._map[$stateParams.id];    
+        //subscribe to naissance schema
+
+        Meteor.subscribe('naissance');
+
+        vm.birth = Naissance.findOne({ _id: $stateParams.id });
         vm.submit = function () {
-            var x = Naissance.update({_id:vm.birth._id},{ 
+            var x = Naissance.update({ _id: vm.birth._id }, {
                 $set: {
-                    nom:vm.birth.nom,
-                    prenom:vm.birth.prenom,
-                    nomPere:vm.birth.nomPere,
-                    prenomPere:vm.birth.prenomPere,
-                    nomMere:vm.birth.nomMere,
-                    prenomMere:vm.birth.prenomMere,
-                    date:vm.birth.date,
-                    adresse:vm.birth.adresse,
-                    phoneNumber:vm.birth.phoneNumber,
-                    pediatrician:vm.birth.pediatrician,
-                    hospital:vm.birth.hospital,
-                    status:'progress'
+                    nom: vm.birth.nom,
+                    prenom: vm.birth.prenom,
+                    nomPere: vm.birth.nomPere,
+                    prenomPere: vm.birth.prenomPere,
+                    nomMere: vm.birth.nomMere,
+                    prenomMere: vm.birth.prenomMere,
+                    date: vm.birth.date,
+                    adresse: vm.birth.adresse,
+                    phoneNumber: vm.birth.phoneNumber,
+                    pediatrician: vm.birth.pediatrician,
+                    hospital: vm.birth.hospital,
+                    status: 'progress'
                 }
             });
             $location.path("/birth/list");
@@ -49,12 +58,12 @@ class BirthEdit {
 
         vm.cancel = function () {
             $location.path("/birth/list");
-        }  
+        }
     }
 }
 
 const name = 'birthEdit';
-const template = Meteor.isCordova ? mobileTemplate:webTemplate;
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 //create a module
 export default angular.module(name, [
     angularMeteor,
@@ -74,11 +83,17 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<birth-edit></birth-edit>',
             //to determine when this component should be routed 
             resolve: {
-                currentUser($q,$window) {
-                    if (Meteor.user() === null) {
-                        $window.location.href = '/login';
+                currentUser($q, $window) {
+                    if (Meteor.userId()) {
+                        Tracker.autorun(() => {
+                            if (Meteor.user() && Meteor.user().profile.mask != "010") {
+                                $window.location.href = "/home"
+                            } else {
+
+                            }
+                        })
                     } else {
-                        return $q.resolve();
+                        $window.location.href = "/login"
                     }
                 }
             }

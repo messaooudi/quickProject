@@ -1,6 +1,6 @@
 <div id="drawer" ng-class="{slidein : drawer.state,slideout : !drawer.state}">
 
-	<img ng-src="http://placehold.it/350x250" class="img-responsive">
+	<img ng-src="http://placehold.it/350x250" ng-click="drawer.toggle()" ui-sref="home" class="img-responsive">
 	<div>
 		<ul class="list-group">
 			<a class="list-group-item" ng-click="drawer.toggle()" ui-sref="birtharchive">Naissance archive</a>

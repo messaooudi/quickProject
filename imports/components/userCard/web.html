@@ -5,7 +5,7 @@
 <div class="card-content">
     <div ng-if="userCard.updateButton.mask=='001'">
         <p><i class="glyphicon glyphicon-user"></i> {{userCard.data.profile.firstName}} {{userCard.data.profile.lastName}}</p>
-        <p ng-if="userCard.data.profile.phone"><i class="glyphicon glyphicon-phone"></i> 0{{userCard.data.profile.phone}}</p>
+        <p ng-if="userCard.data.profile.phone"><i class="glyphicon glyphicon-phone"></i> {{userCard.data.profile.phone}}</p>
         <p ng-if="userCard.data.profile.address"><i class="glyphicon glyphicon-home"></i> {{userCard.data.profile.address}}</p>
     </div>
     <div ng-if="userCard.updateButton.mask=='010'">
@@ -33,7 +33,11 @@
             <div class="form-group" ng-class="{ 'has-error': signupform.phone.$touched && signupform.phone.$invalid}">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input type="number" class="form-control" name="phone" placeholder="Téléphone" ng-model='userCard.data.profile.phone'>
+                    <input type="text" class="form-control" name="phone" placeholder="Téléphone" ng-pattern="/^\d{10}$/" ng-model='userCard.data.profile.phone'
+                        required>
+                </div>
+                <div class="help-block" ng-messages="signupform.phone.$error" ng-if="signupform.phone.$touched">
+                    <p ng-if="signupform.phone.$error.required">Téléphone obligatoire.</p>
                 </div>
             </div>
 
@@ -55,9 +59,10 @@
     <a class="btn btn-danger btn-outline" ng-if="userCard.removeButton._show&&userCard.deleteTimer<5" ng-click="userCard.submitRemove()">Confirmer! {{userCard.deleteTimer}}</a>
     <a class="btn btn-success btn-outline" ng-if="userCard.updateButton._show&&userCard.updateButton.mask == '001'" ng-click="userCard.update()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
     <a class="btn btn-warning btn-outline" ng-if="userCard.updateButton._show&&userCard.updateButton.mask == '010'" ng-click="userCard.cancelUpdate()"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
-    <a class="btn btn-success btn-outline" ng-disabled="userCard.submitInProgress" ng-if="userCard.updateButton._show&&userCard.updateButton.mask == '010'" ng-click="userCard.confirmUpdate()">
+    <a class="btn btn-success btn-outline" ng-disabled="userCard.submitInProgress" ng-if="userCard.updateButton._show&&userCard.updateButton.mask == '010'"
+        ng-click="userCard.confirmUpdate()">
         <span ng-if="!userCard.submitInProgress" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        <span ng-if="userCard.submitInProgress"  class=" glyphicon glyphicon-refresh
+        <span ng-if="userCard.submitInProgress" class=" glyphicon glyphicon-refresh
             glyphicon-refresh-animate "></span>
     </a>
 </div>

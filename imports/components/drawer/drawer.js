@@ -22,11 +22,7 @@ class Drawer {
         $reactive(this).attach($scope);
         
         var vm = this;
-        vm.user = {
-            profile:{
-                mask : '001'
-            }
-        }
+
         Tracker.autorun(() => {
             vm.user = (Meteor.user() || {}).profile;
             if (vm.user) {

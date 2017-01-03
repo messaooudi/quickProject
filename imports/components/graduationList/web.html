@@ -2,24 +2,37 @@
     <div class="panel panel-warning">
         <div class="panel-heading clearfix">
             <div class="panel-title">
-                En cours de traitements <span class="label label-warning">{{(graduationList.graduation | filter : {status : 'progress'}).length}}</span>
-                <button class=" btn btn-success btn-outline pull-right" ng-click="graduationList.pdfPrint(graduationList.graduation | filter : {status : 'progress'})"><span  title="Imprimer" class="glyphicon glyphicon-print"></span></button>
+                في طور الإنجاز <span class="label label-warning">{{(graduationList.graduation | filter : {status : 'progress'}).length}}</span>
+                <button class=" btn btn-success btn-outline pull-right" ng-disabled="(graduationList.graduation | filter : {status : 'progress'}).length==0" ng-click="graduationList.pdfPrint(graduationList.graduation | filter : {status : 'progress'})">
+                    <span ng-if="graduationList.printTimer == 5" title="Imprimer" class="glyphicon glyphicon-print"></span>
+                    <span ng-if="graduationList.printTimer < 5">Confirmer ! {{graduationList.printTimer}}</span>
+                </button>
             </div>
         </div>
         <div class="panel-body">
+            <center ng-if="(graduationList.graduation | filter : {status : 'progress'}).length == 0">
+                <p>
+                    لا يوجد أي حالات جديدة
+                </p>
+            </center>
             <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'progress'} | orderBy : 'date'"
-                        data="item" user="graduationList.user"></graduation-card>
+                data="item" user="graduationList.user"></graduation-card>
         </div>
     </div>
 
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Nouveau <span class="label label-info">{{(graduationList.graduation | filter : {status : 'new'}).length}}</span></h3>
+            <h3 class="panel-title">حالات جديدة <span class="label label-info">{{(graduationList.graduation | filter : {status : 'new'}).length}}</span></h3>
         </div>
         <div class="panel-body">
-            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'new'} | orderBy : 'date'" data="item"
-                        user="graduationList.user"></graduation-card>
+            <center ng-if="(graduationList.graduation | filter : {status : 'new'}).length == 0">
+                <p>
+                    لا يوجد أي حالات جديدة
+                </p>
+            </center>
+            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'new'} | orderBy : 'date'"
+                data="item" user="graduationList.user"></graduation-card>
         </div>
     </div>
 </div>

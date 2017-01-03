@@ -29,15 +29,41 @@ import { Naissance } from '../../database/naissance';
 
 
 class BirthList {
-    constructor($scope, $reactive, $timeout) {
+    constructor($scope, $reactive, $timeout, $interval) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
+
+        vm.intervalTimer;
+        vm.printTimer = 5;
+
+
         vm.pdfPrint = function (data) {
-            var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, data));
-            w.print();
-            w.close();
+            if (vm.printTimer < 5) {
+                var w = window.open();
+                w.document.write(Mustache.to_html(pdfTemplate, data));
+                w.print();
+                w.close();
+                Meteor.call('_doneBirthCard', function (error, success) {
+                    if (error) {
+                        console.log('error', error);
+                    }
+                    if (success) {
+
+                    }
+                });
+                vm.printTimer = 5;
+                $interval.cancel(vm.intervalTimer);
+            } else {
+                vm.printTimer = 4;
+                vm.intervalTimer = $interval(() => {
+                    vm.printTimer--;
+                    if (vm.printTimer == 0) {
+                        $interval.cancel(vm.intervalTimer);
+                        vm.printTimer = 5;
+                    }
+                }, 1000)
+            }
         }
 
         Tracker.autorun(() => {
@@ -106,7 +132,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             //to determine whene this component should be routed 
             resolve: {
                 currentUser($q, $window) {
-                    if (Meteor.userId() === null) {
+                    if (!Meteor.userId()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();

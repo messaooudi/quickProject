@@ -1,124 +1,129 @@
-<div class="panel panel-default" ng-init="show_more=false">
+<div class="panel panel-default" ng-init="show_more=false" ng-if="birthEdit.user.mask=='010'">
     <div class="panel-heading">:تعديل الولادة</div>
     <div class="panel-body">
         <form name="editForm" class="form-horizontal">
 
+
             <div class="form-group" ng-class="{ 'has-error': editForm.champ1.$touched && editForm.champ1.$invalid}">
-                <label class="control-label col-sm-4" for="name" style="float:right">:الاسم العائلي</label>
-                <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.nom" required autofocus>
-                    <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
-                        <p ng-if="editForm.champ1.$error.required">!الاسم ضروري</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ2.$touched && editForm.champ2.$invalid}">
-                <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
-                <div class="col-sm-8">
-                    <input name="champ2" type="text" class="form-control" ng-model="birthEdit.birth.prenom" required>
-                    <div class="help-block" ng-messages="editForm.champ2.$error" ng-if="editForm.champ2.$touched">
-                        <p ng-if="editForm.champ2.$error.required">!الاسم ضروري</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ3.$touched && editForm.champ3.$invalid}">
-                <label class="control-label col-sm-4" for="nomPere" style="float:right"> : الاسم العائلي للأب</label>
-                <div class="col-sm-8">
-                    <input name="champ3" type="text" class="form-control" ng-model="birthEdit.birth.nomPere" required>
-                    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ3.$touched">
-                        <p ng-if="editForm.champ3.$error.required">!الاسم ضروري</p>
-                    </div>
-                </div>
-            </div>
+                <label class="control-label col-sm-4" for="prenom" style="float:right">:الاسم العائلي</label>
+<div class="col-sm-8">
+    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.nom" required>
+    <div class="help-block" ng-messages="editForm.champ1.$error" ng-if="editForm.champ1.$touched">
+        <p ng-if="editForm.champ1.$error.required">!الاسم ضروري</p>
+    </div>
+</div>
+</div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
-                <label class="control-label col-sm-4" for="prenomPere" style="float:right">:الاسم الشخصي للأب</label>
-                <div class="col-sm-8">
-                    <input name="champ4" type="text" class="form-control" ng-model="birthEdit.birth.prenomPere" required>
-                    <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
-                          <p ng-if="editForm.champ4.$error.required">!الاسم ضروري</p>
-                     </div>
-                </div>
-            </div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ2.$touched && editForm.champ2.$invalid}">
+    <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
+<div class="col-sm-8">
+    <input name="champ2" type="text" class="form-control" ng-model="birthEdit.birth.prenom" required>
+    <div class="help-block" ng-messages="editForm.champ2.$error" ng-if="editForm.champ2.$touched">
+        <p ng-if="editForm.champ2.$error.required">!الاسم ضروري</p>
+    </div>
+</div>
+</div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ3.$touched && editForm.champ3.$invalid}">
+    <label class="control-label col-sm-4" for="nomPere" style="float:right"> : الاسم العائلي للأب</label>
+<div class="col-sm-8">
+    <input name="champ3" type="text" class="form-control" ng-model="birthEdit.birth.nomPere" required>
+    <div class="help-block" ng-messages="editForm.champ3.$error" ng-if="editForm.champ3.$touched">
+        <p ng-if="editForm.champ3.$error.required">!الاسم ضروري</p>
+    </div>
+</div>
+</div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ5.$touched && editForm.champ5.$invalid}">
-                <label class="control-label col-sm-4" for="nomMere" style="float:right">: الاسم العائلي للأم</label>
-                <div class="col-sm-8">
-                    <input name="champ5" type="text" class="form-control" ng-model="birthEdit.birth.nomMere" required>
-                    <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ5.$touched">
-                        <p ng-if="editForm.champ5.$error.required"> !الاسم ضروري</p>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ6.$touched && editForm.champ6.$invalid}">
-                <label class="control-label col-sm-4" for="prenomMere" style="float:right"> :الاسم الشخصي للأم</label>
-                <div class="col-sm-8">
-                    <input name="champ6" type="text" class="form-control" ng-model="birthEdit.birth.prenomMere" required>
-                    <div class="help-block" ng-messages="editForm.champ6.$error" ng-if="editForm.champ6.$touched">
-                        <p ng-if="editForm.champ6.$error.required"> !الاسم ضروري</p>
-                     </div>
-                </div>
-            </div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ4.$touched && editForm.champ4.$invalid}">
+    <label class="control-label col-sm-4" for="prenomPere" style="float:right">:الاسم الشخصي للأب</label>
+<div class="col-sm-8">
+    <input name="champ4" type="text" class="form-control" ng-model="birthEdit.birth.prenomPere" required>
+    <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ4.$touched">
+        <p ng-if="editForm.champ4.$error.required">!الاسم ضروري</p>
+    </div>
+</div>
+</div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid }">
-                <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
-                <div class="col-sm-8">
-                    <input name="champ7" type="text" class="form-control" ng-model="birthEdit.birth.phoneNumber">
-                </div>
-            </div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ5.$touched && editForm.champ5.$invalid}">
+    <label class="control-label col-sm-4" for="nomMere" style="float:right">: الاسم العائلي للأم</label>
+<div class="col-sm-8">
+    <input name="champ5" type="text" class="form-control" ng-model="birthEdit.birth.nomMere">
+    <div class="help-block" ng-messages="editForm.champ4.$error" ng-if="editForm.champ5.$touched">
+        <p ng-if="editForm.champ5.$error.required"> !الاسم ضروري</p>
+    </div>
+</div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ8.$touched && editForm.champ8.$invalid}">
-                <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ الولادة</label>
-                <div class="col-sm-8">
-                    <input name="champ8" type="date" class="form-control" ng-model="birthEdit.birth.date" required>
-                    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ8.$touched">
-                        <p ng-if="editForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
-                    </div>
-                </div>
-            </div>
+</div>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ6.$touched && editForm.champ6.$invalid}">
+    <label class="control-label col-sm-4" for="prenomMere" style="float:right"> :الاسم الشخصي للأم</label>
+<div class="col-sm-8">
+    <input name="champ6" type="text" class="form-control" ng-model="birthEdit.birth.prenomMere">
+    <div class="help-block" ng-messages="editForm.champ6.$error" ng-if="editForm.champ6.$touched">
+        <p ng-if="editForm.champ6.$error.required"> !الاسم ضروري</p>
+    </div>
+</div>
+</div>
 
-            <div class="form-group" ng-class="{ 'has-error': editForm.champ9.$touched && editForm.champ9.$invalid}">
+<div class="form-group" ng-class="{ 'has-error': editForm.champ7.$touched && editForm.champ7.$invalid }">
+    <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
+<div class="col-sm-8">
+    <input name="champ7" type="text" class="form-control" ng-pattern="/^\d{10}$/" ng-model="birthEdit.birth.phoneNumber">
+</div>
+<div class="help-block" ng-messages="editForm.champ7.$error" ng-if="editForm.champ7.$touched">
+    <p ng-if="editForm.champ7.$error.pattern">رقم الهاتف غير صحيح</p>
+</div>
+</div>
 
-                <div class="col-sm-8">
-                    <textarea name="champ9" type="text" class="form-control" ng-model="birthEdit.birth.adresse" required>
+<div class="form-group" ng-class="{ 'has-error': editForm.champ8.$touched && editForm.champ8.$invalid}">
+    <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ الولادة</label>
+<div class="col-sm-8">
+    <input name="champ8" type="date" class="form-control" ng-model="birthEdit.birth.date" required>
+    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ8.$touched">
+        <p ng-if="editForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
+    </div>
+</div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': editForm.champ9.$touched && editForm.champ9.$invalid}">
+
+    <div class="col-sm-8">
+        <textarea name="champ9" type="text" class="form-control" ng-model="birthEdit.birth.adresse" required>
                     </textarea>
-                </div>
-                <label class="control-label col-sm-4" for="date">:العنوان</label>
-                <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ9.$touched">
-                        <p ng-if="editForm.champ9.$error.required"> !الاسم ضروري</p>
-                    <label class="control-label col-sm-4" for="date" style="float:right">:العنوان</label>
-                    <div class="col-sm-8"class="form-group">
-                        <textarea name="champ9" type="text" class="form-control" ng-model="birthEdit.birth.adresse" required></textarea>
-                        <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ9.$touched">
-                            <p ng-if="editForm.champ9.$error.required"> !ملئ الخانة ضروري</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <a href="#" class="col-sm-offset-11 col-xs-offset-11" ng-show="!show_more" ng-click="show_more=true" title="المزيد من المعلومات" ><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="#" class="col-sm-offset-11 col-xs-offset-11" ng-show="show_more" ng-click="show_more=false" title="إخفاء المعلومات"><span class="glyphicon glyphicon-minus"></span></a>
-            </div>
-            <div ng-show="show_more" class="form-group">
-               <label class="control-label col-sm-4" for="name" style="float:right">:الممرض</label>
-                <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.pediatrician">
-                </div>
-            </div>
-            <div ng-show="show_more" class="form-group">
-               <label class="control-label col-sm-4" for="name" style="float:right">:المستشفى</label>
-                <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.hospital">
-                </div>
-            </div>
-        </form>
+    </div>
+    <label class="control-label col-sm-4" for="date">:العنوان</label>
+    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ9.$touched">
+        <p ng-if="editForm.champ9.$error.required"> !الاسم ضروري</p>
+        <label class="control-label col-sm-4" for="date" style="float:right">:العنوان</label>
+<div class="col-sm-8" class="form-group">
+    <textarea name="champ9" type="text" class="form-control" ng-model="birthEdit.birth.adresse" required></textarea>
+    <div class="help-block" ng-messages="editForm.champ8.$error" ng-if="editForm.champ9.$touched">
+        <p ng-if="editForm.champ9.$error.required"> !ملئ الخانة ضروري</p>
+    </div>
+</div>
+</div>
+</div>
+<div class="form-group">
+    <a href="#" class="col-sm-offset-11 col-xs-offset-11" ng-show="!show_more" ng-click="show_more=true" title="المزيد من المعلومات"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="#" class="col-sm-offset-11 col-xs-offset-11" ng-show="show_more" ng-click="show_more=false" title="إخفاء المعلومات"><span class="glyphicon glyphicon-minus"></span></a>
+</div>
+<div ng-show="show_more" class="form-group">
+    <label class="control-label col-sm-4" for="name" style="float:right">:الممرض</label>
+<div class="col-sm-8">
+    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.pediatrician">
+</div>
+</div>
+<div ng-show="show_more" class="form-group">
+    <label class="control-label col-sm-4" for="name" style="float:right">:المستشفى</label>
+<div class="col-sm-8">
+    <input name="champ1" type="text" class="form-control" ng-model="birthEdit.birth.hospital">
+</div>
+</div>
+</form>
 
+</div>
+<div class="panel-footer">
+    <div class="btn-group">
+        <button type="submit" class="btn" ng-click="birthEdit.submit()" ng-disabled="editForm.$invalid" ng-class="{disabled : editForm.$invalid,'btn-success' : editForm.$valid,'btn-danger' : editForm.$invalid}">إرسال</button>
+        <button class="btn btn-default" ng-click="birthEdit.cancel()">إلغاء</button>
     </div>
-    <div class="panel-footer">
-        <div class="btn-group">
-            <button type="submit" class="btn" ng-click="birthEdit.submit()" ng-disabled="editForm.$invalid" ng-class="{disabled : editForm.$invalid,'btn-success' : editForm.$valid,'btn-danger' : editForm.$invalid}">إرسال</button>
-            <button class="btn btn-default" ng-click="birthEdit.cancel()">إلغاء</button>
-        </div>
-    </div>
+</div>
 </div>

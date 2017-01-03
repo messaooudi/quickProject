@@ -5,9 +5,6 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 
 
-//in order to use any schema u should import its js file
-//import { databaseExemple } from '../../database/template';
-
 
 //import html and css files of this component
 import webTemplate from './web.html';
@@ -75,7 +72,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             //to determine whene this component should be routed
             resolve: {
                 currentUser($q,$window) {
-                    if (Meteor.user() === null) {
+                    if (!Meteor.userId()) {
                         $window.location.href = '/login';
                     } else {
                         return $q.resolve();

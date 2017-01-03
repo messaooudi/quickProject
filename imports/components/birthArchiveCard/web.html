@@ -1,6 +1,3 @@
-<div class="card-image">
-    <img class="img-responsive" src="">
-</div>
 <div class="card-content">
     <table class="table">
         <tbody>
@@ -46,10 +43,19 @@
             </tr>
         </tbody>
     </table>
+    <div ng-if="birthArchiveCard.user.mask == '010'" style="text-align: center">
+	<hr>
+		<span style="float: right">المصدر</span>
+		</br>
+		{{birthArchiveCard.createdBy.firstName}}  {{birthArchiveCard.createdBy.lastName}}
+		</br>
+		{{birthArchiveCard.createdBy.phone}}
+	<hr>
+	</div>
 </div>
 <div ng-if="birthArchiveCard.user.mask == '010'" class="card-action">
     <a class="btn btn-success btn-outline" ng-click="birthArchiveCard.print()">
         <span title="Imprimer" class="glyphicon glyphicon-print"></span>
     </a>
-    <span class="label pull-right" ng-class="{'label-info' : birthArchiveCard.data.status=='new','label-warning' : birthArchiveCard.data.status=='progress','label-default' : birthArchiveCard.data.status=='done'}">{{birthArchiveCard.data.status=='new'?'nouveau':birthArchiveCard.data.status=='progress'?'En cours':'Traiter'}} <span class="glyphicon glyphicon-{{birthArchiveCard.data.status=='new'?'asterisk':birthArchiveCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
+    <span class="label pull-right" ng-class="{'label-info' : birthArchiveCard.data.status=='new','label-warning' : birthArchiveCard.data.status=='progress','label-default' : birthArchiveCard.data.status=='done'}">{{birthArchiveCard.data.status=='new'?'nouveau':birthArchiveCard.data.status=='progress'?'En cours':'Traité'}} <span class="glyphicon glyphicon-{{birthArchiveCard.data.status=='new'?'asterisk':birthArchiveCard.data.status=='progress'?'pencil':'level-up'}}" aria-hidden="true"></span></span>
 </div>
