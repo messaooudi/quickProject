@@ -92,13 +92,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
                 function() {
                     if (Meteor.userId()) {
                         var user = Meteor.users.find({ _id: Meteor.userId() });
-                        var stop = false;
-                        while(!stop){
-                            setTimeout(()=>{
-                                stop = true;
-                            },500)
-                        }
-                        alert(user.profile)
+                        
                     }
                 }
             }
