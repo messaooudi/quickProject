@@ -67,7 +67,10 @@
                 <label class="control-label col-sm-4" for="phoneNumber" >:رقم الهاتف</label>
                 <div class="col-sm-8">
 
-                    <input name="champ7" type="text" class="form-control" ng-model="birthAdd.naissance.phoneNumber">
+                    <input name="champ7" type="text" class="form-control" ng-pattern="/^\d{0,10}(\.\d{1,10})?$/" ng-model="birthAdd.naissance.phoneNumber">
+                    <div class="help-block" ng-messages="addForm.champ7.$error" ng-if="addForm.champ7.$touched">
+                        <p ng-if="addForm.champ7.$error.pattern">رقم الهاتف غير صحيح</p>
+                    </div>
                 </div>
             </div>
 
