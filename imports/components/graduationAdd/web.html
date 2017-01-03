@@ -34,7 +34,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ4.$touched && addForm.champ4.$invalid}">
                 <label class="control-label col-sm-4" for="phoneNumber" >:رقم الهاتف</label>
                 <div class="col-sm-8">
-                    <input name="champ4" type="text" class="form-control" ng-pattern="/^\d{0,10}(\.\d{1,10})?$/" ng-model="graduationAdd.graduation.phoneNumber" required>
+                    <input name="champ4" type="text" class="form-control" ng-pattern="/^\d{10}(\.\d{1,10})?$/" ng-model="graduationAdd.graduation.phoneNumber" required>
                     <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ4.$touched">
                         <p ng-if="addForm.champ4.$error.required"> !ملئ الخانة ضروري</p>
                         <p ng-if="addForm.champ4.$error.pattern">رقم الهاتف غير صحيح</p>
