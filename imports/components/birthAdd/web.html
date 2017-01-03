@@ -4,9 +4,9 @@
         <form name="addForm" class="form-horizontal">
 
             <div class="form-group" ng-class="{ 'has-error': addForm.champ1.$touched && addForm.champ1.$invalid}">
-                <label class="control-label col-sm-4" for="name" style="float:right">:الاسم العائلي</label>
+                <label class="control-label col-sm-4" for="name" style="float:right ">:الاسم العائلي</label>
                 <div class="col-sm-8">
-                    <input name="champ1" type="text" class="form-control" ng-model="birthAdd.naissance.nom" required autofocus>
+                    <input name="champ1" type="text" style="direction:rtl" class="form-control" ng-model="birthAdd.naissance.nom" required autofocus>
                     <div class="help-block" ng-messages="addForm.champ1.$error" ng-if="addForm.champ1.$touched">
                         <p ng-if="addForm.champ1.$error.required">!الاسم العائلي ضروري </p>
                     </div>
@@ -16,7 +16,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ2.$touched && addForm.champ2.$invalid}">
                 <label class="control-label col-sm-4" for="prenom" style="float:right">: الاسم الشخصي </label>
                 <div class="col-sm-8">
-                    <input name="champ2" type="text" class="form-control" ng-model="birthAdd.naissance.prenom" required>
+                    <input name="champ2" type="text" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.prenom" required>
                     <div class="help-block" ng-messages="addForm.champ2.$error" ng-if="addForm.champ2.$touched">
                         <p ng-if="addForm.champ2.$error.required">!الاسم الشخصي ضروري</p>
                     </div>
@@ -26,7 +26,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ3.$touched && addForm.champ3.$invalid}">
                 <label class="control-label col-sm-4" for="nomPere" style="float:right"> : الاسم العائلي للأب</label>
                 <div class="col-sm-8">
-                    <input name="champ3" type="text" class="form-control" ng-model="birthAdd.naissance.nomPere" required>
+                    <input name="champ3" type="text" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.nomPere" required>
                     <div class="help-block" ng-messages="addForm.champ3.$error" ng-if="addForm.champ3.$touched">
                         <p ng-if="addForm.champ3.$error.required">!الاسم ضروري</p>
                     </div>
@@ -36,7 +36,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ4.$touched && addForm.champ4.$invalid}">
                 <label class="control-label col-sm-4" for="prenomPere" style="float:right">:الاسم الشخصي للأب</label>
                 <div class="col-sm-8">
-                    <input name="champ4" type="text" class="form-control" ng-model="birthAdd.naissance.prenomPere" required>
+                    <input name="champ4" type="text" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.prenomPere" required>
                     <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ4.$touched">
                           <p ng-if="addForm.champ4.$error.required">!الاسم ضروري</p>
                      </div>
@@ -46,7 +46,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ5.$touched && addForm.champ5.$invalid}">
                 <label class="control-label col-sm-4" for="nomMere" style="float:right">: الاسم العائلي للأم</label>
                 <div class="col-sm-8">
-                    <input name="champ5" type="text" class="form-control" ng-model="birthAdd.naissance.nomMere">
+                    <input name="champ5" type="text" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.nomMere">
                     <div class="help-block" ng-messages="addForm.champ4.$error" ng-if="addForm.champ5.$touched">
                         <p ng-if="addForm.champ5.$error.required"> !الاسم ضروري</p>
                     </div>
@@ -56,7 +56,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ6.$touched && addForm.champ6.$invalid}">
                 <label class="control-label col-sm-4" for="prenomMere" style="float:right"> :الاسم الشخصي للأم</label>
                 <div class="col-sm-8">
-                    <input name="champ6" type="text" class="form-control" ng-model="birthAdd.naissance.prenomMere">
+                    <input name="champ6" type="text" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.prenomMere">
                     <div class="help-block" ng-messages="addForm.champ6.$error" ng-if="addForm.champ6.$touched">
                         <p ng-if="addForm.champ6.$error.required"> !الاسم ضروري</p>
                      </div>
@@ -66,7 +66,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ7.$touched && addForm.champ7.$invalid}">
                 <label class="control-label col-sm-4" for="phoneNumber" style="float:right">:رقم الهاتف</label>
                 <div class="col-sm-8">
-                    <input name="champ7" type="number" class="form-control" ng-model="birthAdd.naissance.phoneNumber">
+                    <input name="champ7" type="number" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.phoneNumber">
                     <div class="help-block" ng-messages="addForm.champ7.$error" ng-if="addForm.champ7.$touched">
                         <p ng-if="addForm.champ7.$error.required"> !ملئ الخانة ضروري</p>
                     </div>
@@ -76,7 +76,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ8.$touched && addForm.champ8.$invalid}">
                 <label class="control-label col-sm-4" for="date" style="float:right">: تاريخ الولادة</label>
                 <div class="col-sm-8">
-                    <input name="champ8" type="date" class="form-control" ng-model="birthAdd.naissance.date" required>
+                    <input name="champ8" type="date" class="form-control" style="direction:rtl" ng-model="birthAdd.naissance.date" required>
                     <div class="help-block" ng-messages="addForm.champ8.$error" ng-if="addForm.champ8.$touched">
                         <p ng-if="addForm.champ8.$error.required"> !ملئ الخانة ضروري</p>
                     </div>
@@ -86,7 +86,7 @@
             <div class="form-group" ng-class="{ 'has-error': addForm.champ9.$touched && addForm.champ9.$invalid}">
                 <label class="control-label col-sm-4" for="date" style="float:right">:العنوان</label>
                 <div class="col-sm-8"class="form-group">
-                    <textarea name="champ9" type="text" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>
+                    <textarea name="champ9" type="text" style="direction:rtl" class="form-control" ng-model="birthAdd.naissance.adresse" required></textarea>
                     <div class="help-block" ng-messages="addForm.champ8.$error" ng-if="addForm.champ9.$touched">
                         <p ng-if="addForm.champ9.$error.required"> ! العنوان ضروري</p>
                     </div>
