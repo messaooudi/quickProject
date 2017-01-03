@@ -7,3 +7,13 @@ death-add{
     text-align: center;
     overflow: auto;
 }
+death-add input, textarea{
+    direction:rtl;
+}
+death-add .form-group label{
+    float:right;
+}
+
+death-add .form-group label.radio-inline{
+    float:initial;
+}
