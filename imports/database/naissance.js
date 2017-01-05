@@ -25,9 +25,10 @@ export const Naissance = new Ground.Collection('naissance', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('naissance', function (selector) {
+    Meteor.publish('naissance', function (selector, options) {
+        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
-            return Naissance.find({});
+            return Naissance.find(selector || {}, options || { limit: 30 });
         else
             return Naissance.find({ createdBy: this.userId })
     });
@@ -40,9 +41,9 @@ Naissance.allow({
     },
 
     update(userId, naissance, fields, modifier) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     },
     remove(userId, naissance) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     }
 });

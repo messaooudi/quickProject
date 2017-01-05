@@ -1,4 +1,4 @@
-<div class="card-content">
+<div class="card-content" ng-init="show_more=false">
     <table class="table">
         <tbody>
             <tr>
@@ -43,6 +43,21 @@
             </tr>
         </tbody>
     </table>
+
+    <a href="#" ng-click="show_more=!show_more" title="المزيد من المعلومات"><span class="glyphicon" ng-class="{'glyphicon-plus':!show_more,'glyphicon-minus':show_more}"></span></a>
+	<table class="table" ng-if="show_more">
+		<tbody>
+			<tr>
+				<td>{{birthArchiveCard.data.pediatrician}}</td>
+				<td>الممرض</td>
+			</tr>
+			<tr>
+				<td>{{birthArchiveCard.data.hospital}}</td>
+				<td>المستشفى</td>
+			</tr>
+		</tbody>
+	</table>
+
     <div ng-if="birthArchiveCard.user.mask == '010'" style="text-align: center">
 	<hr>
 		<span style="float: right">المصدر</span>

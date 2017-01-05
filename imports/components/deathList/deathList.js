@@ -75,7 +75,7 @@ class DeathList {
         })
 
         //subscribe to deces schema
-        Meteor.subscribe('deces', {});
+        Meteor.subscribe('deces', {},{});
 
         vm.helpers({
             deces() {

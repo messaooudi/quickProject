@@ -43,15 +43,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<div ng-if="birthCard.user.mask == '010'" style="text-align: center">
-	<hr>
-		<span style="float: right">المصدر</span>
-		</br>
-		{{birthCard.createdBy.firstName}}  {{birthCard.createdBy.lastName}}
-		</br>
-		{{birthCard.createdBy.phone}}
-	<hr>
-	</div>
 	<a href="#" ng-click="show_more=!show_more" title="المزيد من المعلومات"><span class="glyphicon" ng-class="{'glyphicon-plus':!show_more,'glyphicon-minus':show_more}"></span></a>
 	<table class="table" ng-if="show_more">
 		<tbody>
@@ -65,6 +56,15 @@
 			</tr>
 		</tbody>
 	</table>
+	<div ng-if="birthCard.user.mask == '010'" style="text-align: center">
+		<hr>
+			<span style="float: right">المصدر</span>
+			</br>
+			{{birthCard.createdBy.firstName}}  {{birthCard.createdBy.lastName}}
+			</br>
+			{{birthCard.createdBy.phone}}
+		<hr>
+	</div>
 </div>
 
 <div ng-if="birthCard.user.mask == '010'" class="card-action">

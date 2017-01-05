@@ -35,7 +35,7 @@ class DeathArchive {
             }
         })
 
-        Meteor.subscribe('deces', {});
+        Meteor.subscribe('deces', {},{});
             
         vm.helpers({
             deces() {

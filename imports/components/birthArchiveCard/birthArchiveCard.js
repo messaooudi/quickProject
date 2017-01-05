@@ -23,7 +23,7 @@ class BirthArchiveCard {
 
         var vm = this;
 
-        Meteor.subscribe('militants', {});
+        Meteor.subscribe('militants',{});
         //print the birthCard
         vm.helpers({
             createdBy() {
@@ -36,7 +36,7 @@ class BirthArchiveCard {
 
         vm.pdfPrint = function () {
             var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate, vm.data));
+            w.document.write(Mustache.to_html(pdfTemplate,{}));
             w.print();
             w.close();
         }

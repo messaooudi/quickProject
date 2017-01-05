@@ -25,9 +25,9 @@ export const Graduation = new Mongo.Collection('graduation', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('graduation', function () {
+    Meteor.publish('graduation', function (selector,options) {
         if (Meteor.users.findOne({_id : this.userId}).profile.mask == "010")
-            return Graduation.find({});
+            return Graduation.find(selector||{},options||{limit : 30});
         else 
             return Graduation.find({createdBy : this.userId})
     });

@@ -9,6 +9,10 @@ import { Tracker } from 'meteor/tracker'
 //import { databaseExemple } from '../../database/template';
 
 
+import { Naissance } from '../../database/naissance';
+import { Deces } from '../../database/deces';
+import { Graduation } from '../../database/graduation';
+
 //import html and css files of this component
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
@@ -21,6 +25,29 @@ class UserCard {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
+
+        Meteor.subscribe('naissance', {});
+        Meteor.subscribe('deces', {});
+        Meteor.subscribe('graduation', {});
+
+        vm.helpers({
+            birthCount() {
+                if (vm.getReactively("data", true))
+                    return Naissance.find({ createdBy: vm.data._id }).count()
+            }
+        })
+        vm.helpers({
+            deathCount() {
+                if (vm.getReactively("data", true))
+                    return Deces.find({ createdBy: vm.data._id }).count()
+            }
+        })
+        vm.helpers({
+            graduationCount() {
+                if (vm.getReactively("data", true))
+                    return Graduation.find({ createdBy: vm.data._id }).count()
+            }
+        })
 
         vm.submitInProgress = false;
         var dataBackUp = {};

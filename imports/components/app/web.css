@@ -129,14 +129,7 @@ h3{
 
 
 ::-webkit-scrollbar {
-    width: 3px;
-}
- 
-::-webkit-scrollbar-track {
-    visibility: hidden;
-    box-shadow: inset 0 0 1px rgba(0,0,0,0.3); ;
-    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); 
-    border-radius: 2px;
+    width: 8px;
 }
  
 ::-webkit-scrollbar-thumb {
@@ -145,3 +138,11 @@ h3{
     box-shadow: inset 0 0 1px rgba(255, 171, 64, 0.3);
     -webkit-box-shadow: inset 0 0 1px rgba(255, 171, 64, 0.3);
 }
+
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 5px;
+    background-color: rgba(250, 201, 64, 1);
+    box-shadow: inset 0 0 3px rgba(255, 171, 64, 0.3);
+    -webkit-box-shadow: inset 0 0 3px rgba(255, 171, 64, 0.3);
+}
+

@@ -12,3 +12,7 @@ birth-archive .user-search{
     max-width: 300px;
     margin: auto;
 }
+
+#pagination{
+    margin-top:20px; 
+}

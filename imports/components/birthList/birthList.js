@@ -77,11 +77,11 @@ class BirthList {
         })
 
         //subscribe to naissance schema
-        Meteor.subscribe('naissance', {});
+        Meteor.subscribe('naissance', {status: { $ne: 'done' }},{limit : 10});
 
         vm.helpers({
             naissance() {
-                let query = Naissance.find({ status: { $ne: 'done' } });
+                let query = Naissance.find({});
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({

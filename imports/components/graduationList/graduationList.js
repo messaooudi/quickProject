@@ -75,7 +75,7 @@ class GraduationList {
             })
 
             //subscribe to graduation schema
-            Meteor.subscribe('graduation', {});
+            Meteor.subscribe('graduation', {},{});
 
             vm.helpers({
                 graduation() {

@@ -35,7 +35,7 @@ class GraduationArchive {
             }
         })
 
-        Meteor.subscribe('graduation', {});
+        Meteor.subscribe('graduation', {},{});
             
         vm.helpers({
             graduation() {

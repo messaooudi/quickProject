@@ -25,9 +25,9 @@ export const Deces = new Ground.Collection('deces', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('deces', function () {
+    Meteor.publish('deces', function (selector,options) {
         if (Meteor.users.findOne({_id : this.userId}).profile.mask == "010")
-            return Deces.find({});
+            return Deces.find(selector||{},options||{limit : 30});
         else 
             return Deces.find({createdBy : this.userId})
     });

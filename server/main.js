@@ -26,6 +26,20 @@ Meteor.startup(() => {
             }
         });
     }
+/*
+    for(var i=0;i<1000;i++){
+        Naissance.insert({
+            nom : "nom "+i,
+            prenom : "prenom "+i,
+            nomPere : "nomPere "+i,
+            prenomPere : "prenomPere "+i,
+            nomMere : "nomMere "+i,
+            prenomMere : "prenomMere "+i,
+            adress : "adress "+i,
+            createdBy : "hKHQKDP58x2CqtQz6",
+            status : "done"
+        })
+}*/
 
     try { fs.mkdirSync(projectPath + "generatedDocuments"); } catch (err) { }
     try { fs.mkdirSync(projectPath + "generatedDocuments/birth"); } catch (err) { }
@@ -37,6 +51,10 @@ Meteor.startup(() => {
     */
 
     Meteor.methods({
+
+        _naissanceCount: function(query){
+            return Naissance.find(query).count();
+        },
 
         _doneGradudationCard: function () {
             Graduation.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
