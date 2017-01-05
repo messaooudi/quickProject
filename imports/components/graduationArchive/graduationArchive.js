@@ -20,7 +20,7 @@ Meteor.isCordova ? require('./mobile.css') : require('./web.css');
 
 
 class GraduationArchive {
-    constructor($scope, $reactive,$timeout) {
+    constructor($scope, $reactive, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -35,11 +35,73 @@ class GraduationArchive {
             }
         })
 
-        Meteor.subscribe('graduation', {},{});
-            
+        vm.searchQuery = ""
+        vm.page = 1;
+        vm.count = 0;
+
+
+
+        Tracker.autorun(() => {
+            vm.page = 1;
+            var search = vm.getReactively("searchQuery");
+            var dateB = vm.getReactively("searchDate");
+            var dateA = new Date();
+            if (dateB) {
+                dateA.setDate(dateB.getDate() + 1)
+            }
+            var searchTable = {}
+            if (dateB) {
+                var searchTable = {
+                    $and: [
+                        {
+                            $or: [
+                                { nom: { $regex: search } },
+                                { prenom: { $regex: search } },
+                                { adresse: { $regex: search } },
+                                { nomEtabliss: { $regex: search } }
+                            ]
+                        },
+                        { date: { $gte: dateB } },
+                        { date: { $lte: dateA } }
+                    ]
+                }
+            } else {
+                var searchTable = {
+                    $or: [
+                        { nom: { $regex: search } },
+                        { prenom: { $regex: search } },
+                        { adresse: { $regex: search } },
+                        { nomEtabliss: { $regex: search } },
+                        {
+                            $and: [
+                                { date: { $gte: dateB } },
+                                { date: { $lte: dateA } }
+                            ]
+                        }
+                    ]
+
+                }
+            }
+
+            Meteor.call('_graduationCount', searchTable, function (err, data) {
+                vm.count = data;
+            })
+
+            Meteor.subscribe('graduation', searchTable, { skip: 10 * (vm.getReactively("page") - 1), limit: 10 });
+        })
+
+        vm.nextPage = function () {
+            vm.page++;
+        }
+
+        vm.previousPage = function () {
+            vm.page = vm.page > 1 ? vm.page - 1 : 1;
+        }
+
+
         vm.helpers({
             graduation() {
-                let query = Graduation.find({status : 'done'});
+                let query = Graduation.find({ status: 'done' });
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -93,7 +155,7 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
             template: '<graduation-archive></graduation-archive>',
             //to determine whene this component should be routed 
             resolve: {
-                currentUser($q,$window) {
+                currentUser($q, $window) {
                     if (!Meteor.user()) {
                         $window.location.href = '/login';
                     } else {

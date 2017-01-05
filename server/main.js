@@ -27,19 +27,20 @@ Meteor.startup(() => {
         });
     }
 /*
-    for(var i=0;i<1000;i++){
+    for (var i = 0; i < 24; i++) {
         Naissance.insert({
-            nom : "nom "+i,
-            prenom : "prenom "+i,
-            nomPere : "nomPere "+i,
-            prenomPere : "prenomPere "+i,
-            nomMere : "nomMere "+i,
-            prenomMere : "prenomMere "+i,
-            adress : "adress "+i,
-            createdBy : "hKHQKDP58x2CqtQz6",
-            status : "done"
+            nom: "nom " + i,
+            prenom: "prenom " + i,
+            nomPere: "nomPere " + i,
+            prenomPere: "prenomPere " + i,
+            nomMere: "nomMere " + i,
+            prenomMere: "prenomMere " + i,
+            adress: "adress " + i,
+            createdBy: "hKHQKDP58x2CqtQz6",
+            status: "progress"
         })
-}*/
+}
+*/
 
     try { fs.mkdirSync(projectPath + "generatedDocuments"); } catch (err) { }
     try { fs.mkdirSync(projectPath + "generatedDocuments/birth"); } catch (err) { }
@@ -51,19 +52,42 @@ Meteor.startup(() => {
     */
 
     Meteor.methods({
-
-        _naissanceCount: function(query){
+        _graduationNewCount: function (query) {
+            return Graduation.find(query).count();
+        },
+        _graduationProgCount: function (query) {
+            return Graduation.find(query).count();
+        },
+        _decesNewCount: function (query) {
+            return Deces.find(query).count();
+        },
+        _decesProgCount: function (query) {
+            return Deces.find(query).count();
+        },
+        _naissanceNewCount: function (query) {
             return Naissance.find(query).count();
         },
+        _naissanceProgCount: function (query) {
+            return Naissance.find(query).count();
+        },
+        _naissanceCount: function (query) {
+            return Naissance.find(query).count();
+        },
+        _decesCount: function (query) {
+            return Deces.find(query).count();
+        },
+        _graduationCount: function (query) {
+            return Graduation.find(query).count();
+        },
 
-        _doneGradudationCard: function () {
-            Graduation.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        _doneGradudationCard: function (ids) {
+            Graduation.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
         },
-        _doneBirthCard: function () {
-            Naissance.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        _doneBirthCard: function (ids) {
+            Naissance.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
         },
-        _doneDeathCard: function () {
-            Deces.update({ status: "progress" }, { $set: { status: "done" } },{multi:true})
+        _doneDeathCard: function (ids) {
+            Deces.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
         },
         // Declaring a method
         _createUser: function (user) {

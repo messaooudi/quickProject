@@ -31,6 +31,22 @@ if (Meteor.isServer) {
         else 
             return Deces.find({createdBy : this.userId})
     });
+
+        Meteor.publish('decesNew', function (options) {
+        console.log(options)
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Deces.find({ status: "new" }, options || { limit: 30 });
+        else
+            return Deces.find({ createdBy: this.userId })
+    });
+
+    Meteor.publish('decesProgress', function (options) {
+        console.log(options)
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Deces.find({ status: "progress" }, options || { limit: 30 });
+        else
+            return Deces.find({ createdBy: this.userId })
+    });
 }
 
 Deces.allow({

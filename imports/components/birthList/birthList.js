@@ -44,7 +44,11 @@ class BirthList {
                 w.document.write(Mustache.to_html(pdfTemplate, data));
                 w.print();
                 w.close();
-                Meteor.call('_doneBirthCard', function (error, success) {
+                var ids = [];
+                vm.naissanceProgress.forEach(function(n) {
+                    ids.push(n._id);
+                },)
+                Meteor.call('_doneBirthCard',ids,function (error, success) {
                     if (error) {
                         console.log('error', error);
                     }
@@ -76,12 +80,81 @@ class BirthList {
             }
         })
 
-        //subscribe to naissance schema
-        Meteor.subscribe('naissance', {status: { $ne: 'done' }},{limit : 10});
+
+        vm.pagiNew = {};
+        vm.pagiNew.page = 1;
+        vm.pagiNew.count = 0;
+
+        Tracker.autorun(() => {
+            Meteor.call('_naissanceNewCount', {status : "new"},function (err, data) {
+                vm.pagiNew.count = data;
+            })
+
+            Meteor.subscribe('naissanceNew', { skip: 10 * (vm.getReactively("pagiNew.page", true) - 1), limit: 10 });
+        })
+
+
+        vm.pagiNew.nextPage = function () {
+            vm.pagiNew.page++;
+        }
+
+        vm.pagiNew.previousPage = function () {
+            vm.pagiNew.page = vm.pagiNew.page > 1 ? vm.pagiNew.page - 1 : 1;
+        }
+
+
+        /****************************************************** */
+
+        vm.pagiProg = {};
+        vm.pagiProg.page = 1;
+        vm.pagiProg.count = 0;
+
+        Tracker.autorun(() => {
+            Meteor.call('_naissanceProgCount',{status : "progress"} ,function (err, data) {
+                vm.pagiProg.count = data;
+            })
+
+            Meteor.subscribe('naissanceProgress', { skip: 10 * (vm.getReactively("pagiProg.page") - 1), limit: 10 });
+        })
+
+        vm.pagiProg.nextPage = function () {
+            vm.pagiProg.page++;
+        }
+
+        vm.pagiProg.previousPage = function () {
+            vm.pagiProg.page = vm.pagiProg.page > 1 ? vm.pagiProg.page - 1 : 1;
+        }
 
         vm.helpers({
-            naissance() {
-                let query = Naissance.find({});
+            naissanceNew() {
+                let query = Naissance.find({ status: 'new' });
+                let count = 0;
+                let loadingCube = $('#loading-cube');
+                query.observeChanges({
+                    added: function (id, formation) {
+                        count++;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        } else {
+                            $(loadingCube).removeClass('hide-loading-cube');
+                        }
+                    },
+                    changed: function (id, formation) {
+                    },
+                    removed: function (id) {
+                        count--;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        }
+                    }
+                });
+                return query
+            }
+        });
+
+        vm.helpers({
+            naissanceProgress() {
+                let query = Naissance.find({ status: 'progress' });
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({

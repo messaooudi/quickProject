@@ -2,37 +2,44 @@
     <div class="panel panel-warning">
         <div class="panel-heading clearfix">
             <div class="panel-title">
-                في طور الإنجاز <span class="label label-warning">{{(birthList.naissance | filter : {status : 'progress'}).length}}</span>
-                <button class=" btn btn-success btn-outline pull-right" ng-disabled="(birthList.naissance | filter : {status : 'progress'}).length==0" ng-click="birthList.pdfPrint(birthList.naissance | filter : {status : 'progress'})">
+                في طور الإنجاز <span class="label label-warning">{{(birthList.naissanceProgress).length}}</span>
+                <button class=" btn btn-success btn-outline pull-right" ng-disabled="(birthList.naissanceProgress).length==0"
+                    ng-click="birthList.pdfPrint(birthList.naissanceProgress)">
                     <span ng-if="birthList.printTimer == 5"  title="Imprimer" class="glyphicon glyphicon-print"></span>
                     <span ng-if="birthList.printTimer < 5">Confirmer ! {{birthList.printTimer}}</span>
                 </button>
             </div>
         </div>
         <div class="panel-body">
-            <center ng-if="(birthList.naissance | filter : {status : 'progress'}).length == 0">
+            <center ng-if="(birthList.naissance).length == 0">
                 <p>
                     لا يوجد أي حالات في طور الإنجاز
                 </p>
             </center>
-            <birth-card ng-if="birthList.user" ng-repeat="item in birthList.naissance | filter : {status : 'progress'} | orderBy : 'date'"
-                data="item" user="birthList.user"></birth-card>
+            <div>
+                <button type="button" class="btn btn-success" ng-disabled="birthList.pagiProg.page<=1" ng-click="birthList.pagiProg.previousPage()">السابق</button>
+                <button type="button" class="btn btn-info" ng-disabled="birthList.pagiProg.page*10>=birthList.pagiProg.count" ng-click="birthList.pagiProg.nextPage()">التالي</button>
+            </div>
+            <birth-card ng-if="birthList.user" ng-repeat="item in birthList.naissanceProgress | orderBy : 'date'" data="item" user="birthList.user"></birth-card>
         </div>
     </div>
 
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">حالات جديدة<span class="label label-info">{{(birthList.naissance | filter : {status : 'new'}).length}}</span></h3>
+            <h3 class="panel-title">حالات جديدة<span class="label label-info">{{(birthList.naissanceNew).length}}</span></h3>
         </div>
         <div class="panel-body">
-            <center ng-if="(birthList.naissance | filter : {status : 'new'}).length == 0">
+            <center ng-if="(birthList.naissance).length == 0">
                 <p>
                     لا يوجد أي حالات جديدة
                 </p>
             </center>
-            <birth-card ng-if="birthList.user" ng-repeat="item in birthList.naissance | filter : {status : 'new'} | orderBy : 'date'"
-                data="item" user="birthList.user"></birth-card>
+            <div>
+                <button type="button" class="btn btn-success" ng-disabled="birthList.pagiNew.page<=1" ng-click="birthList.pagiNew.previousPage()">السابق</button>
+                <button type="button" class="btn btn-info" ng-disabled="birthList.pagiNew.page*10>=birthList.pagiNew.count" ng-click="birthList.pagiNew.nextPage()">التالي</button>
+            </div>
+            <birth-card ng-if="birthList.user" ng-repeat="item in birthList.naissanceNew | orderBy : 'date'" data="item" user="birthList.user"></birth-card>
         </div>
     </div>
 </div>

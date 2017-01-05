@@ -3,5 +3,14 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
         <input type="text" class="form-control" ng-model="deathArchive.searchQuery" placeholder="Rechercher ...">
     </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        <input type="date" class="form-control" ng-model="deathArchive.searchDate">
+    </div>
 </div>
-<death-archive-card  ng-repeat="item in deathArchive.deces | filter : deathArchive.searchQuery" data="item" user="deathArchive.user"></death-archive-card>
+
+<div id="pagination">
+    <button type="button" class="btn btn-success" ng-disabled="deathArchive.page<=1" ng-click="deathArchive.previousPage()">السابق</button>
+    <button type="button" class="btn btn-info" ng-disabled="deathArchive.page*10>=deathArchive.count" ng-click="deathArchive.nextPage()">التالي</button>
+</div>
+<death-archive-card ng-repeat="item in deathArchive.deces | filter : deathArchive.searchQuery" data="item" user="deathArchive.user"></death-archive-card>

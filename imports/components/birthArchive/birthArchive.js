@@ -35,6 +35,7 @@ class BirthArchive {
             }
         })
 
+
         vm.searchQuery = ""
         vm.page = 1;
         vm.count = 0;
@@ -42,6 +43,7 @@ class BirthArchive {
 
 
         Tracker.autorun(() => {
+            vm.page = 1;
             var search = vm.getReactively("searchQuery");
             var dateB = vm.getReactively("searchDate");
             var dateA = new Date();
@@ -57,7 +59,6 @@ class BirthArchive {
                                 { nom: { $regex: search } },
                                 { prenom: { $regex: search } },
                                 { adresse: { $regex: search } },
-                                { phoneNumber: { $regex: search } }
                             ]
                         },
                         { date: { $gte: dateB } },
@@ -70,7 +71,6 @@ class BirthArchive {
                         { nom: { $regex: search } },
                         { prenom: { $regex: search } },
                         { adresse: { $regex: search } },
-                        { phoneNumber: { $regex: search } },
                         {
                             $and: [
                                 { date: { $gte: dateB } },

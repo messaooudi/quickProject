@@ -28,7 +28,7 @@ import { Deces } from '../../database/deces';
 
 
 class DeathList {
-    constructor($scope, $reactive, $timeout,$interval) {
+    constructor($scope, $reactive, $timeout, $interval) {
         'ngInject';
         $reactive(this).attach($scope);
         var vm = this;
@@ -42,7 +42,11 @@ class DeathList {
                 w.document.write(Mustache.to_html(pdfTemplate, data));
                 w.print();
                 w.close();
-                Meteor.call('_doneDeathCard', function (error, success) {
+                var ids = [];
+                vm.decesProgress.forEach(function (n) {
+                    ids.push(n._id);
+                }, )
+                Meteor.call('_doneDeathCard', ids,function (error, success) {
                     if (error) {
                         console.log('error', error);
                     }
@@ -74,12 +78,53 @@ class DeathList {
             }
         })
 
-        //subscribe to deces schema
-        Meteor.subscribe('deces', {},{});
+        vm.pagiNew = {};
+        vm.pagiNew.page = 1;
+        vm.pagiNew.count = 0;
+
+        Tracker.autorun(() => {
+            Meteor.call('_decesNewCount', { status: "new" }, function (err, data) {
+                vm.pagiNew.count = data;
+            })
+
+            Meteor.subscribe('decesNew', { skip: 10 * (vm.getReactively("pagiNew.page", true) - 1), limit: 10 });
+        })
+
+
+        vm.pagiNew.nextPage = function () {
+            vm.pagiNew.page++;
+        }
+
+        vm.pagiNew.previousPage = function () {
+            vm.pagiNew.page = vm.pagiNew.page > 1 ? vm.pagiNew.page - 1 : 1;
+        }
+
+
+        /****************************************************** */
+
+        vm.pagiProg = {};
+        vm.pagiProg.page = 1;
+        vm.pagiProg.count = 0;
+
+        Tracker.autorun(() => {
+            Meteor.call('_decesProgCount', { status: "progress" }, function (err, data) {
+                vm.pagiProg.count = data;
+            })
+
+            Meteor.subscribe('decesProgress', { skip: 10 * (vm.getReactively("pagiProg.page") - 1), limit: 10 });
+        })
+
+        vm.pagiProg.nextPage = function () {
+            vm.pagiProg.page++;
+        }
+
+        vm.pagiProg.previousPage = function () {
+            vm.pagiProg.page = vm.pagiProg.page > 1 ? vm.pagiProg.page - 1 : 1;
+        }
 
         vm.helpers({
-            deces() {
-                let query = Deces.find({ status: { $ne: 'done' } });
+            decesNew() {
+                let query = Deces.find({ status: 'new' });
                 let count = 0;
                 let loadingCube = $('#loading-cube');
                 query.observeChanges({
@@ -99,10 +144,38 @@ class DeathList {
                             $(loadingCube).addClass('hide-loading-cube');
                         }
                     }
-                })
+                });
                 return query
             }
         });
+
+        vm.helpers({
+            decesProgress() {
+                let query = Deces.find({ status: 'progress' });
+                let count = 0;
+                let loadingCube = $('#loading-cube');
+                query.observeChanges({
+                    added: function (id, formation) {
+                        count++;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        } else {
+                            $(loadingCube).removeClass('hide-loading-cube');
+                        }
+                    },
+                    changed: function (id, formation) {
+                    },
+                    removed: function (id) {
+                        count--;
+                        if (query.count() == count) {
+                            $(loadingCube).addClass('hide-loading-cube');
+                        }
+                    }
+                });
+                return query
+            }
+        });
+
 
     }
 }

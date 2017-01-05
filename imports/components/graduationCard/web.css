@@ -38,10 +38,11 @@ graduation-card .card-content {
     background-clip: padding-box;
     box-sizing: border-box;
 }
-graduation-card .card-content p {
-    margin: 0;
-    color: inherit;
+
+graduation-card .card-content table tbody tr:first-child td {
+  border: none!important;
 }
+
 graduation-card .card-content span.card-title {
     line-height: 48px;
 }

@@ -3,5 +3,15 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
         <input type="text" class="form-control" ng-model="graduationArchive.searchQuery" placeholder="Rechercher ...">
     </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        <input type="date" class="form-control" ng-model="graduationArchive.searchDate">
+    </div>
 </div>
-<graduation-archive-card  ng-repeat="item in graduationArchive.graduation | filter : graduationArchive.searchQuery" data="item" user="graduationArchive.user"></graduation-archive-card>
+
+<div id="pagination">
+    <button type="button" class="btn btn-success" ng-disabled="graduationArchive.page<=1" ng-click="graduationArchive.previousPage()">السابق</button>
+    <button type="button" class="btn btn-info" ng-disabled="graduationArchive.page*10>=graduationArchive.count" ng-click="graduationArchive.nextPage()">التالي</button>
+</div>
+<graduation-archive-card ng-repeat="item in graduationArchive.graduation | filter : graduationArchive.searchQuery" data="item"
+    user="graduationArchive.user"></graduation-archive-card>

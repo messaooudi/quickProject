@@ -25,11 +25,27 @@ export const Graduation = new Mongo.Collection('graduation', {
 
 
 if (Meteor.isServer) {
-    Meteor.publish('graduation', function (selector,options) {
-        if (Meteor.users.findOne({_id : this.userId}).profile.mask == "010")
-            return Graduation.find(selector||{},options||{limit : 30});
-        else 
-            return Graduation.find({createdBy : this.userId})
+    Meteor.publish('graduation', function (selector, options) {
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Graduation.find(selector || {}, options || { limit: 30 });
+        else
+            return Graduation.find({ createdBy: this.userId })
+    });
+
+    Meteor.publish('graduationNew', function (options) {
+        console.log(options)
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Graduation.find({ status: "new" }, options || { limit: 30 });
+        else
+            return Graduation.find({ createdBy: this.userId })
+    });
+
+    Meteor.publish('graduationProgress', function (options) {
+        console.log(options)
+        if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
+            return Graduation.find({ status: "progress" }, options || { limit: 30 });
+        else
+            return Graduation.find({ createdBy: this.userId })
     });
 
 }
@@ -40,9 +56,9 @@ Graduation.allow({
     },
 
     update(userId, graduation, fields, modifier) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     },
     remove(userId, graduation) {
-        return Meteor.users.findOne({_id : userId}).profile.mask == "010";//if true the uodate is allowed otherwise its denied
+        return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the uodate is allowed otherwise its denied
     }
 });

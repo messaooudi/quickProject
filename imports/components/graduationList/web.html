@@ -2,40 +2,48 @@
     <div class="panel panel-warning">
         <div class="panel-heading clearfix">
             <div class="panel-title">
-                في طور الإنجاز <span class="label label-warning">{{(graduationList.graduation | filter : {status : 'progress'}).length}}</span>
-                <button class=" btn btn-success btn-outline pull-right" ng-disabled="(graduationList.graduation | filter : {status : 'progress'}).length==0" ng-click="graduationList.pdfPrint(graduationList.graduation | filter : {status : 'progress'})">
+                في طور الإنجاز <span class="label label-warning">{{(graduationList.graduationProgress).length}}</span>
+                <button class=" btn btn-success btn-outline pull-right" ng-disabled="(graduationList.graduationProgress).length==0" ng-click="graduationList.pdfPrint(graduationList.graduationProgress)">
                     <span ng-if="graduationList.printTimer == 5" title="Imprimer" class="glyphicon glyphicon-print"></span>
                     <span ng-if="graduationList.printTimer < 5">Confirmer ! {{graduationList.printTimer}}</span>
                 </button>
             </div>
         </div>
         <div class="panel-body">
-            <center ng-if="(graduationList.graduation | filter : {status : 'progress'}).length == 0">
+            <center ng-if="(graduationList.graduationProgress).length == 0">
                 <p>
                     لا يوجد أي حالات جديدة
                 </p>
             </center>
-            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'progress'} | orderBy : 'date'"
-                data="item" user="graduationList.user"></graduation-card>
+            <div>
+                <button type="button" class="btn btn-success" ng-disabled="graduationList.pagiProg.page<=1" ng-click="graduationList.pagiProg.previousPage()">السابق</button>
+                <button type="button" class="btn btn-info" ng-disabled="graduationList.pagiProg.page*10>=graduationList.pagiProg.count" ng-click="graduationList.pagiProg.nextPage()">التالي</button>
+            </div>
+            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduationProgress | orderBy : 'date'" data="item"
+                user="graduationList.user"></graduation-card>
         </div>
     </div>
 
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">حالات جديدة <span class="label label-info">{{(graduationList.graduation | filter : {status : 'new'}).length}}</span></h3>
+            <h3 class="panel-title">حالات جديدة <span class="label label-info">{{(graduationList.graduationNew).length}}</span></h3>
         </div>
         <div class="panel-body">
-            <center ng-if="(graduationList.graduation | filter : {status : 'new'}).length == 0">
+            <center ng-if="(graduationList.graduationNew).length == 0">
                 <p>
                     لا يوجد أي حالات جديدة
                 </p>
             </center>
-            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation | filter : {status : 'new'} | orderBy : 'date'"
-                data="item" user="graduationList.user"></graduation-card>
+            <div>
+                <button type="button" class="btn btn-success" ng-disabled="graduationList.pagiNew.page<=1" ng-click="graduationList.pagiNew.previousPage()">السابق</button>
+                <button type="button" class="btn btn-info" ng-disabled="graduationList.pagiNew.page*10>=graduationList.pagiNew.count" ng-click="graduationList.pagiNew.nextPage()">التالي</button>
+            </div>
+            <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduationNew | orderBy : 'date'" data="item"
+                user="graduationList.user"></graduation-card>
         </div>
     </div>
 </div>
 <div ng-if="graduationList.user.mask == '001'">
-    <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduation" data="item" user="graduationList.user"></graduation-card>
+    <graduation-card ng-if="graduationList.user" ng-repeat="item in graduationList.graduationNew" data="item" user="graduationList.user"></graduation-card>
 </div>
