@@ -36,7 +36,7 @@ class BirthArchiveCard {
 
         vm.pdfPrint = function () {
             var w = window.open();
-            w.document.write(Mustache.to_html(pdfTemplate,{}));
+            w.document.write(Mustache.to_html(pdfTemplate,vm.data));
             w.print();
             w.close();
         }

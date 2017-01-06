@@ -48,14 +48,14 @@ class BirthList {
                 vm.naissanceProgress.forEach(function (n) {
                     ids.push(n._id);
                 }, )
-                Meteor.call('_doneBirthCard', ids, function (error, success) {
+               /* Meteor.call('_doneBirthCard', ids, function (error, success) {
                     if (error) {
                         console.log('error', error);
                     }
                     if (success) {
 
                     }
-                });
+                });*/
                 vm.printTimer = 5;
                 $interval.cancel(vm.intervalTimer);
             } else {
