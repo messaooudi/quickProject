@@ -8,8 +8,7 @@ import { Accounts } from 'meteor/accounts-base'
 
 
 const fs = require('fs')
-const JSZip = require('jszip');
-const Docxtemplater = require('docxtemplater');
+
 
 const projectPath = "/home/laptop/work/QA/quickProject/";
 Meteor.startup(() => {
@@ -26,30 +25,6 @@ Meteor.startup(() => {
             }
         });
     }
-/*
-    for (var i = 0; i < 24; i++) {
-        Naissance.insert({
-            nom: "nom " + i,
-            prenom: "prenom " + i,
-            nomPere: "nomPere " + i,
-            prenomPere: "prenomPere " + i,
-            nomMere: "nomMere " + i,
-            prenomMere: "prenomMere " + i,
-            adress: "adress " + i,
-            createdBy: "hKHQKDP58x2CqtQz6",
-            status: "progress"
-        })
-}
-*/
-
-    try { fs.mkdirSync(projectPath + "generatedDocuments"); } catch (err) { }
-    try { fs.mkdirSync(projectPath + "generatedDocuments/birth"); } catch (err) { }
-    try { fs.mkdirSync(projectPath + "generatedDocuments/death"); } catch (err) { }
-    try { fs.mkdirSync(projectPath + "generatedDocuments/graduation"); } catch (err) { }
-
-    /*
-    code to run on server at startup
-    */
 
     Meteor.methods({
         _graduationNewCount: function (query) {
@@ -71,23 +46,29 @@ Meteor.startup(() => {
             return Naissance.find(query).count();
         },
         _naissanceCount: function (query) {
+            if (Meteor.user().profile.mask == "001")
+                query = { $and: [query, { createdBy: Meteor.userId() }] }
             return Naissance.find(query).count();
         },
         _decesCount: function (query) {
+            if (Meteor.user().profile.mask == "001")
+                query = { $and: [query, { createdBy: Meteor.userId() }] }
             return Deces.find(query).count();
         },
         _graduationCount: function (query) {
+            if (Meteor.user().profile.mask == "001")
+                query = { $and: [query, { createdBy: Meteor.userId() }] }
             return Graduation.find(query).count();
         },
 
         _doneGradudationCard: function (ids) {
-            Graduation.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
+            Graduation.update({ _id: { $in: ids } }, { $set: { status: "done" } }, { multi: true })
         },
         _doneBirthCard: function (ids) {
-            Naissance.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
+            Naissance.update({ _id: { $in: ids } }, { $set: { status: "done" } }, { multi: true })
         },
         _doneDeathCard: function (ids) {
-            Deces.update({ _id : {$in : ids} }, { $set: { status: "done" } }, { multi: true })
+            Deces.update({ _id: { $in: ids } }, { $set: { status: "done" } }, { multi: true })
         },
         // Declaring a method
         _createUser: function (user) {
@@ -102,28 +83,7 @@ Meteor.startup(() => {
         _updateUser: function (id, data) {
             Meteor.users.update({ _id: id }, { $set: { profile: data } });
         },
-        generateBirthDOCX: function (data) {
-            try {
-                generateDocx("birth/template.docx", "birth/", "naissance_", data)
-            } catch (exception) {
-                throw new Meteor.Error("docxError", "exception");
-            }
-            return "ok";
-        },
-        generateDeathDOCX: function (data) {
-            try {
-                generateDocx("death/template.docx", "death/", "deces_", data)
-            } catch (exception) {
-                throw new Meteor.Error("docxError", "exception");
-            }
-        },
-        generateGraduationDOCX: function (data) {
-            try {
-                generateDocx("graduation/template.docx", "graduation/", "graduation_", data)
-            } catch (exception) {
-                throw new Meteor.Error("docxError", "exception");
-            }
-        }
+
     });
 
     /*
@@ -144,31 +104,3 @@ Meteor.startup(() => {
 
     */
 });
-
-
-function generateDocx(pathToTemplate, outPath, prefix, data) {
-    var template = fs
-        .readFileSync(projectPath + "server/templatesDOCX/" + pathToTemplate, "binary")
-
-    var zip = new JSZip(template);
-
-    var doc = new Docxtemplater();
-    doc.loadZip(zip);
-
-    doc.setData(data);
-
-    doc.render();
-
-    var buf = doc.getZip()
-        .generate({ type: "nodebuffer" });
-
-    var date = new Date();
-    var dirName = date.getFullYear() + "_" + date.getMonth() + "_" + date.getDay() + "/";
-    try {
-        fs.mkdirSync(projectPath + "generatedDocuments/" + outPath + dirName);
-    } catch (exception) {
-
-    }
-
-    fs.writeFileSync(projectPath + "generatedDocuments/" + outPath + dirName + prefix + data._id + ".docx", buf);
-};

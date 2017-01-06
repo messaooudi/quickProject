@@ -29,11 +29,10 @@ if (Meteor.isServer) {
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Graduation.find(selector || {}, options || { limit: 30 });
         else
-            return Graduation.find({ createdBy: this.userId })
+            return Graduation.find(selector || {}, { createdBy: this.userId })
     });
 
     Meteor.publish('graduationNew', function (options) {
-        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Graduation.find({ status: "new" }, options || { limit: 30 });
         else
@@ -41,7 +40,6 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('graduationProgress', function (options) {
-        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Graduation.find({ status: "progress" }, options || { limit: 30 });
         else

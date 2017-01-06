@@ -40,9 +40,12 @@ class DeathArchive {
         vm.count = 0;
 
 
-
         Tracker.autorun(() => {
             vm.page = 1;
+            var search = vm.getReactively("searchQuery");
+            var dateB = vm.getReactively("searchDate");
+        })
+        Tracker.autorun(() => {
             var search = vm.getReactively("searchQuery");
             var dateB = vm.getReactively("searchDate");
             var dateA = new Date();

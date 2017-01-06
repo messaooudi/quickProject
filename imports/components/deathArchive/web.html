@@ -10,6 +10,7 @@
 </div>
 
 <div id="pagination">
+    {{deathArchive.page*10}} {{deathArchive.count}}
     <button type="button" class="btn btn-success" ng-disabled="deathArchive.page<=1" ng-click="deathArchive.previousPage()">السابق</button>
     <button type="button" class="btn btn-info" ng-disabled="deathArchive.page*10>=deathArchive.count" ng-click="deathArchive.nextPage()">التالي</button>
 </div>

@@ -45,10 +45,10 @@ class BirthList {
                 w.print();
                 w.close();
                 var ids = [];
-                vm.naissanceProgress.forEach(function(n) {
+                vm.naissanceProgress.forEach(function (n) {
                     ids.push(n._id);
-                },)
-                Meteor.call('_doneBirthCard',ids,function (error, success) {
+                }, )
+                Meteor.call('_doneBirthCard', ids, function (error, success) {
                     if (error) {
                         console.log('error', error);
                     }
@@ -86,7 +86,7 @@ class BirthList {
         vm.pagiNew.count = 0;
 
         Tracker.autorun(() => {
-            Meteor.call('_naissanceNewCount', {status : "new"},function (err, data) {
+            Meteor.call('_naissanceNewCount', { status: "new" }, function (err, data) {
                 vm.pagiNew.count = data;
             })
 
@@ -110,7 +110,7 @@ class BirthList {
         vm.pagiProg.count = 0;
 
         Tracker.autorun(() => {
-            Meteor.call('_naissanceProgCount',{status : "progress"} ,function (err, data) {
+            Meteor.call('_naissanceProgCount', { status: "progress" }, function (err, data) {
                 vm.pagiProg.count = data;
             })
 
@@ -124,6 +124,10 @@ class BirthList {
         vm.pagiProg.previousPage = function () {
             vm.pagiProg.page = vm.pagiProg.page > 1 ? vm.pagiProg.page - 1 : 1;
         }
+
+
+        Meteor.subscribe('naissance',{});
+
 
         vm.helpers({
             naissanceNew() {

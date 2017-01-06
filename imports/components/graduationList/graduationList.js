@@ -124,6 +124,9 @@ class GraduationList {
             vm.pagiProg.page = vm.pagiProg.page > 1 ? vm.pagiProg.page - 1 : 1;
         }
 
+
+        Meteor.subscribe('graduationNew', {});
+
         vm.helpers({
             graduationNew() {
                 let query = Graduation.find({ status: 'new' });

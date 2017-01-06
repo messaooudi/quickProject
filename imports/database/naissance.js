@@ -26,15 +26,13 @@ export const Naissance = new Ground.Collection('naissance', {
 
 if (Meteor.isServer) {
     Meteor.publish('naissance', function (selector, options) {
-        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Naissance.find(selector || {}, options || { limit: 30 });
         else
-            return Naissance.find({ createdBy: this.userId })
+            return Naissance.find(selector || {}, { createdBy: this.userId })
     });
 
     Meteor.publish('naissanceNew', function (options) {
-        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Naissance.find({ status: "new" }, options || { limit: 30 });
         else
@@ -42,7 +40,6 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('naissanceProgress', function (options) {
-        console.log(options)
         if (Meteor.users.findOne({ _id: this.userId }).profile.mask == "010")
             return Naissance.find({ status: "progress" }, options || { limit: 30 });
         else

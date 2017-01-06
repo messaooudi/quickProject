@@ -33,7 +33,6 @@ Meteor.users.allow({
         return Meteor.users.findOne({ _id: userId }).profile.mask == "010";
     },
     remove(userId, naissance) {
-        console.log(Meteor.users.findOne({ _id: userId }).profile.mask)
         return Meteor.users.findOne({ _id: userId }).profile.mask == "010";//if true the remove is allowed otherwise its denied
     }
 });

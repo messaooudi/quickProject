@@ -46,7 +46,7 @@ class DeathList {
                 vm.decesProgress.forEach(function (n) {
                     ids.push(n._id);
                 }, )
-                Meteor.call('_doneDeathCard', ids,function (error, success) {
+                Meteor.call('_doneDeathCard', ids, function (error, success) {
                     if (error) {
                         console.log('error', error);
                     }
@@ -121,6 +121,9 @@ class DeathList {
         vm.pagiProg.previousPage = function () {
             vm.pagiProg.page = vm.pagiProg.page > 1 ? vm.pagiProg.page - 1 : 1;
         }
+
+
+        Meteor.subscribe('decesNew',{});
 
         vm.helpers({
             decesNew() {
